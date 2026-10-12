@@ -6,18 +6,28 @@ import glob
 import json
 import os
 
-COLS = ["model", "effort", "corpus", "status", "composite", "facts_found", "facts_total", "facts_net_pct", "stale_facts", "decoy_hits",
+COLS = ["model", "effort", "corpus", "transport", "judge_model", "judge_ok", "status", "composite", "facts_found", "facts_total", "facts_net_pct", "stale_facts", "decoy_hits",
         "threads_preserved", "threads_partial", "threads_lost", "threads_source", "invention_mech", "invention_judge",
         "latency_s", "prompt_tokens", "completion_tokens", "reasoning_tokens", "cost_usd", "finish_reason"]
 
 
 def row_of(score: dict, meta: dict) -> dict:
     u = (meta.get("usage") or {})
+    if "modelUsage" in u:  # claude CLI json
+        c = u.get("usage") or {}
+        u = {"prompt_tokens": sum(c.get(k, 0) for k in ("input_tokens", "cache_creation_input_tokens", "cache_read_input_tokens")),
+             "completion_tokens": c.get("output_tokens"),
+             "completion_tokens_details": {"reasoning_tokens": (c.get("output_tokens_details") or {}).get("thinking_tokens")}}
     det = u.get("completion_tokens_details") or {}
     r = {"model": meta.get("model"), "effort": meta.get("effort"), "corpus": meta.get("corpus"),
-         "latency_s": meta.get("latency_s"), "prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
+         "transport": meta.get("transport", "openai"), "latency_s": meta.get("latency_s"), "prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
          "reasoning_tokens": det.get("reasoning_tokens"), "cost_usd": meta.get("cost_usd"), "finish_reason": meta.get("finish_reason")}
     st = score["status"]
+    j = score.get("judge") or {}
+    r["judge_model"] = j.get("model") or "none"
+    r["judge_ok"] = (j.get("failed_calls", 0) == 0) if j.get("model") else None
+    if j.get("model") is None and j.get("note"):
+        r["judge_model"] = "none (%s)" % j["note"][:60]
     if st == "FAILED":
         r["status"] = "FAILED (%s)" % score["failed_as"]
         r["composite"] = None
@@ -52,7 +62,7 @@ def write(results_dir):
         w.writeheader()
         for r in rows:
             w.writerow({c: ("" if r.get(c) is None else r.get(c)) for c in COLS})
-    hdr = ["#", "model", "effort", "corpus", "status", "score", "facts", "stale/decoy", "threads P/PA/L", "invention mech/judge", "latency s", "tok p/c/r", "cost $"]
+    hdr = ["#", "model", "effort", "corpus", "status", "score", "facts", "stale/decoy", "threads P/PA/L", "invention mech/judge", "latency s", "tok p/c/r", "cost $", "judge", "transport"]
     lines = ["# threadkeeper leaderboard", "",
              "FAILED = the output was not a summary (continuation / chat-reply / empty / tool-call); it is not ranked. `invention judge` is a ranking signal, not ground truth.", "",
              "| " + " | ".join(hdr) + " |", "|" + "---|" * len(hdr)]
@@ -66,6 +76,7 @@ def write(results_dir):
             "%s/%s/%s" % (r.get("threads_preserved"), r.get("threads_partial"), r.get("threads_lost")) if sc is not None else "-",
             "%s/%s" % (r.get("invention_mech"), r.get("invention_judge") if r.get("invention_judge") is not None else "n/a") if sc is not None else "-",
             r.get("latency_s"), "%s/%s/%s" % (r.get("prompt_tokens"), r.get("completion_tokens"), r.get("reasoning_tokens")),
-            r.get("cost_usd") if r.get("cost_usd") is not None else "n/a"]) + " |")
+            r.get("cost_usd") if r.get("cost_usd") is not None else "n/a",
+            "%s%s" % (r.get("judge_model"), "" if r.get("judge_ok") in (True, None) else " (JUDGE CALL FAILED)"), r.get("transport")]) + " |")
     open(os.path.join(results_dir, "leaderboard.md"), "w").write("\n".join(lines) + "\n")
     return rows

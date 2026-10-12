@@ -1,0 +1,7 @@
+{"rules": [
+ {"match": "kimi-k3", "judge": {"transport": "openai", "base_url": "https://api.venice.ai/api/v1", "api_key_env": "VENICE_API_KEY", "model": "z-ai-glm-5-3-flash", "effort": "low"}},
+ {"match": "glm-5-3-flash", "judge": {"transport": "openai", "base_url": "https://api.venice.ai/api/v1", "api_key_env": "VENICE_API_KEY", "model": "kimi-k3", "effort": "low"}},
+ {"match": "deepseek", "judge": {"transport": "openai", "base_url": "https://api.venice.ai/api/v1", "api_key_env": "VENICE_API_KEY", "model": "z-ai-glm-5-3-flash", "effort": "low"}},
+ {"match": "gpt-6-astra", "judge": {"transport": "claude", "model": "opus"}},
+ {"match": "opus", "judge": {"transport": "pi", "model": "openai/gpt-6-astra"}}
+]}

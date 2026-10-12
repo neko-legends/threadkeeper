@@ -9,6 +9,9 @@ from __future__ import annotations
 import json
 import re
 
+import os
+
+from run.cli import call_cli
 from run.client import post_chat, text_of
 from .textnorm import norm
 
@@ -67,12 +70,34 @@ class Judge:
         self._chat = chat or self._http
         self.calls = []
 
+    @classmethod
+    def from_spec(cls, spec: dict):
+        """spec: {transport: openai|pi|claude, model, [base_url, api_key_env], [effort]}. Raises if the key env is unset."""
+        tr = spec.get("transport", "openai")
+        if tr == "openai":
+            key = os.environ.get(spec["api_key_env"])
+            if not key:
+                raise RuntimeError("judge key env %s not set" % spec["api_key_env"])
+            j = cls(spec["base_url"], key, spec["model"], spec.get("effort"))
+        else:
+            j = cls(None, None, spec["model"], spec.get("effort"))
+            j._chat = j._cli
+        j.transport = tr
+        return j
+
+    transport = "openai"
+
+    def _cli(self, prompt):
+        r = call_cli(self.transport, self.model, prompt, self.effort or "default", timeout=3600)
+        self.calls.append({"status": r["status"], "error": r["error"], "latency_s": r["latency_s"], "cmd": r["cmd"], "stderr": r["stderr"][:300]})
+        return r["text"] if r["status"] == "ok" else ""
+
     def _http(self, prompt):
         body = {"model": self.model, "temperature": 0, "max_tokens": 16384, "messages": [{"role": "user", "content": prompt}]}
         if self.effort:
             body["reasoning_effort"] = self.effort
         r = post_chat(self.base_url, self.api_key, body)
-        self.calls.append({"status": r["status"], "usage": (r.get("body") or {}).get("usage"), "latency_s": r["latency_s"]})
+        self.calls.append({"status": r["status"], "error": None if r["status"] == 200 else str(r.get("error"))[:300], "usage": (r.get("body") or {}).get("usage"), "latency_s": r["latency_s"]})
         return text_of(r)
 
     def threads(self, summary: str, gt: dict) -> dict:

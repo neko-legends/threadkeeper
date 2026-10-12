@@ -11,6 +11,7 @@ import time
 
 from gen.render import load_session, render_transcript
 from .client import message_of, post_chat
+from .cli import call_cli
 
 ALL_EFFORTS = "none,low,medium,high,xhigh,max"
 
@@ -45,8 +46,10 @@ def cost_of(resp):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="python -m run")
-    ap.add_argument("--base-url", required=True)
-    ap.add_argument("--api-key-env", required=True)
+    ap.add_argument("--transport", choices=["openai", "pi", "claude"], default="openai",
+                    help="openai: OpenAI-compatible HTTP; pi: `pi -p --model M`; claude: `claude -p --model M` (subscription CLIs, text mode, stdin)")
+    ap.add_argument("--base-url")
+    ap.add_argument("--api-key-env")
     ap.add_argument("--model", required=True)
     ap.add_argument("--effort", default="default", help="comma list; 'default' omits the param; 'all' = " + ALL_EFFORTS)
     ap.add_argument("--corpus", default="32k")
@@ -57,10 +60,17 @@ def main(argv=None):
                     help="messages: session as real chat turns + compaction request (default); text: transcript inside one user message")
     ap.add_argument("--results", default="results")
     ap.add_argument("--timeout", type=float, default=1800)
+    ap.add_argument("--force", action="store_true", help="re-run an arm whose meta.json already exists (default: skip, never re-run)")
     a = ap.parse_args(argv)
-    key = os.environ.get(a.api_key_env)
-    if not key:
-        sys.exit("env var %s is not set" % a.api_key_env)
+    key = None
+    if a.transport == "openai":
+        if not (a.base_url and a.api_key_env):
+            sys.exit("--transport openai needs --base-url and --api-key-env")
+        key = os.environ.get(a.api_key_env)
+        if not key:
+            sys.exit("env var %s is not set" % a.api_key_env)
+    else:
+        a.mode = "text"  # CLIs take one text prompt on stdin; no structured chat turns
     session = load_session(os.path.join(a.corpora, a.corpus, "session.jsonl"))
     prompt = open(a.prompt, encoding="utf-8").read()
     messages = build_messages(session, prompt, a.mode)
@@ -72,14 +82,44 @@ def main(argv=None):
             body["reasoning_effort"] = eff
         arm = os.path.join(a.results, "%s__%s__%s" % (slug(a.model), eff, a.corpus))
         os.makedirs(arm, exist_ok=True)
+        if os.path.exists(os.path.join(arm, "meta.json")) and not a.force:
+            print("%s: already ran, skipping" % os.path.basename(arm))
+            continue
         t0 = time.time()
+        if a.transport != "openai":
+            text_prompt = messages[-1]["content"] if len(messages) == 1 else "\n\n".join(m["content"] for m in messages)
+            r = call_cli(a.transport, a.model, text_prompt, eff, a.timeout)
+            text = r["text"]
+            failed_as = None
+            if r["status"] != "ok":
+                failed_as = "context" if re.search(r"context|too long|too large|maximum|prompt is too", r["error"] or r["stderr"], re.I) else "cli-error"
+            meta = {
+                "status": "ok" if not failed_as else "failed", "failed_as": failed_as,
+                "transport": a.transport, "command": r["cmd"], "exit_code": r["exit_code"], "stderr": r["stderr"],
+                "model": a.model, "effort": eff, "corpus": a.corpus, "mode": a.mode, "message_count": len(messages),
+                "prompt_sha256": prompt_hash, "prompt_chars": len(text_prompt),
+                "compact_prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
+                "latency_s": r["latency_s"], "finish_reason": r.get("finish_reason"), "usage": r["usage"],
+                "cost_usd": None, "list_price_equiv_usd": r["cost_usd"], "error": r["error"], "started_at_unix": int(t0),
+                "judge_model": None,
+            }
+            with open(os.path.join(arm, "output.md"), "w", encoding="utf-8") as fh:
+                fh.write(text)
+            json.dump(meta, open(os.path.join(arm, "meta.json"), "w"), indent=1, ensure_ascii=False)
+            print("%s: %s exit=%s %.1fs chars=%d err=%s" % (os.path.basename(arm), meta["status"], r["exit_code"], r["latency_s"], len(text), r["error"]))
+            continue
         r = post_chat(a.base_url, key, body, a.timeout)
         msg = message_of(r)
         choice = ((r.get("body") or {}).get("choices") or [{}])[0]
         ok = r["status"] == 200 and bool(choice)
         params = {k: v for k, v in body.items() if k != "messages"}
+        status = "ok" if ok else ("rejected" if r["status"] and 400 <= r["status"] < 500 else "error")
+        failed_as = None
+        if not ok and re.search(r"context.{0,20}(length|window)|too long|maximum context|exceeds", str(r.get("error")), re.I):
+            status, failed_as = "failed", "context"
         meta = {
-            "status": "ok" if ok else ("rejected" if r["status"] and 400 <= r["status"] < 500 else "error"),
+            "status": status, "failed_as": failed_as, "transport": "openai",
+            "command": "POST %s/chat/completions model=%s reasoning_effort=%s" % (a.base_url.rstrip("/"), a.model, eff),
             "model": a.model, "effort": eff, "corpus": a.corpus, "mode": a.mode, "base_url": a.base_url,
             "request_params": params, "message_count": len(messages), "prompt_sha256": prompt_hash,
             "compact_prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
