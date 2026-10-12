@@ -61,5 +61,27 @@
  "list_price_equiv_usd": 3.475876,
  "error": null,
  "started_at_unix": 1791783043,
- "judge_model": null
+ "judge_model": "openai/gpt-6-astra",
+ "judge": {
+  "model": "openai/gpt-6-astra",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 17.381,
+    "cmd": "pi -p --model openai/gpt-6-astra --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": ""
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 60.853,
+    "cmd": "pi -p --model openai/gpt-6-astra --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": ""
+   }
+  ],
+  "failed_calls": 0
+ }
 }

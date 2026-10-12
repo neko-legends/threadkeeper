@@ -4,3 +4,4 @@ deepseek-v4-1-flash,low,200k,openai,z-ai-glm-5-3-flash,True,SCORED,94.73,47,50,9
 kimi-k3,default,200k,openai,z-ai-glm-5-3-flash,True,SCORED,94.44,48,50,95.7,0,1,7,1,0,judge,1,1,35.367,235791,3616,2049,,stop
 z-ai-glm-5-3-flash,default,200k,openai,kimi-k3,True,SCORED,91.5,47,50,94.0,0,1,7,1,0,judge,3,2,22.951,201112,3024,11,,stop
 openai/gpt-6-astra,default,200k,pi,opus,True,SCORED,89.46,46,50,84.5,3,2,8,0,0,judge,2,1,108.081,,,,,
+opus,max,200k,claude,openai/gpt-6-astra,True,SCORED,84.78,49,50,94.8,2,1,6,2,0,judge,8,0,413.45,311078,49363,41630,,end_turn

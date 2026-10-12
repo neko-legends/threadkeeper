@@ -9,3 +9,4 @@ FAILED = the output was not a summary (continuation / chat-reply / empty / tool-
 | 3 | kimi-k3 | default | 200k | SCORED | 94.4 | 48/50 (95.7%) | 0/1 | 7/1/0 | 1/1 | 35.367 | 235791/3616/2049 | n/a | z-ai-glm-5-3-flash | openai |
 | 4 | z-ai-glm-5-3-flash | default | 200k | SCORED | 91.5 | 47/50 (94.0%) | 0/1 | 7/1/0 | 3/2 | 22.951 | 201112/3024/11 | n/a | kimi-k3 | openai |
 | 5 | openai/gpt-6-astra | default | 200k | SCORED | 89.5 | 46/50 (84.5%) | 3/2 | 8/0/0 | 2/1 | 108.081 | None/None/None | n/a | opus | pi |
+| 6 | opus | max | 200k | SCORED | 84.8 | 49/50 (94.8%) | 2/1 | 6/2/0 | 8/0 | 413.45 | 311078/49363/41630 | n/a | openai/gpt-6-astra | claude |
