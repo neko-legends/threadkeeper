@@ -40,6 +40,14 @@ Optional: `pip install tiktoken matplotlib` for exact token counts and the chart
 
 ---
 
+## Results
+
+![threadkeeper 128k leaderboard](docs/threadkeeper-128k.png)
+
+*128k corpus (`session.jsonl` sha256 `115686d9…5728e`, seed 12801), composite v2. Each bar names the transport that ran the model and the judge that graded it; the judge is always a different model/family, and the diamond is the old v1 composite. Honest caveat: the `claude` and `pi` CLI arms ran in **text mode** (the transcript inside one user message, tools off), while the `openai` arms got the session as real chat turns, so those two groups are not a like-for-like prompt comparison. Full per-row breakdown: [`results/leaderboard.md`](results/leaderboard.md).*
+
+---
+
 ## What it measures
 
 | stage | question | how |
@@ -50,6 +58,17 @@ Optional: `pip install tiktoken matplotlib` for exact token counts and the chart
 | **Decoys** | Did it swallow the near-miss? | near-duplicate vendor name, near-duplicate ticket number, an unrelated commit hash |
 | **Threads** | Did the *open loops* survive? | 8 open items graded `PRESERVED` / `PARTIAL` / `LOST` by a rubric judge, with a mechanical keyword fallback reported alongside |
 | **Invention** | Did it make things up? | two independent measures — a **mechanical cross-check** (every number, hash and quoted span must appear in the session) and a **blind judge** whose own quoted evidence must be an exact substring or the item is discarded |
+
+### The composite
+
+```
+composite = 100 * (0.45*facts_score + 0.30*threads_score + 0.25*invention_score)
+facts_score     = facts.net                          # 0..1, latest-value credit inside
+threads_score   = judge threads score                # PRESERVED=1 PARTIAL=0.5 LOST=0 (mechanical if the judge failed to parse)
+invention_score = 1 / (1 + mechanical_inventions/3)  # 0->1.00 1->.75 2->.60 3->.50 4->.43 7->.30, no saturation
+```
+
+Every strong model finds 45-49 of 50 facts, so the ranking is decided by invented claims and dropped threads. Inventing is worse than forgetting, because a summary *replaces* history; the penalty therefore never saturates. The weights live in `score/weights.py` (override with `--weights facts=..,threads=..,invention=..`); the formula is written into every `score.json` and the leaderboard header. The previous 0.55/0.35/0.10 composite with a penalty capped at 10 inventions is kept as `composite_v1`. `python3 -m score --rescore` recomputes both from stored artifacts without calling any model.
 
 That last row is why invention is reported twice. Our own judge was caught **fabricating quotes** — inventing evidence for a claim it wanted to make. A judge-only invention count is a ranking signal, never ground truth.
 
@@ -95,6 +114,14 @@ Treat the shipped corpora as historical reference points. Once they are public, 
 
 Report `status` next to `score`, always. A leaderboard that hides failures is measuring something else.
 
+## Reporting rules
+
+- Never publish a bare composite. Every row carries its breakdown: facts found/total and net, stale and decoy hits, thread verdicts (judge and mechanical), both invention counts, latency and tokens. `score/report.py` refuses to emit a composite without them, and `tests/test_breakdown.py` fails if a column goes missing.
+- Always name the judge and the transport on every row.
+- Always report `status` next to `score`.
+- State the weights (the formula) and the corpus hash next to the numbers.
+- Report both invention counts, mechanical and judge. The judge count is a ranking signal, never ground truth.
+
 ---
 
 ## Tests
@@ -103,7 +130,7 @@ Report `status` next to `score`, always. A leaderboard that hides failures is me
 python3 -W ignore -m unittest discover -s tests -t .
 ```
 
-Thirteen tests. The point of most of them is that the **scorer itself can fail**:
+Twenty-two tests. The point of most of them is that the **scorer itself can fail**:
 
 | test | what it guards |
 |---|---|
@@ -119,7 +146,8 @@ Thirteen tests. The point of most of them is that the **scorer itself can fail**
 | `test_f_judge_fabricated_quotes_dropped` | when the judge invents its evidence, the item is dropped and downgraded |
 | `test_every_fact_planted_and_stale_present` | the ground truth actually contains what it claims |
 | `test_generator_deterministic` | same seed → byte-identical corpus |
-| `test_mutant.py` | **run the suite with `TK_DISABLE_GATE=1` and the gate tests fail** |
+| `test_breakdown.py` | the leaderboard header/CSV carry every breakdown column; a composite cannot be emitted without them; weights and the non-saturating invention curve |
+| `test_mutant.py` | **run the suite with `TK_DISABLE_GATE=1` and the gate tests fail; strip a breakdown column (`TK_STRIP_COLUMN`) and the breakdown test fails** |
 
 That last one is the most important line in this repository. If disabling the summary gate does not break the tests, the gate is decoration.
 
