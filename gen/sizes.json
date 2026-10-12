@@ -1,0 +1,3 @@
+{"32k": {"seed": 3201, "target_chars": 87000},
+ "128k": {"seed": 12801, "target_chars": 378000},
+ "200k": {"seed": 20001, "target_chars": 584000}}
