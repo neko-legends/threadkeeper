@@ -6,11 +6,11 @@ import glob
 import json
 import os
 
-from . import weights as weights_mod
+from . import invention, weights as weights_mod
 
 COLS = ["model", "effort", "corpus", "transport", "judge_model", "judge_ok", "status", "composite", "composite_v1", "facts_found", "facts_total", "facts_net_pct", "stale_facts", "decoy_hits",
         "threads_judge_preserved", "threads_judge_partial", "threads_judge_lost", "threads_mech_preserved", "threads_mech_partial", "threads_mech_lost", "threads_source",
-        "invention_mech", "invention_judge", "latency_s", "prompt_tokens", "completion_tokens", "reasoning_tokens", "cost_usd", "finish_reason"]
+        "invention_mech", "invention_checked", "invention_mech_per100", "invention_judge", "latency_s", "prompt_tokens", "completion_tokens", "reasoning_tokens", "cost_usd", "finish_reason"]
 
 # The breakdown is mandatory: a composite is never emitted without these (enforced by check_breakdown + tests/test_breakdown.py).
 # (markdown header, row key(s)). Order is the board's column order.
@@ -20,7 +20,7 @@ BREAKDOWN = [
     ("stale", ["stale_facts"]), ("decoy hits", ["decoy_hits"]),
     ("threads judge P/PA/L", ["threads_judge_preserved", "threads_judge_partial", "threads_judge_lost"]),
     ("threads mech P/PA/L", ["threads_mech_preserved", "threads_mech_partial", "threads_mech_lost"]),
-    ("invention mech", ["invention_mech"]), ("invention judge", ["invention_judge"]),
+    ("invention mech", ["invention_mech"]), ("mech checked (quotes+nums)", ["invention_checked"]), ("mech per 100 checked", ["invention_mech_per100"]), ("invention judge", ["invention_judge"]),
     ("latency s", ["latency_s"]), ("prompt tok", ["prompt_tokens"]), ("completion tok", ["completion_tokens"]), ("reasoning tok", ["reasoning_tokens"]),
     ("judge", ["judge_model"]), ("transport", ["transport"]),
 ]
@@ -81,6 +81,7 @@ def row_of(score: dict, meta: dict) -> dict:
                  threads_judge_preserved=jc[0], threads_judge_partial=jc[1], threads_judge_lost=jc[2],
                  threads_mech_preserved=mc[0], threads_mech_partial=mc[1], threads_mech_lost=mc[2],
                  threads_source=t["final_source"], invention_mech=inv["mechanical"]["count"],
+                 invention_checked=invention.with_rate(inv["mechanical"])["checked_total"], invention_mech_per100=inv["mechanical"]["per_100"],
                  invention_judge=(inv["judge"]["count"] if inv["judge"] else None))
     else:
         r["status"] = st
@@ -139,7 +140,7 @@ def write(results_dir, w=None, corpora_dir="corpora"):
              "Corpus session.jsonl sha256: " + ("; ".join("%s=`%s`" % kv for kv in hashes.items()) or "n/a"), "",
              "Never read a composite alone: every row carries its breakdown, the judge that graded it and the transport. "
              "FAILED = the output was not a summary (continuation / chat-reply / empty / tool-call); it is not ranked. "
-             "`invention mech` is the mechanical cross-check; `invention judge` is a ranking signal, never ground truth.", "",
+             "`invention mech` is the mechanical cross-check (raw count favours terse summaries: compare `mech per 100 checked`);  `invention judge` is a ranking signal, never ground truth.", "",
              "| " + " | ".join(hdr) + " |", "|" + "---|" * len(hdr)]
     for i, r in enumerate(rows, 1):
         scored = r["composite"] is not None

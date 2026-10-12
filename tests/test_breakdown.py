@@ -51,6 +51,15 @@ class Breakdown(unittest.TestCase):
         self.assertEqual(int(row["invention_mech"]), s["invention"]["mechanical"]["count"])
         self.assertEqual(int(row["invention_judge"]), s["invention"]["judge"]["count"])
 
+    def test_invention_normalised_rate(self):
+        s = json.load(open(os.path.join(ARM, "score.json")))
+        m = s["invention"]["mechanical"]
+        c = m["checked"]
+        self.assertEqual(m["checked_total"], c["quotes"] + c["numbers"])
+        self.assertAlmostEqual(m["per_100"], 100 * m["count"] / m["checked_total"], places=2)
+        self.assertEqual(int(self.csv[0]["invention_checked"]), m["checked_total"])
+        self.assertAlmostEqual(float(self.csv[0]["invention_mech_per100"]), m["per_100"], places=2)
+
     def test_composite_cannot_be_emitted_without_breakdown(self):
         s = json.load(open(os.path.join(ARM, "score.json")))
         m = json.load(open(os.path.join(ARM, "meta.json")))

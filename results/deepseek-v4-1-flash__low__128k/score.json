@@ -386,7 +386,9 @@
     "quotes": 11,
     "numbers": 56
    },
-   "count": 1
+   "count": 1,
+   "checked_total": 67,
+   "per_100": 1.49
   },
   "judge": {
    "items": [

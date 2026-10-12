@@ -23,6 +23,15 @@ def corpus_index(corpus_text: str):
     return c, toks, set(HEX.findall(c))
 
 
+def with_rate(mech: dict) -> dict:
+    """Add checked_total and per_100 (unsupported items per 100 checked quotes+numbers). Raw counts reward terse summaries; compare this rate."""
+    c = mech.get("checked") or {}
+    total = c.get("quotes", 0) + c.get("numbers", 0)
+    mech["checked_total"] = total
+    mech["per_100"] = round(100 * mech["count"] / total, 2) if total else None
+    return mech
+
+
 def check(summary: str, index) -> dict:
     c, toks, hexes = index
     s = norm(summary)
@@ -43,6 +52,6 @@ def check(summary: str, index) -> dict:
         if t not in toks and t not in bad_n:
             bad_n.append(t)
     bad_h = [h for h in set(HEX.findall(s)) if h not in hexes and h not in c]
-    return {"unsupported_quotes": bad_q, "unsupported_numbers": bad_n, "unsupported_hashes": sorted(bad_h),
+    return with_rate({"unsupported_quotes": bad_q, "unsupported_numbers": bad_n, "unsupported_hashes": sorted(bad_h),
             "checked": {"quotes": nq, "numbers": nn},
-            "count": len(bad_q) + len(bad_n) + len(bad_h)}
+            "count": len(bad_q) + len(bad_n) + len(bad_h)})

@@ -44,7 +44,7 @@ Optional: `pip install tiktoken matplotlib` for exact token counts and the chart
 
 ![threadkeeper 128k leaderboard](docs/threadkeeper-128k.png)
 
-*128k corpus (`session.jsonl` sha256 `115686d9…5728e`, seed 12801), composite v2. Each bar names the transport that ran the model and the judge that graded it; the judge is always a different model/family, and the diamond is the old v1 composite. Honest caveat: the `claude` and `pi` CLI arms ran in **text mode** (the transcript inside one user message, tools off), while the `openai` arms got the session as real chat turns, so those two groups are not a like-for-like prompt comparison. Full per-row breakdown: [`results/leaderboard.md`](results/leaderboard.md).*
+*128k corpus (`session.jsonl` sha256 `115686d9…5728e`, seed 12801), composite v2. One panel per component, same row order: composite, facts net, threads (judge P/PA/L), invention (mechanical per 100 checked, judge count in the label) and latency. Each row names the transport that ran the model and the judge that graded it; the judge is always a different model/family, and the diamond is the old v1 composite; the invention panel plots the *normalised* mechanical rate (see below). Honest caveat: the `claude` and `pi` CLI arms ran in **text mode** (the transcript inside one user message, tools off), while the `openai` arms got the session as real chat turns, so those two groups are not a like-for-like prompt comparison. Full per-row breakdown: [`results/leaderboard.md`](results/leaderboard.md).*
 
 ---
 
@@ -71,6 +71,52 @@ invention_score = 1 / (1 + mechanical_inventions/3)  # 0->1.00 1->.75 2->.60 3->
 Every strong model finds 45-49 of 50 facts, so the ranking is decided by invented claims and dropped threads. Inventing is worse than forgetting, because a summary *replaces* history; the penalty therefore never saturates. The weights live in `score/weights.py` (override with `--weights facts=..,threads=..,invention=..`); the formula is written into every `score.json` and the leaderboard header. The previous 0.55/0.35/0.10 composite with a penalty capped at 10 inventions is kept as `composite_v1`. `python3 -m score --rescore` recomputes both from stored artifacts without calling any model.
 
 That last row is why invention is reported twice. Our own judge was caught **fabricating quotes** — inventing evidence for a claim it wanted to make. A judge-only invention count is a ranking signal, never ground truth.
+
+---
+
+## How invention is measured
+
+Invention = claims in the summary that the session does not support. **Lower is better.** It is measured two independent ways, because neither is trustworthy alone.
+
+**Mechanical (deterministic, cheap, no judge).** Every number, hash and quoted/backticked span in the summary must appear literally in the session. The count is how many did not. `invention.mechanical.checked` records how many quotes and numbers were inspected.
+
+**Judge (a blind model).** A model reads summary + session and flags unsupported claims, each with a quote from the summary and a reason; quotes that are not exact substrings are discarded. It can be wrong (our judge once fabricated its own quotes), so it is a ranking signal, never ground truth, and **judge counts are not comparable across judges** (different judges grade different arms on this board).
+
+### Raw counts favour terse summaries — compare the rate
+
+The mechanical check only inspects what the summary asserts, so a longer, more detailed summary accumulates more raw flags than a terse one. kimi-k3 default checked 4 quotes / 49 numbers; Opus max checked 31 quotes / 140 numbers. Every row therefore reports the raw count, the checked total and the rate **per 100 checked items** (`4/171 checked = 2.34 per 100`). Compare the rate; keep the raw count next to it. The composite still uses the raw count (weights unchanged, 0.45/0.30/0.25); this normalisation is reporting only.
+
+128k board, mechanical (rate is unsupported per 100 checked quotes+numbers), judge raw:
+
+| arm | mech raw | checked | per 100 | judge |
+|---|---|---|---|---|
+| kimi-k3 default | 0 | 53 | 0.00 | 0 |
+| kimi-k3 low | 0 | 37 | 0.00 | 1 |
+| deepseek-v4-1-flash default | 1 | 112 | 0.89 | 1 |
+| deepseek-v4-1-flash low | 1 | 67 | 1.49 | 2 |
+| z-ai-glm-5-3-flash default | 1 | 57 | 1.75 | 2 |
+| z-ai-glm-5-3-flash high | 1 | 51 | 1.96 | 2 |
+| opus default | 2 | 103 | 1.94 | 1 |
+| openai/gpt-6-astra high | 3 | 148 | 2.03 | 1 |
+| openai/gpt-6-astra default | 2 | 159 | 1.26 | 1 |
+| z-ai-glm-5-3-flash low | 2 | 55 | 3.64 | 1 |
+| opus max | 4 | 171 | 2.34 | 7 |
+
+The normalisation changes the picture at the edges: astra default (2 raw) is cleaner per item than glm low (2 raw), and deepseek default is cleaner than glm default despite equal raw counts. Opus max stays mid-pack on the mechanical rate (2.34) but is the worst by far on the judge count (7), which is the signal that matters for it.
+
+### Worked example: Opus max (4 mechanical / 7 judge)
+
+Opus max has the best fact recall (49/50) and ranks last, because of what it invented. Its mechanical flags: the spans `inv_…` and `<label> dry run`, and the numbers `01:00` and `22.6.3`. Its judge flags include:
+
+- *"The highest existing migration number is `0080`"* — the session shows 0080 but never establishes it as the highest. **Inference promoted to fact.**
+- *"Lisbon is UTC+1 until 2026-10-25 01:00 UTC, so 9am local on Oct 24 is 08:00Z"* — that transition time appears nowhere in the session. **Outside knowledge imported as specificity.**
+- *"`docs/dns.md` with the DKIM record"* and *"`config/defaults.ts` holding the cadence (4/9/18) and the rate limit (40/min/token)"* — both listed under what was **reported done**, when the session only has the intent to write them (the judge also flags the magic-link token table the same way). **Intent turned into completion is the worst failure mode for a summary that replaces history**: the next session believes the work exists.
+
+Contrast: **kimi-k3 default = 0 mechanical, 0 judge, 0 stale, 0 decoy, threads 8/0/0.** A clean sheet, which is why it leads.
+
+### Contamination note
+
+Both astra arms' summaries contain *"Developer-provided current working directory is `/home/jun/git/threadkeeper`"*, which the session never contains (it is the harness's own context leaking into the summary) and which the judge flags as unsupported. That is a harness artifact of the `pi` transport, not model invention; read astra's invention numbers with that in mind.
 
 ---
 
@@ -120,7 +166,10 @@ Report `status` next to `score`, always. A leaderboard that hides failures is me
 - Always name the judge and the transport on every row.
 - Always report `status` next to `score`.
 - State the weights (the formula) and the corpus hash next to the numbers.
-- Report both invention counts, mechanical and judge. The judge count is a ranking signal, never ground truth.
+- Report both invention counts, mechanical and judge. The judge count is a ranking signal, never ground truth, and not comparable across judges.
+- Invention is reported as the raw count, the **per-100-checked rate** and **which items** were flagged. Raw counts favour terse summaries; compare the rate.
+- Threads and latency are mandatory columns: never publish facts and invention alone.
+- **Charts and result tables go to the project/channel where the work is discussed. The images channel is for images only — a chart is not an image.**
 
 ---
 
@@ -130,7 +179,7 @@ Report `status` next to `score`, always. A leaderboard that hides failures is me
 python3 -W ignore -m unittest discover -s tests -t .
 ```
 
-Twenty-two tests. The point of most of them is that the **scorer itself can fail**:
+Twenty-three tests. The point of most of them is that the **scorer itself can fail**:
 
 | test | what it guards |
 |---|---|

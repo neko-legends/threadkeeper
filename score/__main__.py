@@ -9,7 +9,7 @@ import sys
 
 from .core import Corpus, score_output
 from .judge import Judge
-from . import report, weights as weights_mod
+from . import invention, report, weights as weights_mod
 
 
 FAMILIES = [("kimi", "moonshot"), ("glm", "zai"), ("deepseek", "deepseek"), ("gpt", "openai"), ("astra", "openai"),
@@ -36,6 +36,7 @@ def rescore(results_dir, w=None):
         res = json.load(open(sp))
         if res.get("status") != "SCORED":
             continue
+        invention.with_rate(res["invention"]["mechanical"])
         old = res.get("composite_v1_stored", res.get("composite") if "composite_v1" not in res else res["composite_v1"])
         res.update(weights_mod.composites(res["facts"]["net"], res["threads"]["score"], res["invention"]["mechanical"]["count"], w))
         json.dump(res, open(sp, "w"), indent=1, ensure_ascii=False)
