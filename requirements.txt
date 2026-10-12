@@ -1,0 +1,2 @@
+tiktoken>=0.7   # optional: exact token counts when regenerating corpora
+matplotlib>=3.8 # optional: score/chart.py
