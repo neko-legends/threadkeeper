@@ -1,7 +1,7 @@
 ## Project / working context
 - Build **Ledgerling**, a small web app that sends overdue-invoice reminders on behalf of freelancers.
 - User is in **Porto**, timezone **`Europe/Lisbon`**; correct local reminder hours and DST handling are important.
-- Intended repository: **`~/code/ledgerling`**; initialization output was `/home/founder/code/ledgerling/.git/`. Developer-provided current working directory is **`/home/jun/git/threadkeeper`**. Many historical test outputs inexplicably say `/work`. Verify repository/location before modifying files.
+- Intended repository: **`~/code/ledgerling`**; initialization output was `/home/founder/code/ledgerling/.git/`. Developer-provided current working directory is **`<cwd>`**. Many historical test outputs inexplicably say `/work`. Verify repository/location before modifying files.
 - Work through `bash`, `read_file`, `edit_file`, `write_file`; be concise, explain decisions/open items, verify with commands.
 - Current target: **launch Nov 20**, replacing Nov 13 because the pricing page was not ready. **150 beta users before launch**, replacing 100. Launch year was not explicitly given.
 - Stack: **TypeScript, Fastify (not Express), Postgres, Kysely, Vitest**.

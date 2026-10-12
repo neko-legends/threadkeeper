@@ -402,6 +402,24 @@
    "dropped_unverified": 0,
    "parsed": true,
    "raw": "[]\n"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 3,
+    "numbers": 32
+   },
+   "skipped_short_quotes": [
+    "$tag",
+    "fixed",
+    "later",
+    "... dry run"
+   ],
+   "count": 0,
+   "checked_total": 35,
+   "per_100": 0.0
   }
  },
  "composite": 93.15,
@@ -489,5 +507,6 @@
   },
   "failed_calls": 0
  },
- "judge_model": "venice/gemini-3-8-flash"
+ "judge_model": "venice/gemini-3-8-flash",
+ "environment_stripped": []
 }

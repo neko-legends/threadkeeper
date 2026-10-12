@@ -545,5 +545,8 @@
   },
   "failed_calls": 0
  },
- "judge_model": "venice/gemini-3-8-flash"
+ "judge_model": "venice/gemini-3-8-flash",
+ "environment_stripped": [
+  "<cwd>"
+ ]
 }

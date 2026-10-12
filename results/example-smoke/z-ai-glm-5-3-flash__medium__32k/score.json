@@ -387,10 +387,19 @@
    "unsupported_numbers": [],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 15,
+    "quotes": 10,
     "numbers": 51
    },
-   "count": 1
+   "skipped_short_quotes": [
+    "sendharbour",
+    "$tag",
+    "later",
+    "string",
+    "3718"
+   ],
+   "count": 1,
+   "checked_total": 61,
+   "per_100": 1.64
   },
   "judge": {
    "items": [
@@ -403,6 +412,18 @@
    "dropped_unverified": 0,
    "parsed": true,
    "raw": "[{\"summary_quote\": \"**bumped to 22.7.1 everywhere** (CI, Dockerfile, `.nvmrc`)\", \"why\": \"The session only shows `.nvmrc` and the Dockerfile being changed (echo 22.7.1 > .nvmrc; sed on Dockerfile), and the assistant explicitly stated \\\"Bumped to Node 22.7.1 in `.nvmrc` and the Dockerfile.\\\" No CI configuration was ever edited or mentioned as updated, so the claim that CI was bumped to 22.7.1 is not supported by the session.\"}]"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [
+    "waiting on people"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 15,
+    "numbers": 51
+   },
+   "count": 1
   }
  },
  "composite": 92.58,
@@ -428,5 +449,16 @@
   "threads_score": 1.0,
   "invention_score": 0.75,
   "mechanical_inventions": 1
- }
+ },
+ "versions": {
+  "requested_model": "z-ai-glm-5-3-flash",
+  "resolved_model_id": "z-ai-glm-5-3-flash",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "reasoning_effort=medium",
+  "captured": "backfill-from-stored-run-output"
+ },
+ "environment_stripped": []
 }

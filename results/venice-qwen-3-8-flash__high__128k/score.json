@@ -391,6 +391,50 @@
    "unsupported_hashes": [],
    "checked": {
     "quotes": 7,
+    "numbers": 107
+   },
+   "skipped_short_quotes": [
+    "day 1/2/3",
+    "data",
+    "status",
+    "currency",
+    "} ],",
+    "later",
+    "$tag",
+    "she's right",
+    "they",
+    "4177",
+    "string"
+   ],
+   "count": 1,
+   "checked_total": 114,
+   "per_100": 0.88
+  },
+  "judge": {
+   "items": [],
+   "count": 0,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "```json\n[\n  {\n    \"summary_quote\": \"Temporary session cwd noted: `/tmp/tk-cwd-xulslbej`.\",\n    \"why\": \"The session working directory was `/tmp/tk-cwd-d7d9b75h`, not `/tmp/tk-cwd-xulslbej`.\"\n  },\n  {\n    \"summary_quote\": \"Current date in environment: 2026-10-12\",\n    \"why\": \"The session does not specify the current date or mention 2026-10-12.\"\n  }\n]\n```\n",
+   "excluded_environment": [
+    {
+     "summary_quote": "Temporary session cwd noted: `/tmp/tk-cwd-xulslbej`.",
+     "why": "The session working directory was `/tmp/tk-cwd-d7d9b75h`, not `/tmp/tk-cwd-xulslbej`."
+    },
+    {
+     "summary_quote": "Current date in environment: 2026-10-12",
+     "why": "The session does not specify the current date or mention 2026-10-12."
+    }
+   ]
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [
+    "0081"
+   ],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 7,
     "numbers": 110
    },
    "skipped_short_quotes": [
@@ -409,22 +453,6 @@
    "count": 1,
    "checked_total": 117,
    "per_100": 0.85
-  },
-  "judge": {
-   "items": [
-    {
-     "summary_quote": "Temporary session cwd noted: `/tmp/tk-cwd-xulslbej`.",
-     "why": "The session working directory was `/tmp/tk-cwd-d7d9b75h`, not `/tmp/tk-cwd-xulslbej`."
-    },
-    {
-     "summary_quote": "Current date in environment: 2026-10-12",
-     "why": "The session does not specify the current date or mention 2026-10-12."
-    }
-   ],
-   "count": 2,
-   "dropped_unverified": 0,
-   "parsed": true,
-   "raw": "```json\n[\n  {\n    \"summary_quote\": \"Temporary session cwd noted: `/tmp/tk-cwd-xulslbej`.\",\n    \"why\": \"The session working directory was `/tmp/tk-cwd-d7d9b75h`, not `/tmp/tk-cwd-xulslbej`.\"\n  },\n  {\n    \"summary_quote\": \"Current date in environment: 2026-10-12\",\n    \"why\": \"The session does not specify the current date or mention 2026-10-12.\"\n  }\n]\n```\n"
   }
  },
  "composite": 89.16,
@@ -512,5 +540,9 @@
   },
   "failed_calls": 0
  },
- "judge_model": "venice/gemini-3-8-flash"
+ "judge_model": "venice/gemini-3-8-flash",
+ "environment_stripped": [
+  "/tmp/tk-cwd-xulslbej",
+  "2026-10-12"
+ ]
 }

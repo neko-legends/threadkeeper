@@ -8,7 +8,7 @@ import os
 
 from . import invention, weights as weights_mod
 
-COLS = ["model", "effort", "corpus", "transport", "resolved_model_id", "tool_version", "effort_flag", "resolved_on", "judge_model", "judge_resolved_id", "judge_ok", "status", "composite", "composite_v1", "facts_found", "facts_total", "facts_net_pct", "stale_facts", "decoy_hits",
+COLS = ["model", "effort", "corpus", "transport", "resolved_model_id", "tool_version", "effort_flag", "resolved_on", "judge_model", "judge_resolved_id", "judge_ok", "status", "failed_reason", "composite", "composite_v1", "facts_found", "facts_total", "facts_net_pct", "stale_facts", "decoy_hits",
         "threads_judge_preserved", "threads_judge_partial", "threads_judge_lost", "threads_mech_preserved", "threads_mech_partial", "threads_mech_lost", "threads_source",
         "invention_mech", "invention_checked", "invention_mech_per100", "invention_judge", "latency_s", "prompt_tokens", "completion_tokens", "reasoning_tokens", "cost_usd", "finish_reason"]
 
@@ -68,12 +68,14 @@ def row_of(score: dict, meta: dict) -> dict:
     st = score["status"]
     j = score.get("judge") or {}
     r["judge_resolved_id"] = (j.get("versions") or {}).get("resolved_model_id")
-    r["judge_model"] = j.get("model") or "none"
+    r["judge_model"] = j.get("model") or "none (mechanical only)"
     r["judge_ok"] = (j.get("failed_calls", 0) == 0) if j.get("model") else None
     if j.get("model") is None and j.get("note"):
         r["judge_model"] = "none (%s)" % j["note"][:60]
     if st == "FAILED":
         r["status"] = "FAILED (%s)" % score["failed_as"]
+        r["failed_reason"] = "; ".join((score.get("gate") or {}).get("reasons") or []) or str(score.get("error") or "")[:120] or None
+        r["judge_model"], r["judge_ok"] = "none (not graded: failed the summary gate)", None
         r["composite"] = r["composite_v1"] = None
     elif st == "SCORED":
         f, t, inv = score["facts"], score["threads"], score["invention"]
@@ -94,19 +96,27 @@ def row_of(score: dict, meta: dict) -> dict:
     return r
 
 
-def collect(results_dir):
+CORPUS_ORDER = {"128k": 0, "200k": 1, "32k": 2}
+
+
+def score_files(*dirs):
+    """EVERY score.json under the given directories (recursive), so no arm is swept in or left out by an incremental rebuild."""
+    return sorted({os.path.join(root, "score.json") for d in dirs for root, _, fs in os.walk(d) if "score.json" in fs})
+
+
+def collect(results_dir, *extra):
     rows = []
-    for sp in sorted(glob.glob(os.path.join(results_dir, "*", "score.json"))):
+    for sp in score_files(results_dir, *extra):
         d = os.path.dirname(sp)
         score = json.load(open(sp))
         meta = json.load(open(os.path.join(d, "meta.json")))
         rows.append(row_of(score, meta))
-    rows.sort(key=lambda r: (r["composite"] is None, -(r["composite"] or 0), str(r["model"]), str(r["effort"])))
+    rows.sort(key=lambda r: (CORPUS_ORDER.get(r["corpus"], 9), r["composite"] is None, -(r["composite"] or 0), str(r["model"]), str(r["effort"])))
     return rows
 
 
 def _cell(r, keys, scored):
-    if not scored and keys[0] not in ("status", "judge_model", "transport", "latency_s", "prompt_tokens", "completion_tokens", "reasoning_tokens"):
+    if not scored and keys[0] not in ("status", "judge_model", "transport", "resolved_model_id", "tool_version", "effort_flag", "latency_s", "prompt_tokens", "completion_tokens", "reasoning_tokens"):
         return "-"
     vals = ["n/a" if r.get(k) is None else r.get(k) for k in keys]
     if keys[0] in ("composite", "composite_v1"):
@@ -169,8 +179,8 @@ def judge_comparison(results_dir):
     return L
 
 
-def write(results_dir, w=None, corpora_dir="corpora"):
-    rows = collect(results_dir)
+def write(results_dir, w=None, corpora_dir="corpora", extra=()):
+    rows = collect(results_dir, *extra)
     drop = _strip()
     cols = [c for c in COLS if not (drop and drop in [h for h, ks in BREAKDOWN if c in ks])]
     with open(os.path.join(results_dir, "leaderboard.csv"), "w", newline="") as fh:
@@ -187,14 +197,21 @@ def write(results_dir, w=None, corpora_dir="corpora"):
              version_line(rows), "",
              "Corpus session.jsonl sha256: " + ("; ".join("%s=`%s`" % kv for kv in hashes.items()) or "n/a"), "",
              "Never read a composite alone: every row carries its breakdown, the judge that graded it and the transport. "
-             "FAILED = the output was not a summary (continuation / chat-reply / empty / tool-call); it is not ranked. "
+             "FAILED = the output was not a summary (continuation / chat-reply / empty / tool-call / prompt-echo); it fails the gate, is not ranked, is not sent to a judge, and carries its gate reason in the status cell. Rank `#` restarts per corpus. "
              "`invention mech` is the mechanical cross-check (raw count favours terse summaries: compare `mech per 100 checked`);  `invention judge` is a ranking signal, never ground truth.", "",
              "| " + " | ".join(hdr) + " |", "|" + "---|" * len(hdr)]
-    for i, r in enumerate(rows, 1):
+    jcol = 4 + [h for h, _ in bd].index("judge") if drop != "judge" else None
+    rank, last = 0, None
+    for r in rows:
         scored = r["composite"] is not None
-        cells = [i if scored else "-", r["model"], r["effort"], r["corpus"]] + [_cell(r, ks, scored) for _, ks in bd]
-        if not r.get("judge_ok", True):
-            cells[-2] = str(cells[-2]) + " (JUDGE CALL FAILED)"
+        if r["corpus"] != last:
+            rank, last = 0, r["corpus"]
+        rank += scored
+        cells = [rank if scored else "-", r["model"], r["effort"], r["corpus"]] + [_cell(r, ks, scored) for _, ks in bd]
+        if not scored and r.get("failed_reason"):
+            cells[4 + [h for h, _ in bd].index("status")] = "%s: %s" % (r["status"], r["failed_reason"])
+        if jcol is not None and r.get("judge_ok") is False:  # only a judge that actually ran and failed; never stamped on FAILED/mechanical rows
+            cells[jcol] = str(cells[jcol]) + " (JUDGE CALL FAILED)"
         lines.append("| " + " | ".join(str(x) for x in cells) + " |")
     lines += judge_comparison(results_dir)
     open(os.path.join(results_dir, "leaderboard.md"), "w").write("\n".join(lines) + "\n")

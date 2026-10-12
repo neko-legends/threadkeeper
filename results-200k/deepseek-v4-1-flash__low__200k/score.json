@@ -521,5 +521,6 @@
   "tool_version": null,
   "effort_flag": "reasoning_effort=low",
   "captured": "backfill-from-stored-run-output"
- }
+ },
+ "environment_stripped": []
 }

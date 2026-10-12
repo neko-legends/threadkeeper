@@ -420,14 +420,14 @@
   "judge": {
    "items": [
     {
-     "summary_quote": "Developer-provided current working directory is **`/home/jun/git/threadkeeper`**.",
+     "summary_quote": "Developer-provided current working directory is **`<cwd>`**.",
      "why": "This path never appears in the session. The session's paths are ~/code/ledgerling, /home/founder/code/ledgerling and /work. The threadkeeper path comes from outside the session."
     }
    ],
    "count": 1,
    "dropped_unverified": 0,
    "parsed": true,
-   "raw": "```json\n[{\"summary_quote\": \"Developer-provided current working directory is **`/home/jun/git/threadkeeper`**.\", \"why\": \"This path never appears in the session. The session's paths are ~/code/ledgerling, /home/founder/code/ledgerling and /work. The threadkeeper path comes from outside the session.\"}]\n```"
+   "raw": "```json\n[{\"summary_quote\": \"Developer-provided current working directory is **`<cwd>`**.\", \"why\": \"This path never appears in the session. The session's paths are ~/code/ledgerling, /home/founder/code/ledgerling and /work. The threadkeeper path comes from outside the session.\"}]\n```"
   },
   "mechanical_prev": {
    "unsupported_quotes": [

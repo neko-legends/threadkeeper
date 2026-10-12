@@ -1,7 +1,7 @@
 ## Project and working rules
 - Building **Ledgerling**, a small web app that sends overdue-invoice reminders on behalf of freelancers.
 - User is in **Tallinn**, timezone **`Europe/Tallinn`**; correct local reminder hours and DST handling are important.
-- Intended repository: **`~/code/ledgerling`**. Initial `git init` reported `/home/founder/code/ledgerling/.git/`; later tool outputs mostly used `/work`. Current developer-provided cwd is **`/home/jun/git/threadkeeper`**. Verify actual repository before editing; do not assume these paths are interchangeable.
+- Intended repository: **`~/code/ledgerling`**. Initial `git init` reported `/home/founder/code/ledgerling/.git/`; later tool outputs mostly used `/work`. Current developer-provided cwd is **`<cwd>`**. Verify actual repository before editing; do not assume these paths are interchangeable.
 - Stack: TypeScript, Node, **Fastify (not Express)**, Postgres, Kysely; tests with Vitest.
 - **Use `pnpm`, never `npm`**, to avoid lockfile drift.
 - Current requested Node version: **`22.5.2` everywhere**, including CI, Dockerfile, `.nvmrc`; replaces `20.11.2`.

@@ -417,6 +417,21 @@
    "dropped_unverified": 0,
    "parsed": true,
    "raw": "[\n  {\n    \"summary_quote\": \"Node **22.6.1** everywhere (`.nvmrc`, Dockerfile, CI)\",\n    \"why\": \"The assistant only updated Node in .nvmrc and the Dockerfile; CI was never updated to Node 22.6.1.\"\n  },\n  {\n    \"summary_quote\": \"cronwright\",\n    \"why\": \"cronwright was not added as a dependency during the session; it was already present in the codebase prior to the DST investigation.\"\n  },\n  {\n    \"summary_quote\": \"Fix added `src/lib/tz.ts`\",\n    \"why\": \"src/lib/tz.ts was not added by the fix; it was an existing file in the project that was edited to fix half-hour zone handling.\"\n  }\n]\n"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 0,
+    "numbers": 43
+   },
+   "skipped_short_quotes": [
+    "later"
+   ],
+   "count": 0,
+   "checked_total": 43,
+   "per_100": 0.0
   }
  },
  "composite": 95.41,
@@ -504,5 +519,6 @@
   },
   "failed_calls": 0
  },
- "judge_model": "venice/gemini-3-8-flash"
+ "judge_model": "venice/gemini-3-8-flash",
+ "environment_stripped": []
 }

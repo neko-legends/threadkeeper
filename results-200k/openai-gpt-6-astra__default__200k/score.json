@@ -423,16 +423,17 @@
    "per_100": 0.0
   },
   "judge": {
-   "items": [
-    {
-     "summary_quote": "Current developer-provided cwd is **`/home/jun/git/threadkeeper`**.",
-     "why": "The session never mentions /home/jun/git/threadkeeper. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work."
-    }
-   ],
-   "count": 1,
+   "items": [],
+   "count": 0,
    "dropped_unverified": 0,
    "parsed": true,
-   "raw": "```json\n[{\"summary_quote\": \"Current developer-provided cwd is **`/home/jun/git/threadkeeper`**.\", \"why\": \"The session never mentions /home/jun/git/threadkeeper. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work.\"}]\n```"
+   "raw": "```json\n[{\"summary_quote\": \"Current developer-provided cwd is **`<cwd>`**.\", \"why\": \"The session never mentions <cwd>. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work.\"}]\n```",
+   "excluded_environment": [
+    {
+     "summary_quote": "Current developer-provided cwd is **`<cwd>`**.",
+     "why": "The session never mentions <cwd>. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work."
+    }
+   ]
   },
   "mechanical_prev": {
    "unsupported_quotes": [
@@ -516,5 +517,8 @@
   "effort_flag": "(none: flag omitted, provider default)",
   "captured": "backfill-from-stored-run-output",
   "tool_version_note": "version installed at backfill 2026-10-11, not necessarily at run time"
- }
+ },
+ "environment_stripped": [
+  "<cwd>"
+ ]
 }

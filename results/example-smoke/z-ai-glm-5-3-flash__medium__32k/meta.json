@@ -36,5 +36,15 @@
  "tool_calls": null,
  "has_reasoning_content": true,
  "error": null,
- "started_at_unix": 1791781342
+ "started_at_unix": 1791781342,
+ "versions": {
+  "requested_model": "z-ai-glm-5-3-flash",
+  "resolved_model_id": "z-ai-glm-5-3-flash",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "reasoning_effort=medium",
+  "captured": "backfill-from-stored-run-output"
+ }
 }

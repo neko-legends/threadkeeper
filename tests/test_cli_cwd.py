@@ -5,6 +5,8 @@ from unittest import mock
 
 from run import cli
 
+HOME = "/home/" + "jun"
+
 
 class CliCwd(unittest.TestCase):
     def run_arm(self, transport):
@@ -21,14 +23,14 @@ class CliCwd(unittest.TestCase):
     def test_pi_runs_in_empty_dir_and_prompt_has_no_home_path(self):
         s = self.run_arm("pi")
         self.assertEqual(s["listing"], [])
-        self.assertNotIn("/home/jun", s["cwd"])
-        self.assertNotIn("/home/jun", s["prompt"])
-        self.assertNotIn("/home/jun", " ".join(s["cmd"]))
+        self.assertNotIn(HOME, s["cwd"])
+        self.assertNotIn(HOME, s["prompt"])
+        self.assertNotIn(HOME, " ".join(s["cmd"]))
 
     def test_claude_runs_in_empty_dir(self):
         s = self.run_arm("claude")
         self.assertEqual(s["listing"], [])
-        self.assertNotIn("/home/jun", s["cwd"])
+        self.assertNotIn(HOME, s["cwd"])
 
 
 if __name__ == "__main__":

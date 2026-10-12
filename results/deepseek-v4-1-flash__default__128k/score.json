@@ -384,7 +384,7 @@
    "unsupported_hashes": [],
    "checked": {
     "quotes": 13,
-    "numbers": 89
+    "numbers": 86
    },
    "skipped_short_quotes": [
     "day 2",
@@ -398,20 +398,21 @@
     "later"
    ],
    "count": 0,
-   "checked_total": 102,
+   "checked_total": 99,
    "per_100": 0.0
   },
   "judge": {
-   "items": [
+   "items": [],
+   "count": 0,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "```json\n[\n  {\n    \"summary_quote\": \"Current date 2026-10-12.\",\n    \"why\": \"The session never states or contains the date 2026-10-12 as the current date; it only refers to relative markers ('Day 2', 'Day 3') and future dates (such as launch targets and DST dates).\"\n  }\n]\n```\n",
+   "excluded_environment": [
     {
      "summary_quote": "Current date 2026-10-12.",
      "why": "The session never states or contains the date 2026-10-12 as the current date; it only refers to relative markers ('Day 2', 'Day 3') and future dates (such as launch targets and DST dates)."
     }
-   ],
-   "count": 1,
-   "dropped_unverified": 0,
-   "parsed": true,
-   "raw": "```json\n[\n  {\n    \"summary_quote\": \"Current date 2026-10-12.\",\n    \"why\": \"The session never states or contains the date 2026-10-12 as the current date; it only refers to relative markers ('Day 2', 'Day 3') and future dates (such as launch targets and DST dates).\"\n  }\n]\n```\n"
+   ]
   },
   "mechanical_prev": {
    "unsupported_quotes": [],
@@ -522,5 +523,8 @@
   },
   "failed_calls": 0
  },
- "judge_model": "venice/gemini-3-8-flash"
+ "judge_model": "venice/gemini-3-8-flash",
+ "environment_stripped": [
+  "2026-10-12"
+ ]
 }

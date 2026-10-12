@@ -1,7 +1,7 @@
 ## Project, environment, and standing rules
 - Project: **Ledgerling**, a small web app sending overdue-invoice reminders for freelancers.
 - User is in Porto, timezone **`Europe/Lisbon`**; correct local reminder hours, including DST, are important.
-- Intended repo: **`~/code/ledgerling`**; initial `git init` reported `/home/founder/code/ledgerling/.git/`. Developer-provided current working directory is **`/home/jun/git/threadkeeper`**. Many historical test outputs report `/work`. Verify the actual repo before making changes; do not assume these paths are interchangeable.
+- Intended repo: **`~/code/ledgerling`**; initial `git init` reported `/home/founder/code/ledgerling/.git/`. Developer-provided current working directory is **`<cwd>`**. Many historical test outputs report `/work`. Verify the actual repo before making changes; do not assume these paths are interchangeable.
 - Stack: TypeScript, **Fastify** (Express was explicitly rejected), Postgres, Kysely, Vitest.
 - **Use `pnpm`, never `npm`**, to avoid lockfile drift. Initial pnpm version: `9.12.1`.
 - Current requested Node version: **`22.6.1` everywhere**, including CI, Dockerfile, `.nvmrc`; supersedes `20.11.3`.

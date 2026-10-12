@@ -1,21 +1,15 @@
 {
  "gate": {
-  "label": "continuation",
+  "label": "prompt-echo",
   "reasons": [
-   "touches only 0/10 parts of the session (a summary spans it)"
+   "output is the compaction prompt echoed back, not a summary"
   ],
   "signals": {
-   "chars": 1143,
-   "structure_lines": 9,
-   "roleplay_paragraphs": 0,
-   "chat_opener": false,
-   "coverage_parts": 0,
-   "ends_with_question": false,
-   "summary_words": 6
+   "chars": 1143
   }
  },
  "status": "FAILED",
- "failed_as": "continuation",
+ "failed_as": "prompt-echo",
  "composite": null,
  "composite_v1": null,
  "model": "venice/grok-4-7",
@@ -33,6 +27,6 @@
  },
  "judge": {
   "model": null,
-  "note": "judge not invoked (arm status FAILED)"
+  "note": "no judge"
  }
 }

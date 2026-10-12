@@ -5,7 +5,7 @@ import json
 import os
 
 from gen.render import corpus_text, load_session, render_transcript
-from . import facts as facts_mod, gate, invention, threads as threads_mod, weights as weights_mod
+from . import envscrub, facts as facts_mod, gate, invention, threads as threads_mod, weights as weights_mod
 
 
 class Corpus:
@@ -33,15 +33,18 @@ def score_output(text: str, corpus: Corpus, meta: dict | None = None, judge=None
     mech_threads = threads_mod.mechanical(text, corpus.gt)
     thr = {"mechanical": mech_threads, "mechanical_score": threads_mod.points(mech_threads), "judge": None}
     final_threads, thr_source = mech_threads, "mechanical"
-    inv_mech = invention.check(text, corpus.index)
+    # environment strings (cwd, run date) are not invention: the checks and the judge see the scrubbed summary
+    seen, stripped = envscrub.scrub(text, corpus.text, envscrub.run_dates(meta))
+    res["environment_stripped"] = stripped
+    inv_mech = invention.check(seen, corpus.index)
     inv = {"mechanical": inv_mech, "judge": None}
     if judge is not None:
-        jt = judge.threads(text, corpus.gt)
+        jt = judge.threads(seen, corpus.gt)
         thr["judge"] = {k: v for k, v in jt.items() if k != "raw"}
         thr["judge"]["raw"] = jt["raw"][:4000]
         if jt["parsed"]:
             final_threads, thr_source = jt["verdicts"], "judge"
-        ji = judge.invention(text, render_transcript(corpus.messages))
+        ji = judge.invention(seen, render_transcript(corpus.messages))
         inv["judge"] = {k: v for k, v in ji.items() if k != "raw"}
         inv["judge"]["raw"] = ji["raw"][:4000]
     tscore = threads_mod.points(final_threads)

@@ -522,5 +522,6 @@
   "effort_flag": "--effort max",
   "captured": "backfill-from-stored-run-output",
   "tool_version_note": "version installed at backfill 2026-10-11, not necessarily at run time"
- }
+ },
+ "environment_stripped": []
 }

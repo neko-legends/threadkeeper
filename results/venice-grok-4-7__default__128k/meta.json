@@ -21,7 +21,6 @@
  "error": null,
  "started_at_unix": 1791787047,
  "finished_at_unix": 1791787083,
- "judge_model": null,
  "versions": {
   "requested_model": "venice/grok-4-7",
   "resolved_model_id": "venice/grok-4-7",
@@ -31,9 +30,5 @@
   "tool_version": "0.99.1",
   "effort_flag": "(none: flag omitted, provider default)",
   "captured": "at-run"
- },
- "judge": {
-  "model": null,
-  "note": "judge not invoked (arm status FAILED)"
  }
 }
