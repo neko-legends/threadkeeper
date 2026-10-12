@@ -1,0 +1,21 @@
+{
+ "trivial": {
+  "status": "ok",
+  "text": "ready\n",
+  "cmd": "pi -p --model openai/gpt-6-astra --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+  "exit_code": 0,
+  "latency_s": 2.267,
+  "error": null
+ },
+ "needle_128k": {
+  "status": "ok",
+  "text": "pineapple-7431\n",
+  "cmd": "pi -p --model openai/gpt-6-astra --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+  "exit_code": 0,
+  "latency_s": 4.326,
+  "error": null
+ },
+ "prompt_chars": 415876,
+ "stderr_trivial": "",
+ "stderr_needle": ""
+}

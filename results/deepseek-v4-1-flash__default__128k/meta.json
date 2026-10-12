@@ -1,0 +1,89 @@
+{
+ "status": "ok",
+ "failed_as": null,
+ "transport": "openai",
+ "command": "POST https://api.venice.ai/api/v1/chat/completions model=deepseek-v4-1-flash reasoning_effort=default",
+ "model": "deepseek-v4-1-flash",
+ "effort": "default",
+ "corpus": "128k",
+ "mode": "messages",
+ "base_url": "https://api.venice.ai/api/v1",
+ "request_params": {
+  "model": "deepseek-v4-1-flash",
+  "temperature": 0,
+  "max_tokens": 65536
+ },
+ "message_count": 887,
+ "prompt_sha256": "fc24cbdfe7ea939f4e6b360f088dfc24cb917e81a541e24861131167f4450fd3",
+ "compact_prompt_sha256": "401a3760133af0756e8e0bba19bb2e62635e3ba9432fe8fdd8ca41ccd54d8b20",
+ "http_status": 200,
+ "attempts": 1,
+ "latency_s": 16.269,
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 141393,
+  "completion_tokens": 7246,
+  "total_tokens": 148639,
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  },
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 4948,
+   "audio_tokens": 0,
+   "reasoning_tokens": 3766,
+   "rejected_prediction_tokens": 1946
+  }
+ },
+ "cost_usd": null,
+ "tool_calls": null,
+ "has_reasoning_content": true,
+ "error": null,
+ "started_at_unix": 1791781719,
+ "judge_model": "z-ai-glm-5-3-flash",
+ "judge": {
+  "model": "z-ai-glm-5-3-flash",
+  "transport": "openai",
+  "effort": "low",
+  "calls": [
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 5497,
+     "completion_tokens": 1157,
+     "total_tokens": 6654,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 823,
+      "audio_tokens": 0,
+      "reasoning_tokens": 847,
+      "rejected_prediction_tokens": 179
+     }
+    },
+    "latency_s": 11.959
+   },
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 134860,
+     "completion_tokens": 5813,
+     "total_tokens": 140673,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 5658,
+      "rejected_prediction_tokens": 0
+     }
+    },
+    "latency_s": 51.309
+   }
+  ],
+  "failed_calls": 0
+ }
+}

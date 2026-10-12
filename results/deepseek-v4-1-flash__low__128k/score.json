@@ -1,0 +1,461 @@
+{
+ "gate": {
+  "label": "summary",
+  "reasons": [
+   "structure=84 coverage=10/10"
+  ],
+  "signals": {
+   "chars": 9694,
+   "structure_lines": 84,
+   "roleplay_paragraphs": 0,
+   "chat_opener": false,
+   "coverage_parts": 10,
+   "ends_with_question": false,
+   "summary_words": 7
+  }
+ },
+ "status": "SCORED",
+ "facts": {
+  "recall": 0.9655,
+  "net": 0.9655,
+  "found": 48,
+  "total": 50,
+  "stale_fact_count": 0,
+  "decoy_hits": [],
+  "missed": [
+   "F37",
+   "F43"
+  ],
+  "rows": [
+   {
+    "id": "F01",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F02",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F03",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F04",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F05",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F06",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F07",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F08",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F09",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F10",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F11",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F12",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F13",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F14",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F15",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F16",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F17",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F18",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F19",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F20",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F21",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F22",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F23",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F24",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F25",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F26",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F27",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F28",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F29",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F30",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F31",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F32",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F33",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F34",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F35",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F36",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F37",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F38",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F39",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F40",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F41",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F42",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F43",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F44",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F45",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F46",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F47",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F48",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F49",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F50",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   }
+  ]
+ },
+ "threads": {
+  "mechanical": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PARTIAL",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "mechanical_score": 0.9375,
+  "judge": {
+   "verdicts": {
+    "T1": "PRESERVED",
+    "T2": "PRESERVED",
+    "T3": "PRESERVED",
+    "T4": "PRESERVED",
+    "T5": "PRESERVED",
+    "T6": "PRESERVED",
+    "T7": "PRESERVED",
+    "T8": "PRESERVED"
+   },
+   "notes": {},
+   "judge_fabricated_quotes": 0,
+   "parsed": true,
+   "raw": "```json\n{\n  \"T1\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Known flaky test**: `reminders > sends at the user's local 9am` (depends on the real clock; passed only on retry). User said **leave it for now, look later**.\"},\n  \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"The `snoozed_until` migration is **not yet written**.\"},\n  \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Annual plan**: decide **after the first 10 paying signups**; no time to be spent now.\"},\n  \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Dedicated IP: still open**, their infra team will come back. Cost unknown.\"},\n  \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"**User will call her Friday morning** to acknowledge this and offer a seat in the next pricing review.\"},\n  \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"the table is **not yet written**\"},\n  \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"user will ask this week whether VAT must be shown on invoices sent through the product. **Until answered, keep the invoice footer wording generic.**\"},\n  \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Logo**: user still owes an SVG later this week for the landing page and email header.\"}\n}\n```"
+  },
+  "final": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PRESERVED",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "final_source": "judge",
+  "score": 1.0,
+  "counts": {
+   "PRESERVED": 8,
+   "PARTIAL": 0,
+   "LOST": 0
+  }
+ },
+ "invention": {
+  "mechanical": {
+   "unsupported_quotes": [
+    "<name> dry run"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 11,
+    "numbers": 56
+   },
+   "count": 1
+  },
+  "judge": {
+   "items": [
+    {
+     "summary_quote": "**bumped to 22.6.1 everywhere** (CI, Dockerfile, `.nvmrc`)",
+     "why": "The session only shows `.nvmrc` and the Dockerfile being edited (the `git diff --stat` after the bump lists exactly those two files). No CI configuration was ever opened or modified, so the claim that the Node bump was applied to CI is not supported by the session."
+    },
+    {
+     "summary_quote": "`ioredis` was added then removed.",
+     "why": "The session never contains any step that adds `ioredis`; it only shows `pnpm remove ioredis` (output `- ioredis 5.4.1`). The claim that it was added during the session describes an event the session never recorded."
+    }
+   ],
+   "count": 2,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "```json\n[\n  {\n    \"summary_quote\": \"**bumped to 22.6.1 everywhere** (CI, Dockerfile, `.nvmrc`)\",\n    \"why\": \"The session only shows `.nvmrc` and the Dockerfile being edited (the `git diff --stat` after the bump lists exactly those two files). No CI configuration was ever opened or modified, so the claim that the Node bump was applied to CI is not supported by the session.\"\n  },\n  {\n    \"summary_quote\": \"`ioredis` was added then removed.\",\n    \"why\": \"The session never contains any step that adds `ioredis`; it only shows `pnpm remove ioredis` (output `- ioredis 5.4.1`). The claim that it was added during the session describes an event the session never recorded.\"\n  }\n]\n```"
+  }
+ },
+ "composite": 97.1,
+ "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "model": "deepseek-v4-1-flash",
+ "effort": "low",
+ "corpus": "128k",
+ "judge": {
+  "model": "z-ai-glm-5-3-flash",
+  "transport": "openai",
+  "effort": "low",
+  "calls": [
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 4835,
+     "completion_tokens": 1320,
+     "total_tokens": 6155,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 915,
+      "audio_tokens": 0,
+      "reasoning_tokens": 991,
+      "rejected_prediction_tokens": 297
+     }
+    },
+    "latency_s": 7.762
+   },
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 134198,
+     "completion_tokens": 5901,
+     "total_tokens": 140099,
+     "prompt_tokens_details": {
+      "cached_tokens": 131072
+     },
+     "cache_read_input_tokens": 131072,
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 4101,
+      "audio_tokens": 0,
+      "reasoning_tokens": 5712,
+      "rejected_prediction_tokens": 1296
+     }
+    },
+    "latency_s": 36.335
+   }
+  ],
+  "failed_calls": 0
+ },
+ "judge_model": "z-ai-glm-5-3-flash"
+}

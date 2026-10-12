@@ -1,0 +1,465 @@
+{
+ "gate": {
+  "label": "summary",
+  "reasons": [
+   "structure=57 coverage=8/10"
+  ],
+  "signals": {
+   "chars": 7693,
+   "structure_lines": 57,
+   "roleplay_paragraphs": 0,
+   "chat_opener": false,
+   "coverage_parts": 8,
+   "ends_with_question": false,
+   "summary_words": 9
+  }
+ },
+ "status": "SCORED",
+ "facts": {
+  "recall": 0.9483,
+  "net": 0.9224,
+  "found": 47,
+  "total": 50,
+  "stale_fact_count": 1,
+  "decoy_hits": [
+   {
+    "id": "D5",
+    "alias": "Redis"
+   }
+  ],
+  "missed": [
+   "F37",
+   "F41",
+   "F43"
+  ],
+  "rows": [
+   {
+    "id": "F01",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F02",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F03",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F04",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F05",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F06",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F07",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F08",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F09",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F10",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F11",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F12",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F13",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F14",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F15",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F16",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F17",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F18",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F19",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F20",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F21",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F22",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F23",
+    "hit": true,
+    "stale_hits": [
+     "Redis"
+    ],
+    "weight": 2
+   },
+   {
+    "id": "F24",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F25",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F26",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F27",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F28",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F29",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F30",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F31",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F32",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F33",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F34",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F35",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F36",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F37",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F38",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F39",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F40",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F41",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F42",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F43",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F44",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F45",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F46",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F47",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F48",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F49",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F50",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   }
+  ]
+ },
+ "threads": {
+  "mechanical": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PRESERVED",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "mechanical_score": 1.0,
+  "judge": {
+   "verdicts": {
+    "T1": "PRESERVED",
+    "T2": "PRESERVED",
+    "T3": "PRESERVED",
+    "T4": "PRESERVED",
+    "T5": "PRESERVED",
+    "T6": "PRESERVED",
+    "T7": "PRESERVED",
+    "T8": "PRESERVED"
+   },
+   "notes": {},
+   "judge_fabricated_quotes": 0,
+   "parsed": true,
+   "raw": "{\"T1\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Flaky test**: `reminders > sends at the user's local 9am` passed only on retry (depends on the real clock). User said leave it for now, look later.\"}, \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Pending migration**: add a nullable **`snoozed_until`** column to `reminders`. Not yet done.\"}, \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Annual plan**: decide after the first **10 paying signups**; no time spent on it now.\"}, \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"Dedicated IP question escalated to their infra team — **waiting on reply**.\"}, \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Call Soren Friday morning**: acknowledge she was left out of the price change and offer her a seat in the next pricing review.\"}, \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Immediate next task**: add an environment variable table to `README.md`\"}, \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Yaw Boateng** (accountant): user will ask this week whether VAT must be shown on invoices sent through the product. Until answered, footer stays generic.\"}, \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Logo SVG** owed by the user later this week.\"}}"
+  },
+  "final": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PRESERVED",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "final_source": "judge",
+  "score": 1.0,
+  "counts": {
+   "PRESERVED": 8,
+   "PARTIAL": 0,
+   "LOST": 0
+  }
+ },
+ "invention": {
+  "mechanical": {
+   "unsupported_quotes": [
+    "expected n to be m"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 9,
+    "numbers": 34
+   },
+   "count": 1
+  },
+  "judge": {
+   "items": [
+    {
+     "summary_quote": "Node **22.5.2** everywhere (CI, Dockerfile, `.nvmrc`) — bumped from 20.11.2",
+     "why": "The session only shows `.nvmrc` and the Dockerfile being changed (`echo 22.5.2 > .nvmrc && sed -i 's/node:20.11/node:22.5/' Dockerfile`; `git diff --stat` lists only those two files). CI was never touched in the session, and the agent's own report was 'Bumped to Node 22.5.2 in `.nvmrc` and the Docke"
+    }
+   ],
+   "count": 1,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "[{\"summary_quote\": \"Node **22.5.2** everywhere (CI, Dockerfile, `.nvmrc`) — bumped from 20.11.2\", \"why\": \"The session only shows `.nvmrc` and the Dockerfile being changed (`echo 22.5.2 > .nvmrc && sed -i 's/node:20.11/node:22.5/' Dockerfile`; `git diff --stat` lists only those two files). CI was never touched in the session, and the agent's own report was 'Bumped to Node 22.5.2 in `.nvmrc` and the Dockerfile.' The claim that CI was bumped to 22.5.2 is a detail the session never contained.\"}]"
+  }
+ },
+ "composite": 94.73,
+ "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "model": "deepseek-v4-1-flash",
+ "effort": "low",
+ "corpus": "200k",
+ "judge": {
+  "model": "z-ai-glm-5-3-flash",
+  "transport": "openai",
+  "effort": "low",
+  "calls": [
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 4203,
+     "completion_tokens": 800,
+     "total_tokens": 5003,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 581,
+      "audio_tokens": 0,
+      "reasoning_tokens": 469,
+      "rejected_prediction_tokens": 76
+     }
+    },
+    "latency_s": 4.633
+   },
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 208621,
+     "completion_tokens": 6366,
+     "total_tokens": 214987,
+     "prompt_tokens_details": {
+      "cached_tokens": 206336
+     },
+     "cache_read_input_tokens": 206336,
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 6199,
+      "rejected_prediction_tokens": 0
+     }
+    },
+    "latency_s": 28.165
+   }
+  ],
+  "failed_calls": 0
+ },
+ "judge_model": "z-ai-glm-5-3-flash"
+}

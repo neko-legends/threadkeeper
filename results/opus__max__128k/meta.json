@@ -1,0 +1,87 @@
+{
+ "status": "ok",
+ "failed_as": null,
+ "transport": "claude",
+ "command": "claude -p --model opus --tools '' --no-session-persistence --disable-slash-commands --system-prompt 'You are a helpful assistant.' --output-format json --effort max < <prompt-tempfile>",
+ "exit_code": 0,
+ "stderr": "",
+ "model": "opus",
+ "effort": "max",
+ "corpus": "128k",
+ "mode": "text",
+ "message_count": 2,
+ "prompt_sha256": "04c18afa33751862eeba58c3d5c8c475665974f7f5dc17b11e7d1db9fef35398",
+ "prompt_chars": 417385,
+ "compact_prompt_sha256": "401a3760133af0756e8e0bba19bb2e62635e3ba9432fe8fdd8ca41ccd54d8b20",
+ "latency_s": 404.639,
+ "finish_reason": "end_turn",
+ "usage": {
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 199576,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 48807,
+   "output_tokens_details": {
+    "thinking_tokens": 42025
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 199576,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 48807,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 199576,
+    "webSearchRequests": 0,
+    "costUSD": 2.572756,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 42025,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "is_error": false,
+  "terminal_reason": "completed"
+ },
+ "cost_usd": null,
+ "list_price_equiv_usd": 2.572756,
+ "error": null,
+ "started_at_unix": 1791781883,
+ "judge_model": "openai/gpt-6-astra",
+ "judge": {
+  "model": "openai/gpt-6-astra",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 18.725,
+    "cmd": "pi -p --model openai/gpt-6-astra --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": ""
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 70.7,
+    "cmd": "pi -p --model openai/gpt-6-astra --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": ""
+   }
+  ],
+  "failed_calls": 0
+ }
+}

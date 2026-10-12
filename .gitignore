@@ -1,6 +1,5 @@
 __pycache__/
 *.pyc
 .venv/
-results/*
-!results/.gitkeep
-!results/example-smoke/
+venv/
+results/*/output.md.tmp

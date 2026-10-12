@@ -1,0 +1,90 @@
+{
+ "status": "ok",
+ "failed_as": null,
+ "transport": "openai",
+ "command": "POST https://api.venice.ai/api/v1/chat/completions model=kimi-k3 reasoning_effort=default",
+ "model": "kimi-k3",
+ "effort": "default",
+ "corpus": "200k",
+ "mode": "messages",
+ "base_url": "https://api.venice.ai/api/v1",
+ "request_params": {
+  "model": "kimi-k3",
+  "temperature": 0,
+  "max_tokens": 65536
+ },
+ "message_count": 1227,
+ "prompt_sha256": "6eabf3fe934c7e9d2691590427708ec4e399323c0a56cd2d567684261cb337b5",
+ "compact_prompt_sha256": "401a3760133af0756e8e0bba19bb2e62635e3ba9432fe8fdd8ca41ccd54d8b20",
+ "http_status": 200,
+ "attempts": 1,
+ "latency_s": 35.367,
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 235791,
+  "completion_tokens": 3616,
+  "total_tokens": 239407,
+  "prompt_tokens_details": {
+   "cached_tokens": 64
+  },
+  "cache_read_input_tokens": 64,
+  "completion_tokens_details": {
+   "accepted_prediction_tokens": 2254,
+   "audio_tokens": 0,
+   "reasoning_tokens": 2049,
+   "rejected_prediction_tokens": 1832
+  }
+ },
+ "cost_usd": null,
+ "tool_calls": null,
+ "has_reasoning_content": true,
+ "error": null,
+ "started_at_unix": 1791782935,
+ "judge_model": "z-ai-glm-5-3-flash",
+ "judge": {
+  "model": "z-ai-glm-5-3-flash",
+  "transport": "openai",
+  "effort": "low",
+  "calls": [
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 3729,
+     "completion_tokens": 999,
+     "total_tokens": 4728,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 716,
+      "audio_tokens": 0,
+      "reasoning_tokens": 602,
+      "rejected_prediction_tokens": 133
+     }
+    },
+    "latency_s": 6.601
+   },
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 208147,
+     "completion_tokens": 5796,
+     "total_tokens": 213943,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 4125,
+      "audio_tokens": 0,
+      "reasoning_tokens": 5673,
+      "rejected_prediction_tokens": 885
+     }
+    },
+    "latency_s": 34.202
+   }
+  ],
+  "failed_calls": 0
+ }
+}

@@ -1,0 +1,470 @@
+{
+ "gate": {
+  "label": "summary",
+  "reasons": [
+   "structure=69 coverage=10/10"
+  ],
+  "signals": {
+   "chars": 11374,
+   "structure_lines": 69,
+   "roleplay_paragraphs": 0,
+   "chat_opener": false,
+   "coverage_parts": 10,
+   "ends_with_question": false,
+   "summary_words": 8
+  }
+ },
+ "status": "SCORED",
+ "facts": {
+  "recall": 0.9483,
+  "net": 0.9397,
+  "found": 47,
+  "total": 50,
+  "stale_fact_count": 0,
+  "decoy_hits": [
+   {
+    "id": "D1",
+    "alias": "Sendharbour"
+   }
+  ],
+  "missed": [
+   "F26",
+   "F32",
+   "F43"
+  ],
+  "rows": [
+   {
+    "id": "F01",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F02",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F03",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F04",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F05",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F06",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F07",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F08",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F09",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F10",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F11",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F12",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F13",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F14",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F15",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F16",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F17",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F18",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F19",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F20",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F21",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F22",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F23",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F24",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F25",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F26",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F27",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F28",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F29",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F30",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F31",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F32",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F33",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F34",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F35",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F36",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F37",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F38",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F39",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F40",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F41",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F42",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F43",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F44",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F45",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F46",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F47",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F48",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F49",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F50",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   }
+  ]
+ },
+ "threads": {
+  "mechanical": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PRESERVED",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "mechanical_score": 1.0,
+  "judge": {
+   "verdicts": {
+    "T1": "PARTIAL",
+    "T2": "PRESERVED",
+    "T3": "PRESERVED",
+    "T4": "PRESERVED",
+    "T5": "PRESERVED",
+    "T6": "PRESERVED",
+    "T7": "PRESERVED",
+    "T8": "PRESERVED"
+   },
+   "notes": {},
+   "judge_fabricated_quotes": 0,
+   "parsed": true,
+   "raw": "{\"T1\": {\"verdict\": \"PARTIAL\", \"quote\": \"**Flaky test (deferred by user)**: `reminders > sends at the user's local 9am` passed only on retry — depends on the real clock. User said leave it for now, look later.\"}, \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"**`snoozed_until` nullable column migration on reminders** — not started.\"}, \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"Annual plan: **deferred** — decide after the first 10 paying signups; don't spend time on it now.\"}, \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Dedicated IP question still open** — Dana said their infra team will come back with cost.\"}, \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"User acknowledged fault and will **call her Friday morning** to offer her a seat in the next pricing review — **user asked to be reminded of this call**.\"}, \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"**README env table** — in progress (variables identified, table not yet written).\"}, \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"VAT question with accountant Yaw Boateng — waiting on user; footer stays generic until answered.\"}, \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"Logo SVG from user — waiting; text placeholder in use.\"}}"
+  },
+  "final": {
+   "T1": "PARTIAL",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PRESERVED",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "final_source": "judge",
+  "score": 0.9375,
+  "counts": {
+   "PRESERVED": 7,
+   "PARTIAL": 1,
+   "LOST": 0
+  }
+ },
+ "invention": {
+  "mechanical": {
+   "unsupported_quotes": [
+    "copy .env.example to .env.local. todo: list every variable here.",
+    "expected n to be m",
+    "<fn> dry run"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 10,
+    "numbers": 60
+   },
+   "count": 3
+  },
+  "judge": {
+   "items": [
+    {
+     "summary_quote": "`SELECT ... FOR UPDATE SKIP LOCKED`: locks returned rows, skips rows already locked by other transactions — the standard Postgres job-queue trick. (Asked 3 times.)",
+     "why": "The user asked the `SELECT ... FOR UPDATE SKIP LOCKED` question 4 times in the session, not 3."
+    },
+    {
+     "summary_quote": "Boolean column indexes: usually not worth it alone; partial index like `WHERE sent = false` pays off when unsent rows are a small fraction. At current row counts, no measurable gain. (Asked twice.)",
+     "why": "The user asked the boolean-index question 3 times in the session, not twice."
+    }
+   ],
+   "count": 2,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "[{\"summary_quote\": \"`SELECT ... FOR UPDATE SKIP LOCKED`: locks returned rows, skips rows already locked by other transactions — the standard Postgres job-queue trick. (Asked 3 times.)\", \"why\": \"The user asked the `SELECT ... FOR UPDATE SKIP LOCKED` question 4 times in the session, not 3.\"}, {\"summary_quote\": \"Boolean column indexes: usually not worth it alone; partial index like `WHERE sent = false` pays off when unsent rows are a small fraction. At current row counts, no measurable gain. (Asked twice.)\", \"why\": \"The user asked the boolean-index question 3 times in the session, not twice.\"}]"
+  }
+ },
+ "composite": 91.5,
+ "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "model": "z-ai-glm-5-3-flash",
+ "effort": "default",
+ "corpus": "200k",
+ "judge": {
+  "model": "kimi-k3",
+  "transport": "openai",
+  "effort": "low",
+  "calls": [
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 5176,
+     "completion_tokens": 455,
+     "total_tokens": 5631,
+     "prompt_tokens_details": {
+      "cached_tokens": 64
+     },
+     "cache_read_input_tokens": 64,
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 300,
+      "audio_tokens": 0,
+      "reasoning_tokens": 116,
+      "rejected_prediction_tokens": 165
+     }
+    },
+    "latency_s": 3.1
+   },
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 209976,
+     "completion_tokens": 6527,
+     "total_tokens": 216503,
+     "prompt_tokens_details": {
+      "cached_tokens": 64
+     },
+     "cache_read_input_tokens": 64,
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 4235,
+      "audio_tokens": 0,
+      "reasoning_tokens": 6373,
+      "rejected_prediction_tokens": 2641
+     }
+    },
+    "latency_s": 45.892
+   }
+  ],
+  "failed_calls": 0
+ },
+ "judge_model": "kimi-k3"
+}

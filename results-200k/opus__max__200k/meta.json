@@ -1,0 +1,65 @@
+{
+ "status": "ok",
+ "failed_as": null,
+ "transport": "claude",
+ "command": "claude -p --model opus --tools '' --no-session-persistence --disable-slash-commands --system-prompt 'You are a helpful assistant.' --output-format json --effort max < <prompt-tempfile>",
+ "exit_code": 0,
+ "stderr": "",
+ "model": "opus",
+ "effort": "max",
+ "corpus": "200k",
+ "mode": "text",
+ "message_count": 2,
+ "prompt_sha256": "e6467b4e908bb5d7198553da08eb0785326ed0ce72461d114ad133650eab8947",
+ "prompt_chars": 634650,
+ "compact_prompt_sha256": "401a3760133af0756e8e0bba19bb2e62635e3ba9432fe8fdd8ca41ccd54d8b20",
+ "latency_s": 413.45,
+ "finish_reason": "end_turn",
+ "usage": {
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 311076,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 49363,
+   "output_tokens_details": {
+    "thinking_tokens": 41630
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 311076,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 49363,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 311076,
+    "webSearchRequests": 0,
+    "costUSD": 3.475876,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 41630,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "is_error": false,
+  "terminal_reason": "completed"
+ },
+ "cost_usd": null,
+ "list_price_equiv_usd": 3.475876,
+ "error": null,
+ "started_at_unix": 1791783043,
+ "judge_model": null
+}

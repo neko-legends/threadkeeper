@@ -1,0 +1,464 @@
+{
+ "gate": {
+  "label": "summary",
+  "reasons": [
+   "structure=129 coverage=10/10"
+  ],
+  "signals": {
+   "chars": 14178,
+   "structure_lines": 129,
+   "roleplay_paragraphs": 0,
+   "chat_opener": false,
+   "coverage_parts": 10,
+   "ends_with_question": false,
+   "summary_words": 13
+  }
+ },
+ "status": "SCORED",
+ "facts": {
+  "recall": 0.9828,
+  "net": 0.9828,
+  "found": 49,
+  "total": 50,
+  "stale_fact_count": 0,
+  "decoy_hits": [],
+  "missed": [
+   "F43"
+  ],
+  "rows": [
+   {
+    "id": "F01",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F02",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F03",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F04",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F05",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F06",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F07",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F08",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F09",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F10",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F11",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F12",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F13",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F14",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F15",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F16",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F17",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F18",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F19",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F20",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F21",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F22",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F23",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F24",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F25",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F26",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F27",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F28",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F29",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F30",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F31",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F32",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F33",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F34",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F35",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F36",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F37",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F38",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F39",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F40",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F41",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F42",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F43",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F44",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F45",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F46",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F47",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F48",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F49",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F50",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   }
+  ]
+ },
+ "threads": {
+  "mechanical": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PARTIAL",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "mechanical_score": 0.9375,
+  "judge": {
+   "verdicts": {
+    "T1": "PRESERVED",
+    "T2": "PRESERVED",
+    "T3": "PRESERVED",
+    "T4": "PRESERVED",
+    "T5": "PRESERVED",
+    "T6": "PRESERVED",
+    "T7": "PRESERVED",
+    "T8": "PRESERVED"
+   },
+   "notes": {},
+   "judge_fabricated_quotes": 0,
+   "parsed": true,
+   "raw": "```json\n{\n  \"T1\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Agent owes:** keep the flaky test `reminders > sends at the user's local 9am` on the list (user said leave it for now, look later).\"},\n  \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"Migration to write: nullable `snoozed_until` on `reminders`. Not created, not applied.\"},\n  \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Open decision:** annual plan, after first 10 paying signups.\"},\n  \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Dedicated IP: still open** — escalated to Sendharbor's infra team, they will come back with cost. User wants the price.\"},\n  \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"**User owes:** call Soren **Friday morning** to acknowledge she was left out of the price change and offer her a seat in the next pricing review. User asked to be reminded.\"},\n  \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Agent owes:** README env var table (first), then the `snoozed_until` migration.\"},\n  \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"Invoice footer wording stays **generic** until the VAT question is answered.\"},\n  \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"**User owes:** send the logo SVG later this week.\"}\n}\n```"
+  },
+  "final": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PRESERVED",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "final_source": "judge",
+  "score": 1.0,
+  "counts": {
+   "PRESERVED": 8,
+   "PARTIAL": 0,
+   "LOST": 0
+  }
+ },
+ "invention": {
+  "mechanical": {
+   "unsupported_quotes": [
+    "<name> dry run"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 33,
+    "numbers": 106
+   },
+   "count": 1
+  },
+  "judge": {
+   "items": [
+    {
+     "summary_quote": "Node: **22.5.2** everywhere (`.nvmrc`, Dockerfile `node:22.5`, CI).",
+     "why": "The session only shows the agent editing `.nvmrc` (echo 22.5.2) and the Dockerfile (sed node:20.11 → node:22.5). The user requested CI be bumped too, but no CI file was ever touched or mentioned as updated; the agent's own report lists only `.nvmrc` and the Dockerfile. The claim that CI was bumped t"
+    },
+    {
+     "summary_quote": "logging email addresses (2×)",
+     "why": "Wrong count. The user asked \"Is it ok to log email addresses?\" three times in the session: (1) after the Juno at Vesper Type note, (2) after the src/api/audit.ts dry-run edit, and (3) after the lint pass that preceded the 0073_add_mail_events_external_ref migration. The summary says 2×."
+    },
+    {
+     "summary_quote": "boolean column index (2×)",
+     "why": "Wrong count. The user asked \"Is it worth adding an index on a boolean column?\" three times in the session: (1) after the ~23:41 dev-log tail, (2) after the lint pass following the idempotency-keys discussion, and (3) after the formatContact rename type-check. The summary says 2×."
+    }
+   ],
+   "count": 3,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "```json\n[\n  {\n    \"summary_quote\": \"Node: **22.5.2** everywhere (`.nvmrc`, Dockerfile `node:22.5`, CI).\",\n    \"why\": \"The session only shows the agent editing `.nvmrc` (echo 22.5.2) and the Dockerfile (sed node:20.11 → node:22.5). The user requested CI be bumped too, but no CI file was ever touched or mentioned as updated; the agent's own report lists only `.nvmrc` and the Dockerfile. The claim that CI was bumped to 22.5.2 is unsupported.\"\n  },\n  {\n    \"summary_quote\": \"logging email addresses (2×)\",\n    \"why\": \"Wrong count. The user asked \\\"Is it ok to log email addresses?\\\" three times in the session: (1) after the Juno at Vesper Type note, (2) after the src/api/audit.ts dry-run edit, and (3) after the lint pass that preceded the 0073_add_mail_events_external_ref migration. The summary says 2×.\"\n  },\n  {\n    \"summary_quote\": \"boolean column index (2×)\",\n    \"why\": \"Wrong count. The user asked \\\"Is it worth adding an index on a boolean column?\\\" three times in the session: (1) after the ~23:41 dev-log tail, (2) after the lint pass following the idempotency-keys discussion, and (3) after the formatContact rename type-check. The summary says 2×.\"\n  }\n]\n```"
+  }
+ },
+ "composite": 98.05,
+ "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "model": "deepseek-v4-1-flash",
+ "effort": "default",
+ "corpus": "200k",
+ "judge": {
+  "model": "z-ai-glm-5-3-flash",
+  "transport": "openai",
+  "effort": "low",
+  "calls": [
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 6106,
+     "completion_tokens": 1116,
+     "total_tokens": 7222,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 782,
+      "audio_tokens": 0,
+      "reasoning_tokens": 776,
+      "rejected_prediction_tokens": 220
+     }
+    },
+    "latency_s": 6.382
+   },
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 210524,
+     "completion_tokens": 11061,
+     "total_tokens": 221585,
+     "prompt_tokens_details": {
+      "cached_tokens": 196608
+     },
+     "cache_read_input_tokens": 196608,
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 7632,
+      "audio_tokens": 0,
+      "reasoning_tokens": 10715,
+      "rejected_prediction_tokens": 2655
+     }
+    },
+    "latency_s": 46.911
+   }
+  ],
+  "failed_calls": 0
+ },
+ "judge_model": "z-ai-glm-5-3-flash"
+}

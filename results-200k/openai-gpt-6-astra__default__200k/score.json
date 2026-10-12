@@ -1,0 +1,451 @@
+{
+ "gate": {
+  "label": "summary",
+  "reasons": [
+   "structure=162 coverage=10/10"
+  ],
+  "signals": {
+   "chars": 17062,
+   "structure_lines": 162,
+   "roleplay_paragraphs": 0,
+   "chat_opener": false,
+   "coverage_parts": 10,
+   "ends_with_question": false,
+   "summary_words": 12
+  }
+ },
+ "status": "SCORED",
+ "facts": {
+  "recall": 0.9138,
+  "net": 0.8448,
+  "found": 46,
+  "total": 50,
+  "stale_fact_count": 3,
+  "decoy_hits": [
+   {
+    "id": "D3",
+    "alias": "6ab5199"
+   },
+   {
+    "id": "D5",
+    "alias": "Redis"
+   }
+  ],
+  "missed": [
+   "F27",
+   "F33",
+   "F34",
+   "F43"
+  ],
+  "rows": [
+   {
+    "id": "F01",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F02",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F03",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F04",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F05",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F06",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F07",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F08",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F09",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F10",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F11",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F12",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F13",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F14",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F15",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F16",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F17",
+    "hit": true,
+    "stale_hits": [
+     "Wednesday"
+    ],
+    "weight": 2
+   },
+   {
+    "id": "F18",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F19",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F20",
+    "hit": true,
+    "stale_hits": [
+     "$21",
+     "21/month"
+    ],
+    "weight": 2
+   },
+   {
+    "id": "F21",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F22",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F23",
+    "hit": true,
+    "stale_hits": [
+     "Redis"
+    ],
+    "weight": 2
+   },
+   {
+    "id": "F24",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F25",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F26",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F27",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F28",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F29",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F30",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F31",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F32",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F33",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F34",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F35",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F36",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F37",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F38",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F39",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F40",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F41",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F42",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F43",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F44",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F45",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F46",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F47",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F48",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F49",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F50",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   }
+  ]
+ },
+ "threads": {
+  "mechanical": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PRESERVED",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "mechanical_score": 1.0,
+  "judge": {
+   "verdicts": {
+    "T1": "PRESERVED",
+    "T2": "PRESERVED",
+    "T3": "PRESERVED",
+    "T4": "PRESERVED",
+    "T5": "PRESERVED",
+    "T6": "PRESERVED",
+    "T7": "PRESERVED",
+    "T8": "PRESERVED"
+   },
+   "notes": {},
+   "judge_fabricated_quotes": 0,
+   "parsed": true,
+   "raw": "```json\n{\"T1\": {\"verdict\": \"PRESERVED\", \"quote\": \"Later flaky **`reminders > sends at the user's local 9am`** test (explicitly deferred).\"}, \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Now:** README env table, then nullable `reminders.snoozed_until` migration; verify.\"}, \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"Annual plan: defer decision until **first 10 paying signups**; do not spend time on it now.\"}, \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"Dedicated IP question **still pending infra team**, Dana owes follow-up/cost.\"}, \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"Founder agreed she should have been looped in and intends to **call her Friday morning**, acknowledge exclusion and offer her **a seat in the next pricing review**.\"}, \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Do README first, then migration. Neither has been done yet.**\"}, \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"Accountant **Yaw Boateng**: founder owes a question **this week** about whether VAT must appear on invoices sent through product. No answer yet.\"}, \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"User owes an **SVG logo later this week**, for landing page and email header; use app-name text placeholder meanwhile.\"}}\n```"
+  },
+  "final": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PRESERVED",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "final_source": "judge",
+  "score": 1.0,
+  "counts": {
+   "PRESERVED": 8,
+   "PARTIAL": 0,
+   "LOST": 0
+  }
+ },
+ "invention": {
+  "mechanical": {
+   "unsupported_quotes": [
+    "inv_...",
+    "<unrelated helper> dry run"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 28,
+    "numbers": 123
+   },
+   "count": 2
+  },
+  "judge": {
+   "items": [
+    {
+     "summary_quote": "Current developer-provided cwd is **`/home/jun/git/threadkeeper`**.",
+     "why": "The session never mentions /home/jun/git/threadkeeper. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work."
+    }
+   ],
+   "count": 1,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "```json\n[{\"summary_quote\": \"Current developer-provided cwd is **`/home/jun/git/threadkeeper`**.\", \"why\": \"The session never mentions /home/jun/git/threadkeeper. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work.\"}]\n```"
+  }
+ },
+ "composite": 89.46,
+ "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "model": "openai/gpt-6-astra",
+ "effort": "default",
+ "corpus": "200k",
+ "judge": {
+  "model": "opus",
+  "transport": "claude",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 11.043,
+    "cmd": "claude -p --model opus --tools '' --no-session-persistence --disable-slash-commands --system-prompt 'You are a helpful assistant.' --output-format json < <prompt-tempfile>",
+    "stderr": ""
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 11.94,
+    "cmd": "claude -p --model opus --tools '' --no-session-persistence --disable-slash-commands --system-prompt 'You are a helpful assistant.' --output-format json < <prompt-tempfile>",
+    "stderr": ""
+   }
+  ],
+  "failed_calls": 0
+ },
+ "judge_model": "opus"
+}
