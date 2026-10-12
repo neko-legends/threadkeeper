@@ -1,0 +1,41 @@
+{
+ "128k": {
+  "messages": 886,
+  "rendered_chars": 415718,
+  "seed": 12801,
+  "sha256": {
+   "ground_truth.json": "8585d46af2d24cd21365e60990a6809b0cc78bbb0c8f0a774b9a0baa702834e1",
+   "reference_summary.md": "58341e3c756717834b8f7886483128f71413b6924ba6335e3a1f4252c2ad7265",
+   "session.jsonl": "115686d990527833d9df9ea08407e087340103865bb244516a52599a8d75728e"
+  },
+  "target_chars": 378000,
+  "tokenizer": "tiktoken:o200k_base",
+  "tokens": 127295
+ },
+ "200k": {
+  "messages": 1226,
+  "rendered_chars": 632983,
+  "seed": 20001,
+  "sha256": {
+   "ground_truth.json": "2af5d6e60cbf7888986340a6b18d3047124dcfa8606898c2cad75ac94fed8a0b",
+   "reference_summary.md": "574b6a903f3e52a1fa5f50a45dde83830faf1cb5b6f7fb0dbf3f924dba9db4d0",
+   "session.jsonl": "edb66f4e19b4aab06f9f8c082f887a6c3fbf61031d16db14741a17872a50c546"
+  },
+  "target_chars": 584000,
+  "tokenizer": "tiktoken:o200k_base",
+  "tokens": 200298
+ },
+ "32k": {
+  "messages": 277,
+  "rendered_chars": 104148,
+  "seed": 3201,
+  "sha256": {
+   "ground_truth.json": "d71f10dd15a6c6f871f684500011b195e47d438b093ff4629f679976fdb25119",
+   "reference_summary.md": "98db15df73008610a0b67c41a16fa3ad1c7feae84f0589bbcbd9e75964b2a365",
+   "session.jsonl": "86b9627afc4823cb8c7ec3cd7a4a435d09b3314dee25cc66ecea1c7443db218f"
+  },
+  "target_chars": 87000,
+  "tokenizer": "tiktoken:o200k_base",
+  "tokens": 31087
+ }
+}

@@ -1,0 +1,1429 @@
+{
+ "app": "Nudgewell",
+ "closed_threads": [
+  {
+   "resolution": "Ruled out; real cause was the fixed UTC offset",
+   "title": "Cron-library theory of the reminder bug"
+  },
+  {
+   "resolution": "Deferred until after launch",
+   "title": "Rewrite proposal"
+  },
+  {
+   "resolution": "Dropped in favour of Postgres sessions",
+   "title": "Redis session store"
+  },
+  {
+   "resolution": "Granted by the vendor",
+   "title": "Daily send limit raise"
+  }
+ ],
+ "cue_note": "A stale/decoy value is only penalised when no supersession cue appears near it.",
+ "decoys": [
+  {
+   "aliases": [
+    "Sendharbour"
+   ],
+   "id": "D1",
+   "value": "Sendharbour",
+   "why": "Near-duplicate vendor name that was considered and rejected"
+  },
+  {
+   "aliases": [
+    "#5206",
+    "5206"
+   ],
+   "id": "D2",
+   "value": "#5206",
+   "why": "Near-duplicate ticket number of an unrelated ticket"
+  },
+  {
+   "aliases": [
+    "04ba24b"
+   ],
+   "id": "D3",
+   "value": "04ba24b",
+   "why": "Hash of an unrelated earlier commit (not the fix)"
+  },
+  {
+   "aliases": [
+    "Express"
+   ],
+   "id": "D4",
+   "value": "Express",
+   "why": "Framework mentioned for comparison only; Fastify was chosen"
+  },
+  {
+   "aliases": [
+    "Redis"
+   ],
+   "id": "D5",
+   "value": "Redis",
+   "why": "Dropped session store (only acceptable when marked as dropped/replaced)"
+  }
+ ],
+ "facts": [
+  {
+   "aliases": [
+    "Nudgewell"
+   ],
+   "category": "identity",
+   "corrected_at": [],
+   "description": "Product name",
+   "id": "F01",
+   "line": "The product is called {v}, a small web app that nags clients about overdue invoices on behalf of freelancers.",
+   "line_latest": "The product is called Nudgewell, a small web app that nags clients about overdue invoices on behalf of freelancers.",
+   "planted_at": [
+    1
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "Nudgewell",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "America/Halifax",
+    "Halifax"
+   ],
+   "category": "identity",
+   "corrected_at": [],
+   "description": "Founder's time zone",
+   "id": "F02",
+   "line": "The founder is in {v} (Halifax), so local-time handling matters.",
+   "line_latest": "The founder is in America/Halifax (Halifax), so local-time handling matters.",
+   "planted_at": [
+    1
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "America/Halifax",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "code/nudgewell",
+    "~/code/nudgewell"
+   ],
+   "category": "env",
+   "corrected_at": [],
+   "description": "Repo path",
+   "id": "F03",
+   "line": "The repo lives at {v}.",
+   "line_latest": "The repo lives at ~/code/nudgewell.",
+   "planted_at": [
+    1
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "~/code/nudgewell",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "3718"
+   ],
+   "category": "env",
+   "corrected_at": [],
+   "description": "Dev server port",
+   "id": "F04",
+   "line": "The dev server runs on port {v}.",
+   "line_latest": "The dev server runs on port 3718.",
+   "planted_at": [
+    3
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "3718",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "nudgewell_dev"
+   ],
+   "category": "env",
+   "corrected_at": [],
+   "description": "Dev database name",
+   "id": "F05",
+   "line": "The dev Postgres database is {v}.",
+   "line_latest": "The dev Postgres database is nudgewell_dev.",
+   "planted_at": [
+    3
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "nudgewell_dev",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "22.7.1"
+   ],
+   "category": "env",
+   "corrected_at": [
+    151,
+    154
+   ],
+   "description": "Node version (latest)",
+   "id": "F06",
+   "line": "Node was bumped to {v} (earlier {s}) because a dependency needed it.",
+   "line_latest": "Node was bumped to 22.7.1 (earlier 20.9.0) because a dependency needed it.",
+   "line_stale": "Current node version: 20.9.0.",
+   "planted_at": [
+    151
+   ],
+   "regex": null,
+   "stale": [
+    {
+     "aliases": [
+      "20.9.0"
+     ],
+     "value": "20.9.0"
+    }
+   ],
+   "stale_at": [
+    4
+   ],
+   "superseded": true,
+   "value": "22.7.1",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "pnpm"
+   ],
+   "category": "env",
+   "corrected_at": [],
+   "description": "Package manager",
+   "id": "F07",
+   "line": "The user insists on pnpm, never npm.",
+   "line_latest": "The user insists on pnpm, never npm.",
+   "planted_at": [
+    3
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "pnpm",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "vitest"
+   ],
+   "category": "stack",
+   "corrected_at": [],
+   "description": "Test runner",
+   "id": "F08",
+   "line": "Tests run with vitest.",
+   "line_latest": "Tests run with vitest.",
+   "planted_at": [
+    3
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "vitest",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "Fastify"
+   ],
+   "category": "stack",
+   "corrected_at": [],
+   "description": "Web framework",
+   "id": "F09",
+   "line": "The API is built on Fastify.",
+   "line_latest": "The API is built on Fastify.",
+   "planted_at": [
+    3
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "Fastify",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "Kysely"
+   ],
+   "category": "stack",
+   "corrected_at": [],
+   "description": "SQL query layer",
+   "id": "F10",
+   "line": "Database access goes through Kysely.",
+   "line_latest": "Database access goes through Kysely.",
+   "planted_at": [
+    3
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "Kysely",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "Lowtide"
+   ],
+   "category": "infra",
+   "corrected_at": [],
+   "description": "Hosting vendor",
+   "id": "F11",
+   "line": "Hosting is on {v}, region eu-west-2.",
+   "line_latest": "Hosting is on Lowtide, region eu-west-2.",
+   "planted_at": [
+    28
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "Lowtide",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "eu-west-2"
+   ],
+   "category": "infra",
+   "corrected_at": [],
+   "description": "Hosting region",
+   "id": "F12",
+   "line": "The deployment region is {v}.",
+   "line_latest": "The deployment region is eu-west-2.",
+   "planted_at": [
+    28
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "eu-west-2",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "Paygrove"
+   ],
+   "category": "infra",
+   "corrected_at": [],
+   "description": "Payment vendor",
+   "id": "F13",
+   "line": "Payments go through {v}.",
+   "line_latest": "Payments go through Paygrove.",
+   "planted_at": [
+    28
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "Paygrove",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "Sendharbor"
+   ],
+   "category": "infra",
+   "corrected_at": [],
+   "description": "Email vendor",
+   "id": "F14",
+   "line": "Transactional email is sent via {v} (the near-named Sendharbour was considered and rejected).",
+   "line_latest": "Transactional email is sent via Sendharbor (the near-named Sendharbour was considered and rejected).",
+   "planted_at": [
+    28
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "Sendharbor",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "https://staging.nudgewell.example",
+    "staging.nudgewell.example"
+   ],
+   "category": "infra",
+   "corrected_at": [],
+   "description": "Staging URL",
+   "id": "F15",
+   "line": "Staging lives at {v}.",
+   "line_latest": "Staging lives at https://staging.nudgewell.example.",
+   "planted_at": [
+    30
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "https://staging.nudgewell.example",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "2026-11-27",
+    "27 nov",
+    "27 november",
+    "Nov 27",
+    "nov 27",
+    "november 27"
+   ],
+   "category": "schedule",
+   "corrected_at": [
+    162,
+    163
+   ],
+   "description": "Launch date (latest)",
+   "id": "F16",
+   "line": "Launch is {v} (it was Nov 20 before the slip).",
+   "line_latest": "Launch is Nov 27 (it was Nov 20 before the slip).",
+   "line_stale": "Current launch date: Nov 20.",
+   "planted_at": [
+    162
+   ],
+   "regex": null,
+   "stale": [
+    {
+     "aliases": [
+      "20 nov",
+      "20 november",
+      "2026-11-20",
+      "Nov 20",
+      "nov 20",
+      "november 20"
+     ],
+     "value": "Nov 20"
+    }
+   ],
+   "stale_at": [
+    1
+   ],
+   "superseded": true,
+   "value": "Nov 27",
+   "weight": 2
+  },
+  {
+   "aliases": [
+    "Wednesday"
+   ],
+   "category": "schedule",
+   "corrected_at": [
+    197,
+    198
+   ],
+   "description": "Deploy day (latest)",
+   "id": "F17",
+   "line": "Production deploys happen on {v} (moved from {s}).",
+   "line_latest": "Production deploys happen on Wednesday (moved from Monday).",
+   "line_stale": "Current deploy day: Monday.",
+   "planted_at": [
+    195,
+    197
+   ],
+   "regex": null,
+   "stale": [
+    {
+     "aliases": [
+      "Monday"
+     ],
+     "value": "Monday"
+    }
+   ],
+   "stale_at": [
+    195
+   ],
+   "superseded": true,
+   "value": "Wednesday",
+   "weight": 2
+  },
+  {
+   "aliases": [
+    "05:30",
+    "05:30 UTC"
+   ],
+   "category": "schedule",
+   "corrected_at": [],
+   "description": "Deploy time",
+   "id": "F18",
+   "line": "The deploy window starts at {v}.",
+   "line_latest": "The deploy window starts at 05:30 UTC.",
+   "planted_at": [
+    195
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "05:30 UTC",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "150 beta users",
+    "150 sign-ups",
+    "150 signups",
+    "150 users"
+   ],
+   "category": "schedule",
+   "corrected_at": [
+    162,
+    163
+   ],
+   "description": "Beta signup target (latest)",
+   "id": "F19",
+   "line": "The beta target is {v} (raised from {s}).",
+   "line_latest": "The beta target is 150 users (raised from 100 beta users).",
+   "line_stale": "Current beta signup target: 100 beta users.",
+   "planted_at": [
+    162
+   ],
+   "regex": null,
+   "stale": [
+    {
+     "aliases": [
+      "100 beta users",
+      "100 sign-ups",
+      "100 signups",
+      "100 users"
+     ],
+     "value": "100 beta users"
+    }
+   ],
+   "stale_at": [
+    1
+   ],
+   "superseded": true,
+   "value": "150 users",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "$26",
+    "26 a month",
+    "26 dollars",
+    "26/mo",
+    "26/month"
+   ],
+   "category": "pricing",
+   "corrected_at": [
+    189,
+    192
+   ],
+   "description": "Solo plan price (latest)",
+   "id": "F20",
+   "line": "The Solo plan costs {v}/month (raised from {s}).",
+   "line_latest": "The Solo plan costs $26/month (raised from $21).",
+   "line_stale": "Current solo plan price: $21.",
+   "planted_at": [
+    189
+   ],
+   "regex": null,
+   "stale": [
+    {
+     "aliases": [
+      "$21",
+      "21 dollars",
+      "21/mo",
+      "21/month"
+     ],
+     "value": "$21"
+    }
+   ],
+   "stale_at": [
+    30
+   ],
+   "superseded": true,
+   "value": "$26",
+   "weight": 2
+  },
+  {
+   "aliases": [
+    "30 day",
+    "30 days",
+    "30-day"
+   ],
+   "category": "pricing",
+   "corrected_at": [],
+   "description": "Trial length (days)",
+   "id": "F21",
+   "line": "The free trial is {v}.",
+   "line_latest": "The free trial is 30-day.",
+   "planted_at": [
+    30
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "30-day",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "$54",
+    "54/mo",
+    "54/month"
+   ],
+   "category": "pricing",
+   "corrected_at": [],
+   "description": "Team plan price",
+   "id": "F22",
+   "line": "The Team plan is {v}/month.",
+   "line_latest": "The Team plan is $54/month.",
+   "planted_at": [
+    30
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "$54",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "Postgres",
+    "postgres-backed sessions",
+    "sessions in postgres"
+   ],
+   "category": "decision",
+   "corrected_at": [
+    155,
+    156
+   ],
+   "description": "Session store (latest)",
+   "id": "F23",
+   "line": "Sessions are stored in {v} (Redis was dropped).",
+   "line_latest": "Sessions are stored in Postgres (Redis was dropped).",
+   "line_stale": "Current session store: Redis.",
+   "planted_at": [
+    155
+   ],
+   "regex": null,
+   "stale": [
+    {
+     "aliases": [
+      "Redis"
+     ],
+     "value": "Redis"
+    }
+   ],
+   "stale_at": [
+    24
+   ],
+   "superseded": true,
+   "value": "Postgres",
+   "weight": 2
+  },
+  {
+   "aliases": [
+    "magic link",
+    "magic links",
+    "magic-link",
+    "passwordless"
+   ],
+   "category": "decision",
+   "corrected_at": [],
+   "description": "Auth method",
+   "id": "F24",
+   "line": "Authentication uses {v}, no passwords.",
+   "line_latest": "Authentication uses magic links, no passwords.",
+   "planted_at": [
+    24
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "magic links",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "10 min",
+    "10 minutes",
+    "10-minute"
+   ],
+   "category": "decision",
+   "corrected_at": [],
+   "description": "Magic link expiry",
+   "id": "F25",
+   "line": "Magic links expire after {v}.",
+   "line_latest": "Magic links expire after 10 minutes.",
+   "planted_at": [
+    24
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "10 minutes",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "3, 7 and 14 days",
+    "3, 7, 14"
+   ],
+   "category": "decision",
+   "corrected_at": [],
+   "description": "Reminder cadence",
+   "id": "F26",
+   "line": "Reminders go out after {v}.",
+   "line_latest": "Reminders go out after 3, 7 and 14 days.",
+   "planted_at": [
+    26
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "3, 7 and 14 days",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "60 per minute",
+    "60 req/min",
+    "60 requests per minute",
+    "60 requests/min",
+    "60/min"
+   ],
+   "category": "decision",
+   "corrected_at": [],
+   "description": "API rate limit",
+   "id": "F27",
+   "line": "The public API is limited to {v}.",
+   "line_latest": "The public API is limited to 60 req/min.",
+   "planted_at": [
+    26
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "60 req/min",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "Felix Abara"
+   ],
+   "category": "vendor",
+   "corrected_at": [],
+   "description": "Vendor contact",
+   "id": "F28",
+   "line": "The Sendharbor support contact is {v}.",
+   "line_latest": "The Sendharbor support contact is Felix Abara.",
+   "planted_at": [
+    56
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "Felix Abara",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "#5026",
+    "5026"
+   ],
+   "category": "vendor",
+   "corrected_at": [],
+   "description": "Vendor ticket number",
+   "id": "F29",
+   "line": "The vendor ticket is {v}; do not confuse it with #5206, an unrelated ticket.",
+   "line_latest": "The vendor ticket is #5026; do not confuse it with #5206, an unrelated ticket.",
+   "planted_at": [
+    56,
+    160
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "#5026",
+   "weight": 2
+  },
+  {
+   "aliases": [
+    "15,000",
+    "15000"
+   ],
+   "category": "vendor",
+   "corrected_at": [
+    160,
+    161
+   ],
+   "description": "Daily send limit (latest)",
+   "id": "F30",
+   "line": "The daily send limit was raised to {v} per day (from {s}).",
+   "line_latest": "The daily send limit was raised to 15,000 per day (from 3,000).",
+   "line_stale": "Current daily send limit: 3,000.",
+   "planted_at": [
+    160
+   ],
+   "regex": null,
+   "stale": [
+    {
+     "aliases": [
+      "3,000",
+      "3000"
+     ],
+     "value": "3,000"
+    }
+   ],
+   "stale_at": [
+    56
+   ],
+   "superseded": true,
+   "value": "15,000",
+   "weight": 2
+  },
+  {
+   "aliases": [
+    "sh3._domainkey"
+   ],
+   "category": "vendor",
+   "corrected_at": [],
+   "description": "DKIM selector host",
+   "id": "F31",
+   "line": "DKIM is configured at {v}.",
+   "line_latest": "DKIM is configured at sh3._domainkey.",
+   "planted_at": [
+    56
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "sh3._domainkey",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "2 business days",
+    "2 working days"
+   ],
+   "category": "vendor",
+   "corrected_at": [],
+   "description": "Vendor SLA",
+   "id": "F32",
+   "line": "The vendor promises replies within {v}.",
+   "line_latest": "The vendor promises replies within 2 business days.",
+   "planted_at": [
+    56
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "2 business days",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "an hour off",
+    "off by an hour",
+    "one hour off",
+    "wrong hour",
+    "wrong local hour",
+    "wrong time"
+   ],
+   "category": "bug",
+   "corrected_at": [],
+   "description": "Bug symptom",
+   "id": "F33",
+   "line": "The bug: reminders went out at the {v} for some users right after a DST change.",
+   "line_latest": "The bug: reminders went out at the wrong hour for some users right after a DST change.",
+   "planted_at": [
+    97
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "wrong hour",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "constant offset",
+    "fixed UTC offset",
+    "fixed offset",
+    "hard-coded offset",
+    "static UTC offset"
+   ],
+   "category": "bug",
+   "corrected_at": [],
+   "description": "Root cause",
+   "id": "F34",
+   "line": "Root cause: the scheduler used a {v} instead of the user's IANA zone.",
+   "line_latest": "Root cause: the scheduler used a fixed UTC offset instead of the user's IANA zone.",
+   "planted_at": [
+    113
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "fixed UTC offset",
+   "weight": 2
+  },
+  {
+   "aliases": [
+    "scheduler.ts",
+    "src/jobs/scheduler.ts"
+   ],
+   "category": "bug",
+   "corrected_at": [],
+   "description": "Fix file",
+   "id": "F35",
+   "line": "The fix is in {v}.",
+   "line_latest": "The fix is in src/jobs/scheduler.ts.",
+   "planted_at": [
+    113
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "src/jobs/scheduler.ts",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "3aec093"
+   ],
+   "category": "bug",
+   "corrected_at": [],
+   "description": "Fix commit",
+   "id": "F36",
+   "line": "The fix landed in commit {v}.",
+   "line_latest": "The fix landed in commit 3aec093.",
+   "planted_at": [
+    128
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "3aec093",
+   "weight": 2
+  },
+  {
+   "aliases": [
+    "9am local across the dst",
+    "across the dst boundary",
+    "keeps 9am local across the DST boundary"
+   ],
+   "category": "bug",
+   "corrected_at": [],
+   "description": "Regression test",
+   "id": "F37",
+   "line": "A regression test '{v}' was added.",
+   "line_latest": "A regression test 'keeps 9am local across the DST boundary' was added.",
+   "planted_at": [
+    117
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "keeps 9am local across the DST boundary",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "33 affected",
+    "33 testers",
+    "33 users"
+   ],
+   "category": "bug",
+   "corrected_at": [],
+   "description": "Affected users",
+   "id": "F38",
+   "line": "{v} were affected by the bug.",
+   "line_latest": "33 users were affected by the bug.",
+   "planted_at": [
+    129
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "33 users",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "cronwright"
+   ],
+   "category": "bug",
+   "corrected_at": [],
+   "description": "Rejected culprit",
+   "id": "F39",
+   "line": "The cron library {v} v3.2.1 was blamed first but was NOT the cause.",
+   "line_latest": "The cron library cronwright v3.2.1 was blamed first but was NOT the cause.",
+   "planted_at": [
+    106
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "cronwright",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "Imani",
+    "Imani Okafor"
+   ],
+   "category": "team",
+   "corrected_at": [],
+   "description": "Teammate",
+   "id": "F40",
+   "line": "The part-time teammate is {v}.",
+   "line_latest": "The part-time teammate is Imani Okafor.",
+   "planted_at": [
+    77
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "Imani Okafor",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "after launch",
+    "after the launch",
+    "post-launch",
+    "until after launch"
+   ],
+   "category": "team",
+   "corrected_at": [],
+   "description": "Rewrite decision",
+   "id": "F41",
+   "line": "Imani proposed a rewrite in a different framework; the founder deferred it until {v}.",
+   "line_latest": "Imani proposed a rewrite in a different framework; the founder deferred it until after launch.",
+   "planted_at": [
+    77
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "after launch",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "final call on pricing",
+    "final say on pricing",
+    "founder decides pricing",
+    "founder has final say",
+    "founder makes the pricing call"
+   ],
+   "category": "team",
+   "corrected_at": [],
+   "description": "Pricing authority",
+   "id": "F42",
+   "line": "The rule agreed: the {v} on pricing.",
+   "line_latest": "The rule agreed: the founder has final say on pricing.",
+   "planted_at": [
+    77
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "founder has final say",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "195 passed",
+    "195 passing",
+    "195 tests"
+   ],
+   "category": "tests",
+   "corrected_at": [],
+   "description": "Passing test count at end",
+   "id": "F43",
+   "line": "The suite ended with {v}.",
+   "line_latest": "The suite ended with 195 passed.",
+   "planted_at": [
+    225
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "195 passed",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "local 9am",
+    "reminders sends at",
+    "sends at local 9am",
+    "sends at the user's local 9am"
+   ],
+   "category": "tests",
+   "corrected_at": [],
+   "description": "Known flaky test",
+   "id": "F44",
+   "line": "A known flaky test is '{v}'.",
+   "line_latest": "A known flaky test is 'sends at the user's local 9am'.",
+   "planted_at": [
+    125
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "sends at the user's local 9am",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "./scripts/rollback.sh",
+    "rollback.sh"
+   ],
+   "category": "ops",
+   "corrected_at": [],
+   "description": "Rollback command",
+   "id": "F45",
+   "line": "Rollback is done with {v} <tag>.",
+   "line_latest": "Rollback is done with ./scripts/rollback.sh <tag>.",
+   "planted_at": [
+    216
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "./scripts/rollback.sh",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "v0.10.4"
+   ],
+   "category": "ops",
+   "corrected_at": [],
+   "description": "Release tag",
+   "id": "F46",
+   "line": "The current release tag is {v}.",
+   "line_latest": "The current release tag is v0.10.4.",
+   "planted_at": [
+    218
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "v0.10.4",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "do not force-push",
+    "don't force-push",
+    "never force push",
+    "never force-push",
+    "never force-push main",
+    "no force-push"
+   ],
+   "category": "rule",
+   "corrected_at": [],
+   "description": "No force-push rule",
+   "id": "F47",
+   "line": "Standing rule: {v}.",
+   "line_latest": "Standing rule: never force-push main.",
+   "planted_at": [
+    222
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "never force-push main",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    ".env.local"
+   ],
+   "category": "rule",
+   "corrected_at": [],
+   "description": "Secrets rule",
+   "id": "F48",
+   "line": "Secrets live in {v} and the host secret store; never commit them.",
+   "line_latest": "Secrets live in .env.local and the host secret store; never commit them.",
+   "planted_at": [
+    222
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": ".env.local",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "04:25",
+    "04:25 UTC"
+   ],
+   "category": "ops",
+   "corrected_at": [],
+   "description": "Backup schedule",
+   "id": "F49",
+   "line": "Nightly pg_dump runs at {v} to bucket nudgewell-backups-4430.",
+   "line_latest": "Nightly pg_dump runs at 04:25 UTC to bucket nudgewell-backups-4430.",
+   "planted_at": [
+    222
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "04:25 UTC",
+   "weight": 1
+  },
+  {
+   "aliases": [
+    "nudgewell-backups-4430"
+   ],
+   "category": "ops",
+   "corrected_at": [],
+   "description": "Backup bucket",
+   "id": "F50",
+   "line": "Backups go to the bucket {v}.",
+   "line_latest": "Backups go to the bucket nudgewell-backups-4430.",
+   "planted_at": [
+    222
+   ],
+   "regex": null,
+   "stale": [],
+   "stale_at": [],
+   "superseded": false,
+   "value": "nudgewell-backups-4430",
+   "weight": 1
+  }
+ ],
+ "seed": 3201,
+ "size": "32k",
+ "threads": [
+  {
+   "criteria": "The test 'reminders > sends at the user's local 9am' is flaky and was left unresolved; the agent promised to pin the clock/seed and investigate it later.",
+   "evidence_at": [
+    125,
+    270
+   ],
+   "id": "T1",
+   "keywords": [
+    [
+     "flaky",
+     "flake",
+     "intermittent"
+    ],
+    [
+     "9am",
+     "9 am",
+     "local 9"
+    ]
+   ],
+   "kind": "unfinished-task",
+   "line": "OPEN: the flaky test 'reminders > sends at the user's local 9am' is unresolved; the agent should pin the clock and investigate.",
+   "state": "open",
+   "title": "Investigate the flaky 9am-local reminder test"
+  },
+  {
+   "criteria": "The agent promised to write a migration adding a nullable `snoozed_until` column to reminders; not yet written.",
+   "evidence_at": [
+    270
+   ],
+   "id": "T2",
+   "keywords": [
+    [
+     "snoozed_until",
+     "snooze"
+    ],
+    [
+     "migration",
+     "column"
+    ]
+   ],
+   "kind": "promise",
+   "line": "OPEN: the agent promised a migration adding `snoozed_until` to the reminders table; not yet written.",
+   "state": "open",
+   "title": "Write the snoozed_until migration"
+  },
+  {
+   "criteria": "Whether to offer an annual plan is undecided; the founder said to revisit after the first 10 paying signups.",
+   "evidence_at": [
+    266
+   ],
+   "id": "T3",
+   "keywords": [
+    [
+     "annual",
+     "yearly"
+    ],
+    [
+     "undecided",
+     "decide",
+     "revisit",
+     "pending",
+     "open",
+     "after"
+    ]
+   ],
+   "kind": "pending-decision",
+   "line": "OPEN decision: whether to offer an annual plan; revisit after the first 10 paying signups.",
+   "state": "open",
+   "title": "Annual plan decision"
+  },
+  {
+   "criteria": "Waiting for the email vendor to reply about a dedicated sending IP; nothing decided yet.",
+   "evidence_at": [
+    64,
+    161
+   ],
+   "id": "T4",
+   "keywords": [
+    [
+     "dedicated ip",
+     "dedicated-ip",
+     "dedicated sending ip"
+    ],
+    [
+     "waiting",
+     "awaiting",
+     "pending",
+     "no reply",
+     "reply"
+    ]
+   ],
+   "kind": "waiting-on-external",
+   "line": "WAITING: the email vendor has not yet answered the dedicated IP request.",
+   "state": "open",
+   "title": "Vendor dedicated IP reply"
+  },
+  {
+   "criteria": "The teammate felt the price change was decided without her/him; the founder acknowledged it and promised to call and offer a seat in the next pricing review. The call has not happened yet.",
+   "evidence_at": [
+    194
+   ],
+   "id": "T5",
+   "keywords": [
+    [
+     "imani"
+    ],
+    [
+     "call",
+     "phone",
+     "talk",
+     "apolog"
+    ],
+    [
+     "pricing",
+     "price"
+    ]
+   ],
+   "kind": "interpersonal",
+   "line": "OPEN: the founder owes Imani a call/apology about being left out of the price change, and promised a seat in the next pricing review.",
+   "state": "open",
+   "title": "Call the teammate about being left out of the pricing decision"
+  },
+  {
+   "criteria": "The agent was in the middle of adding an environment-variable table to the README; unfinished.",
+   "evidence_at": [
+    272
+   ],
+   "id": "T6",
+   "keywords": [
+    [
+     "readme"
+    ],
+    [
+     "env",
+     "environment variable"
+    ]
+   ],
+   "kind": "in-progress",
+   "line": "IN PROGRESS: adding an environment-variable table to the README.",
+   "state": "open",
+   "title": "README environment variable table"
+  },
+  {
+   "criteria": "Waiting for the accountant to answer whether VAT/sales tax must be shown on invoices sent through the product; the invoice footer wording is blocked on it.",
+   "evidence_at": [
+    33
+   ],
+   "id": "T7",
+   "keywords": [
+    [
+     "marek",
+     "accountant"
+    ],
+    [
+     "vat",
+     "sales tax",
+     "tax"
+    ]
+   ],
+   "kind": "pending-decision",
+   "line": "WAITING: the accountant (Marek Sundqvist) has not answered the VAT/sales-tax question; the invoice footer wording is blocked on it.",
+   "state": "open",
+   "title": "Accountant's sales-tax answer"
+  },
+  {
+   "criteria": "The founder still owes the agent a logo in SVG format for the landing page and email header.",
+   "evidence_at": [
+    268
+   ],
+   "id": "T8",
+   "keywords": [
+    [
+     "logo"
+    ],
+    [
+     "svg"
+    ]
+   ],
+   "kind": "user-owed",
+   "line": "WAITING on the founder: a logo as an SVG for the landing page and email header.",
+   "state": "open",
+   "title": "Logo file from the founder"
+  }
+ ],
+ "version": 1
+}

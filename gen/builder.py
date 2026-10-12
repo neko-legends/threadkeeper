@@ -102,8 +102,7 @@ class Builder:
 
 
 def render_line(f: dict, stale=False) -> str:
-    fmt = {"v": f["value"], "s": f["stale"][0]["value"] if f["stale"] else ""}
+    """Latest-value sentence, or (stale=True) a cue-free sentence asserting the OLD value as current."""
     if stale and f["stale"]:
-        fmt["v"] = fmt["s"]
-        return f["stale_line"].format(**fmt) if f.get("stale_line") else re.sub(r"\s*\(.*?\)", "", f["line"]).format(**fmt)
-    return f["line"].format(**fmt)
+        return "Current %s: %s." % (f["description"].replace(" (latest)", "").lower(), f["stale"][0]["value"])
+    return f["line"].format(v=f["value"], s=f["stale"][0]["value"] if f["stale"] else "")

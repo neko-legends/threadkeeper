@@ -1,0 +1,1 @@
+Sure! Here's a quick summary: we're building a small invoice-reminder app and fixed a timezone bug. Let me know if you'd like more detail on anything specific, or if you want me to carry on with the README?
