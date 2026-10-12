@@ -354,7 +354,7 @@
   "mechanical_score": 1.0,
   "judge": {
    "verdicts": {
-    "T1": "PRESERVED",
+    "T1": "PARTIAL",
     "T2": "PRESERVED",
     "T3": "PRESERVED",
     "T4": "PRESERVED",
@@ -366,10 +366,10 @@
    "notes": {},
    "judge_fabricated_quotes": 0,
    "parsed": true,
-   "raw": "{\"T1\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Known flaky test**: `reminders > sends at the user's local 9am` — passed only on retry; depends on real clock. **User said leave it for now, look at it later.** Still open.\"}, \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"(2) add a nullable `snoozed_until` column to reminders via a migration.** Agent had just read `src/config.ts` (vars listed above) and said it would write the README table next, then the migration. **Neither is done yet.**\"}, \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"Annual plan: **deferred** — decide after the first 10 paying signups; don't spend time on it now.\"}, \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"Dedicated IP cost from Sendharbor — waiting on their infra team.\"}, \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"User will **call her Friday morning** to apologize/acknowledge and offer her a seat in the next pricing review — user asked to be reminded of this.\"}, \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"**(1) add an environment variable table to the README — START WITH THIS;\"}, \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"Open question: **must VAT be shown on invoices sent through the product?** User will ask this week. Until answered, **invoice footer wording stays generic**.\"}, \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"Logo: user owes an **SVG** \\\"later this week\\\" for landing page + email header; use a **text placeholder** (app name in header) until then.\"}}"
+   "raw": "```json\n{\n  \"T1\": {\n    \"verdict\": \"PARTIAL\",\n    \"quote\": \"**Known flaky test**: `reminders > sends at the user's local 9am` — passed only on retry; depends on real clock. **User said leave it for now, look at it later.** Still open.\"\n  },\n  \"T2\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"(2) add a nullable `snoozed_until` column to reminders via a migration.** Agent had just read `src/config.ts` (vars listed above) and said it would write the README table next, then the migration. **Neither is done yet.**\"\n  },\n  \"T3\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Annual plan: **deferred** — decide after the first 10 paying signups; don't spend time on it now.\"\n  },\n  \"T4\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Dedicated IP question still **open** with their infra team (user asked for cost).\"\n  },\n  \"T5\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Tomasz felt pricing was decided without her (she did competitor research, learned of the $27 change from the pricing page diff). User will **call her Friday morning** to apologize/acknowledge and offer her a seat in the next pricing review — user asked to be reminded of this.\"\n  },\n  \"T6\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"(1) add an environment variable table to the README — START WITH THIS; (2) add a nullable `snoozed_until` column to reminders via a migration.** Agent had just read `src/config.ts` (vars listed above) and said it would write the README table next, then the migration. **Neither is done yet.**\"\n  },\n  \"T7\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"**Odile Fenwick**: user's accountant. Open question: **must VAT be shown on invoices sent through the product?** User will ask this week. Until answered, **invoice footer wording stays generic**.\"\n  },\n  \"T8\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Logo: user owes an **SVG** \\\"later this week\\\" for landing page + email header; use a **text placeholder** (app name in header) until then.\"\n  }\n}\n```\n"
   },
   "final": {
-   "T1": "PRESERVED",
+   "T1": "PARTIAL",
    "T2": "PRESERVED",
    "T3": "PRESERVED",
    "T4": "PRESERVED",
@@ -379,100 +379,70 @@
    "T8": "PRESERVED"
   },
   "final_source": "judge",
-  "score": 1.0,
+  "score": 0.9375,
   "counts": {
-   "PRESERVED": 8,
-   "PARTIAL": 0,
+   "PRESERVED": 7,
+   "PARTIAL": 1,
    "LOST": 0
   }
  },
  "invention": {
   "mechanical": {
-   "unsupported_quotes": [
-    "<fn> dry run"
-   ],
+   "unsupported_quotes": [],
    "unsupported_numbers": [],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 14,
+    "quotes": 7,
     "numbers": 43
    },
-   "count": 1,
-   "checked_total": 57,
-   "per_100": 1.75
+   "skipped_short_quotes": [
+    "$tag",
+    "sendharbour",
+    "data",
+    "next",
+    "later",
+    "4177"
+   ],
+   "count": 0,
+   "checked_total": 50,
+   "per_100": 0.0
   },
   "judge": {
    "items": [
     {
-     "summary_quote": "DNS doc: `docs/dns.md` holds the DKIM record info.",
-     "why": "The session only shows the assistant saying \"I'll write the DNS record into `docs/dns.md`\" — no write_file or edit ever created that file, so claiming it exists and holds the record is unsupported."
-    },
-    {
-     "summary_quote": "`docs/dns.md`: DKIM record.",
-     "why": "Same issue: `docs/dns.md` was never actually written in the session; only an intent to write it was stated."
+     "summary_quote": "Test failures encountered were always stale test fixtures (`amount: 0` defaults); fixed by editing the fixture, not the code.",
+     "why": "During the DST investigation on Day 3, two tests failed in src/jobs/scheduler.test.ts ('keeps 9am local across the DST boundary' and 'handles half-hour zones'). These were not stale fixtures with amount: 0 defaults, and the failure was resolved by editing the code under test in src/lib/tz.ts, not by"
     }
    ],
-   "count": 2,
+   "count": 1,
    "dropped_unverified": 0,
    "parsed": true,
-   "raw": "[{\"summary_quote\": \"DNS doc: `docs/dns.md` holds the DKIM record info.\", \"why\": \"The session only shows the assistant saying \\\"I'll write the DNS record into `docs/dns.md`\\\" — no write_file or edit ever created that file, so claiming it exists and holds the record is unsupported.\"}, {\"summary_quote\": \"`docs/dns.md`: DKIM record.\", \"why\": \"Same issue: `docs/dns.md` was never actually written in the session; only an intent to write it was stated.\"}]"
+   "raw": "```json\n[\n  {\n    \"summary_quote\": \"Test failures encountered were always stale test fixtures (`amount: 0` defaults); fixed by editing the fixture, not the code.\",\n    \"why\": \"During the DST investigation on Day 3, two tests failed in src/jobs/scheduler.test.ts ('keeps 9am local across the DST boundary' and 'handles half-hour zones'). These were not stale fixtures with amount: 0 defaults, and the failure was resolved by editing the code under test in src/lib/tz.ts, not by editing a fixture.\"\n  }\n]\n```\n"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 7,
+    "numbers": 43
+   },
+   "skipped_short_quotes": [
+    "$tag",
+    "sendharbour",
+    "data",
+    "next",
+    "later",
+    "4177"
+   ],
+   "count": 0,
+   "checked_total": 50,
+   "per_100": 0.0
   }
  },
- "composite": 90.64,
+ "composite": 95.02,
+ "composite_v1": 94.02,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
- "model": "z-ai-glm-5-3-flash",
- "effort": "default",
- "corpus": "128k",
- "judge": {
-  "model": "kimi-k3",
-  "transport": "openai",
-  "effort": "low",
-  "calls": [
-   {
-    "status": 200,
-    "error": null,
-    "usage": {
-     "prompt_tokens": 4312,
-     "completion_tokens": 443,
-     "total_tokens": 4755,
-     "prompt_tokens_details": {
-      "cached_tokens": 4288
-     },
-     "cache_read_input_tokens": 4288,
-     "completion_tokens_details": {
-      "accepted_prediction_tokens": 294,
-      "audio_tokens": 0,
-      "reasoning_tokens": 35,
-      "rejected_prediction_tokens": 150
-     }
-    },
-    "latency_s": 2.361
-   },
-   {
-    "status": 200,
-    "error": null,
-    "usage": {
-     "prompt_tokens": 134027,
-     "completion_tokens": 2418,
-     "total_tokens": 136445,
-     "prompt_tokens_details": {
-      "cached_tokens": 134016
-     },
-     "cache_read_input_tokens": 134016,
-     "completion_tokens_details": {
-      "accepted_prediction_tokens": 1322,
-      "audio_tokens": 0,
-      "reasoning_tokens": 2293,
-      "rejected_prediction_tokens": 1966
-     }
-    },
-    "latency_s": 15.279
-   }
-  ],
-  "failed_calls": 0
- },
- "judge_model": "kimi-k3",
- "composite_v1": 95.21,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -486,8 +456,74 @@
  },
  "components": {
   "facts_score": 0.931,
-  "threads_score": 1.0,
-  "invention_score": 0.75,
-  "mechanical_inventions": 1
- }
+  "threads_score": 0.9375,
+  "invention_score": 1.0,
+  "mechanical_inventions": 0
+ },
+ "model": "z-ai-glm-5-3-flash",
+ "effort": "default",
+ "corpus": "128k",
+ "versions": {
+  "requested_model": "z-ai-glm-5-3-flash",
+  "resolved_model_id": "z-ai-glm-5-3-flash",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "backfill-from-stored-run-output"
+ },
+ "judge": {
+  "model": "venice/gemini-3-8-flash",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 37.032,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 468.045,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   }
+  ],
+  "versions": {
+   "requested_model": "venice/gemini-3-8-flash",
+   "resolved_model_id": "venice/gemini-3-8-flash",
+   "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "at-run"
+  },
+  "failed_calls": 0
+ },
+ "judge_model": "venice/gemini-3-8-flash"
 }

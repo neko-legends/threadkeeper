@@ -13,6 +13,7 @@ import time
 from gen.render import load_session, render_transcript
 from .client import message_of, post_chat
 from .cli import call_cli
+from . import versions
 
 ALL_EFFORTS = "none,low,medium,high,xhigh,max"
 
@@ -106,7 +107,7 @@ def main(argv=None):
                     "compact_prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
                     "latency_s": r["latency_s"], "finish_reason": r.get("finish_reason"), "usage": r["usage"],
                     "cost_usd": None, "list_price_equiv_usd": r["cost_usd"], "error": r["error"], "started_at_unix": int(t0), "finished_at_unix": int(time.time()),
-                    "judge_model": None,
+                    "judge_model": None, "versions": versions.for_cli_result(a.transport, a.model, eff, r["usage"]),
                 }
                 with open(os.path.join(arm, "output.md"), "w", encoding="utf-8") as fh:
                     fh.write(text)
@@ -132,6 +133,7 @@ def main(argv=None):
                 "finish_reason": choice.get("finish_reason"), "usage": (r.get("body") or {}).get("usage"),
                 "cost_usd": cost_of(r), "tool_calls": msg.get("tool_calls"), "has_reasoning_content": bool(msg.get("reasoning_content") or msg.get("reasoning")),
                 "error": None if ok else r.get("error"), "started_at_unix": int(t0), "finished_at_unix": int(time.time()),
+                "versions": versions.for_http_result(a.model, eff, r.get("body")),
             }
             with open(os.path.join(arm, "output.md"), "w", encoding="utf-8") as fh:
                 fh.write(msg.get("content") or "")

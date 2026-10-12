@@ -387,6 +387,55 @@
   "mechanical": {
    "unsupported_quotes": [
     "release v0.9.2 live at https://staging.ledgerling.example, health: ok",
+    ":true}. - this looks like a routing or handler issue; not investigated. - webhook double-processing: the user said the"
+   ],
+   "unsupported_numbers": [
+    "11:00",
+    "06:00",
+    "07:00"
+   ],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 29,
+    "numbers": 174
+   },
+   "skipped_short_quotes": [
+    "day 2",
+    "day 3",
+    "sendharbour",
+    "pnpm only.",
+    "later",
+    "added it",
+    "$tag",
+    "9:00 local",
+    "this week",
+    "data",
+    "inv_…",
+    "status",
+    "currency",
+    "next",
+    "via codemod",
+    "fixed",
+    "3863",
+    "scheduled=",
+    "../lib/tz",
+    "0 9 * * *",
+    "string"
+   ],
+   "count": 5,
+   "checked_total": 203,
+   "per_100": 2.46
+  },
+  "judge": {
+   "items": [],
+   "count": 0,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "[]\n"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [
+    "release v0.9.2 live at https://staging.ledgerling.example, health: ok",
     "inv_…",
     ":true}. - this looks like a routing or handler issue; not investigated. - webhook double-processing: the user said the",
     "via codemod",
@@ -405,16 +454,9 @@
    "count": 8,
    "checked_total": 226,
    "per_100": 3.54
-  },
-  "judge": {
-   "items": [],
-   "count": 0,
-   "dropped_unverified": 0,
-   "parsed": true,
-   "raw": "[]\n"
   }
  },
- "composite": 75.74,
+ "composite": 78.3,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "opus",
  "effort": "max",
@@ -439,10 +481,20 @@
     "stderr": ""
    }
   ],
-  "failed_calls": 0
+  "failed_calls": 0,
+  "versions": {
+   "requested_model": "openai/gpt-6-astra",
+   "resolved_model_id": "openai/gpt-6-astra",
+   "resolution_source": "explicit id as requested (no echo recorded at run time)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "backfill"
+  }
  },
  "judge_model": "openai/gpt-6-astra",
- "composite_v1": 84.78,
+ "composite_v1": 87.78,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -457,7 +509,18 @@
  "components": {
   "facts_score": 0.9483,
   "threads_score": 0.875,
-  "invention_score": 0.2727,
-  "mechanical_inventions": 8
+  "invention_score": 0.375,
+  "mechanical_inventions": 5
+ },
+ "versions": {
+  "requested_model": "opus",
+  "resolved_model_id": "claude-opus-5-5",
+  "resolution_source": "claude -p json modelUsage (canonicalModel)",
+  "resolved_on": "2026-10-11",
+  "transport": "claude",
+  "tool_version": "2.1.289 (Claude Code)",
+  "effort_flag": "--effort max",
+  "captured": "backfill-from-stored-run-output",
+  "tool_version_note": "version installed at backfill 2026-10-11, not necessarily at run time"
  }
 }

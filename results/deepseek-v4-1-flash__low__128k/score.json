@@ -343,124 +343,93 @@
   "mechanical_score": 0.9375,
   "judge": {
    "verdicts": {
-    "T1": "PRESERVED",
+    "T1": "PARTIAL",
     "T2": "PRESERVED",
     "T3": "PRESERVED",
     "T4": "PRESERVED",
     "T5": "PRESERVED",
     "T6": "PRESERVED",
-    "T7": "PRESERVED",
+    "T7": "PARTIAL",
     "T8": "PRESERVED"
    },
    "notes": {},
    "judge_fabricated_quotes": 0,
    "parsed": true,
-   "raw": "```json\n{\n  \"T1\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Known flaky test**: `reminders > sends at the user's local 9am` (depends on the real clock; passed only on retry). User said **leave it for now, look later**.\"},\n  \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"The `snoozed_until` migration is **not yet written**.\"},\n  \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Annual plan**: decide **after the first 10 paying signups**; no time to be spent now.\"},\n  \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Dedicated IP: still open**, their infra team will come back. Cost unknown.\"},\n  \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"**User will call her Friday morning** to acknowledge this and offer a seat in the next pricing review.\"},\n  \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"the table is **not yet written**\"},\n  \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"user will ask this week whether VAT must be shown on invoices sent through the product. **Until answered, keep the invoice footer wording generic.**\"},\n  \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Logo**: user still owes an SVG later this week for the landing page and email header.\"}\n}\n```"
+   "raw": "{\n  \"T1\": {\n    \"verdict\": \"PARTIAL\",\n    \"quote\": \"**Known flaky test**: `reminders > sends at the user's local 9am` (depends on the real clock; passed only on retry). User said **leave it for now, look later**.\"\n  },\n  \"T2\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"The `snoozed_until` migration is **not yet written**.\"\n  },\n  \"T3\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"**Annual plan**: decide **after the first 10 paying signups**; no time to be spent now.\"\n  },\n  \"T4\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"**Dedicated IP: still open**, their infra team will come back. Cost unknown.\"\n  },\n  \"T5\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"She felt left out of the pricing decision (heard the new number from the pricing-page diff). **User will call her Friday morning** to acknowledge this and offer a seat in the next pricing review. **User asked to be reminded.**\"\n  },\n  \"T6\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"README has a `## Environment` section (around lines 12–14) containing \\\"Copy `.env.example` to `.env.local`.\\\" and \\\"TODO: list every variable here.\\\" — the table is **not yet written**.\"\n  },\n  \"T7\": {\n    \"verdict\": \"PARTIAL\",\n    \"quote\": \"**Odile Fenwick** (accountant): user will ask this week whether VAT must be shown on invoices sent through the product. **Until answered, keep the invoice footer wording generic.**\"\n  },\n  \"T8\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"**Logo**: user still owes an SVG later this week for the landing page and email header. **Use a text placeholder until then.**\"\n  }\n}\n"
   },
   "final": {
-   "T1": "PRESERVED",
+   "T1": "PARTIAL",
    "T2": "PRESERVED",
    "T3": "PRESERVED",
    "T4": "PRESERVED",
    "T5": "PRESERVED",
    "T6": "PRESERVED",
-   "T7": "PRESERVED",
+   "T7": "PARTIAL",
    "T8": "PRESERVED"
   },
   "final_source": "judge",
-  "score": 1.0,
+  "score": 0.875,
   "counts": {
-   "PRESERVED": 8,
-   "PARTIAL": 0,
+   "PRESERVED": 6,
+   "PARTIAL": 2,
    "LOST": 0
   }
  },
  "invention": {
   "mechanical": {
-   "unsupported_quotes": [
-    "<name> dry run"
-   ],
+   "unsupported_quotes": [],
    "unsupported_numbers": [],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 11,
+    "quotes": 8,
     "numbers": 56
    },
-   "count": 1,
-   "checked_total": 67,
-   "per_100": 1.49
+   "skipped_short_quotes": [
+    "tomasz",
+    "later",
+    "4177"
+   ],
+   "count": 0,
+   "checked_total": 64,
+   "per_100": 0.0
   },
   "judge": {
    "items": [
     {
      "summary_quote": "**bumped to 22.6.1 everywhere** (CI, Dockerfile, `.nvmrc`)",
-     "why": "The session only shows `.nvmrc` and the Dockerfile being edited (the `git diff --stat` after the bump lists exactly those two files). No CI configuration was ever opened or modified, so the claim that the Node bump was applied to CI is not supported by the session."
+     "why": "Node was only updated in `.nvmrc` and `Dockerfile`. It was never updated in CI during the session."
     },
     {
      "summary_quote": "`ioredis` was added then removed.",
-     "why": "The session never contains any step that adds `ioredis`; it only shows `pnpm remove ioredis` (output `- ioredis 5.4.1`). The claim that it was added during the session describes an event the session never recorded."
+     "why": "The session records `ioredis` being removed via `pnpm remove ioredis`, but it was never added during the session."
     }
    ],
    "count": 2,
    "dropped_unverified": 0,
    "parsed": true,
-   "raw": "```json\n[\n  {\n    \"summary_quote\": \"**bumped to 22.6.1 everywhere** (CI, Dockerfile, `.nvmrc`)\",\n    \"why\": \"The session only shows `.nvmrc` and the Dockerfile being edited (the `git diff --stat` after the bump lists exactly those two files). No CI configuration was ever opened or modified, so the claim that the Node bump was applied to CI is not supported by the session.\"\n  },\n  {\n    \"summary_quote\": \"`ioredis` was added then removed.\",\n    \"why\": \"The session never contains any step that adds `ioredis`; it only shows `pnpm remove ioredis` (output `- ioredis 5.4.1`). The claim that it was added during the session describes an event the session never recorded.\"\n  }\n]\n```"
+   "raw": "```json\n[\n  {\n    \"summary_quote\": \"**bumped to 22.6.1 everywhere** (CI, Dockerfile, `.nvmrc`)\",\n    \"why\": \"Node was only updated in `.nvmrc` and `Dockerfile`. It was never updated in CI during the session.\"\n  },\n  {\n    \"summary_quote\": \"`ioredis` was added then removed.\",\n    \"why\": \"The session records `ioredis` being removed via `pnpm remove ioredis`, but it was never added during the session.\"\n  }\n]\n```\n"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 8,
+    "numbers": 56
+   },
+   "skipped_short_quotes": [
+    "tomasz",
+    "later",
+    "4177"
+   ],
+   "count": 0,
+   "checked_total": 64,
+   "per_100": 0.0
   }
  },
- "composite": 92.2,
+ "composite": 94.7,
+ "composite_v1": 93.73,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
- "model": "deepseek-v4-1-flash",
- "effort": "low",
- "corpus": "128k",
- "judge": {
-  "model": "z-ai-glm-5-3-flash",
-  "transport": "openai",
-  "effort": "low",
-  "calls": [
-   {
-    "status": 200,
-    "error": null,
-    "usage": {
-     "prompt_tokens": 4835,
-     "completion_tokens": 1320,
-     "total_tokens": 6155,
-     "prompt_tokens_details": {
-      "cached_tokens": 0
-     },
-     "completion_tokens_details": {
-      "accepted_prediction_tokens": 915,
-      "audio_tokens": 0,
-      "reasoning_tokens": 991,
-      "rejected_prediction_tokens": 297
-     }
-    },
-    "latency_s": 7.762
-   },
-   {
-    "status": 200,
-    "error": null,
-    "usage": {
-     "prompt_tokens": 134198,
-     "completion_tokens": 5901,
-     "total_tokens": 140099,
-     "prompt_tokens_details": {
-      "cached_tokens": 131072
-     },
-     "cache_read_input_tokens": 131072,
-     "completion_tokens_details": {
-      "accepted_prediction_tokens": 4101,
-      "audio_tokens": 0,
-      "reasoning_tokens": 5712,
-      "rejected_prediction_tokens": 1296
-     }
-    },
-    "latency_s": 36.335
-   }
-  ],
-  "failed_calls": 0
- },
- "judge_model": "z-ai-glm-5-3-flash",
- "composite_v1": 97.1,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -474,8 +443,74 @@
  },
  "components": {
   "facts_score": 0.9655,
-  "threads_score": 1.0,
-  "invention_score": 0.75,
-  "mechanical_inventions": 1
- }
+  "threads_score": 0.875,
+  "invention_score": 1.0,
+  "mechanical_inventions": 0
+ },
+ "model": "deepseek-v4-1-flash",
+ "effort": "low",
+ "corpus": "128k",
+ "versions": {
+  "requested_model": "deepseek-v4-1-flash",
+  "resolved_model_id": "deepseek-v4-1-flash",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "reasoning_effort=low",
+  "captured": "backfill-from-stored-run-output"
+ },
+ "judge": {
+  "model": "venice/gemini-3-8-flash",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 97.072,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 315.36,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   }
+  ],
+  "versions": {
+   "requested_model": "venice/gemini-3-8-flash",
+   "resolved_model_id": "venice/gemini-3-8-flash",
+   "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "at-run"
+  },
+  "failed_calls": 0
+ },
+ "judge_model": "venice/gemini-3-8-flash"
 }

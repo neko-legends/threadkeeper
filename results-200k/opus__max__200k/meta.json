@@ -82,6 +82,27 @@
     "stderr": ""
    }
   ],
-  "failed_calls": 0
+  "failed_calls": 0,
+  "versions": {
+   "requested_model": "openai/gpt-6-astra",
+   "resolved_model_id": "openai/gpt-6-astra",
+   "resolution_source": "explicit id as requested (no echo recorded at run time)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "backfill"
+  }
+ },
+ "versions": {
+  "requested_model": "opus",
+  "resolved_model_id": "claude-opus-5-5",
+  "resolution_source": "claude -p json modelUsage (canonicalModel)",
+  "resolved_on": "2026-10-11",
+  "transport": "claude",
+  "tool_version": "2.1.289 (Claude Code)",
+  "effort_flag": "--effort max",
+  "captured": "backfill-from-stored-run-output",
+  "tool_version_note": "version installed at backfill 2026-10-11, not necessarily at run time"
  }
 }

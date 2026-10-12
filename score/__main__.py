@@ -45,6 +45,28 @@ def rescore(results_dir, w=None):
     print("leaderboard: %d arms -> %s" % (len(rows), os.path.join(results_dir, "leaderboard.md")))
 
 
+def remechanical(results_dir, corpora_dir, w=None):
+    """Re-run ONLY the mechanical invention check on each stored output.md (no model calls) and recompute the composites.
+    The previous mechanical block is kept as invention.mechanical_prev."""
+    corpora = {}
+    for sp in sorted(glob.glob(os.path.join(results_dir, "*", "score.json"))):
+        res = json.load(open(sp))
+        if res.get("status") != "SCORED":
+            continue
+        arm = os.path.dirname(sp)
+        c = res["corpus"]
+        corpora.setdefault(c, Corpus(os.path.join(corpora_dir, c)))
+        new = invention.check(open(os.path.join(arm, "output.md"), encoding="utf-8").read(), corpora[c].index)
+        old = res["invention"].get("mechanical_prev") or res["invention"]["mechanical"]
+        res["invention"]["mechanical_prev"] = old
+        res["invention"]["mechanical"] = new
+        res.update(weights_mod.composites(res["facts"]["net"], res["threads"]["score"], new["count"], w))
+        json.dump(res, open(sp, "w"), indent=1, ensure_ascii=False)
+        print("%s: mech %d -> %d (checked %d -> %d)" % (os.path.basename(arm), old["count"], new["count"], old.get("checked_total", 0), new["checked_total"]))
+    rows = report.write(results_dir, w, corpora_dir)
+    print("leaderboard: %d arms -> %s" % (len(rows), os.path.join(results_dir, "leaderboard.md")))
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="python -m score")
     ap.add_argument("--results", default="results")
@@ -59,21 +81,26 @@ def main(argv=None):
     ap.add_argument("--allow-same-family", action="store_true", help="NOT recommended: allow a judge from the graded model's family")
     ap.add_argument("--weights", help="override composite weights, e.g. facts=0.45,threads=0.30,invention=0.25 (default: score/weights.py)")
     ap.add_argument("--rescore", action="store_true", help="recompute composite/composite_v1 from the STORED score.json fields (no model calls, no judge), then rebuild the board")
+    ap.add_argument("--remechanical", action="store_true", help="re-run only the mechanical invention check on stored outputs (no model calls) and rebuild the board")
     ap.add_argument("--only", help="substring filter on arm directory names")
     a = ap.parse_args(argv)
     w = weights_mod.parse_weights(a.weights) if a.weights else None
     if a.rescore:
         return rescore(a.results, w)
+    if a.remechanical:
+        return remechanical(a.results, a.corpora, w)
     judge = None
     if not a.no_judge:
         key = os.environ.get(a.judge_api_key_env)
         if a.judge_base_url and a.judge_model and key:
             judge = Judge(a.judge_base_url, key, a.judge_model, a.judge_effort)
-        else:
-            print("note: judge not configured (need --judge-base-url, --judge-model and key env %s); scoring mechanically" % a.judge_api_key_env, file=sys.stderr)
+        elif not a.judge_map:
+            sys.exit("error: no judge configured (need --judge-base-url, --judge-model and key env %s, or --judge-map). "
+                     "Refusing to score silently without a judge; pass --no-judge for mechanical-only scoring." % a.judge_api_key_env)
     rules = json.load(open(a.judge_map))["rules"] if a.judge_map else []
     judges = {}
     corpora = {}
+    refused = []
     for d in sorted(glob.glob(os.path.join(a.results, "*", "meta.json"))):
         arm = os.path.dirname(d)
         if a.only and a.only not in os.path.basename(arm):
@@ -118,11 +145,21 @@ def main(argv=None):
                 arm_judge, jspec, jnote = None, None, "judge refused: " + bad
         n_calls = len(arm_judge.calls) if arm_judge else 0
         res = score_output(text, corpora[c], meta, arm_judge, w)
-        res.update(model=meta["model"], effort=meta["effort"], corpus=c)
+        res.update(model=meta["model"], effort=meta["effort"], corpus=c, versions=meta.get("versions"))
+        jc = arm_judge.calls[n_calls:] if arm_judge else []
+        if arm_judge and not jc:
+            jnote = "judge not invoked (arm status %s)" % res["status"]
+            arm_judge = None
         if arm_judge:
-            jc = arm_judge.calls[n_calls:]
+            jt, ji = (res.get("threads") or {}).get("judge"), (res.get("invention") or {}).get("judge")
+            if res["status"] == "SCORED" and (any(x.get("status") not in (200, "ok") for x in jc) or not (jt and jt["parsed"] and ji and ji["parsed"])):
+                # a judge that did not actually run must not be written into score.json as if it had
+                refused.append(os.path.basename(arm))
+                print("%s: REFUSED - judge %s produced no usable output (%d call(s), %d failed); score.json left untouched"
+                      % (os.path.basename(arm), jspec["model"], len(jc), sum(1 for x in jc if x.get("status") not in (200, "ok"))), file=sys.stderr)
+                continue
             res["judge"] = {"model": jspec["model"], "transport": jspec["transport"], "effort": jspec.get("effort"),
-                            "calls": jc, "failed_calls": sum(1 for x in jc if x.get("status") not in (200, "ok"))}
+                            "calls": jc, "versions": next((x["versions"] for x in jc if x.get("versions")), None), "failed_calls": sum(1 for x in jc if x.get("status") not in (200, "ok"))}
             res["judge_model"] = jspec["model"]
         else:
             res["judge"] = {"model": None, "note": jnote or "no judge"}
@@ -133,6 +170,8 @@ def main(argv=None):
         print("%s -> %s %s" % (os.path.basename(arm), res["status"], res.get("composite") if res["status"] == "SCORED" else res["failed_as"]))
     rows = report.write(a.results, w)
     print("leaderboard: %d arms -> %s" % (len(rows), os.path.join(a.results, "leaderboard.md")))
+    if refused:
+        sys.exit("error: %d arm(s) not scored because the judge never produced usable output: %s" % (len(refused), ", ".join(refused)))
 
 
 if __name__ == "__main__":

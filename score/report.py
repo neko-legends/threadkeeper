@@ -8,7 +8,7 @@ import os
 
 from . import invention, weights as weights_mod
 
-COLS = ["model", "effort", "corpus", "transport", "judge_model", "judge_ok", "status", "composite", "composite_v1", "facts_found", "facts_total", "facts_net_pct", "stale_facts", "decoy_hits",
+COLS = ["model", "effort", "corpus", "transport", "resolved_model_id", "tool_version", "effort_flag", "resolved_on", "judge_model", "judge_resolved_id", "judge_ok", "status", "composite", "composite_v1", "facts_found", "facts_total", "facts_net_pct", "stale_facts", "decoy_hits",
         "threads_judge_preserved", "threads_judge_partial", "threads_judge_lost", "threads_mech_preserved", "threads_mech_partial", "threads_mech_lost", "threads_source",
         "invention_mech", "invention_checked", "invention_mech_per100", "invention_judge", "latency_s", "prompt_tokens", "completion_tokens", "reasoning_tokens", "cost_usd", "finish_reason"]
 
@@ -23,6 +23,7 @@ BREAKDOWN = [
     ("invention mech", ["invention_mech"]), ("mech checked (quotes+nums)", ["invention_checked"]), ("mech per 100 checked", ["invention_mech_per100"]), ("invention judge", ["invention_judge"]),
     ("latency s", ["latency_s"]), ("prompt tok", ["prompt_tokens"]), ("completion tok", ["completion_tokens"]), ("reasoning tok", ["reasoning_tokens"]),
     ("judge", ["judge_model"]), ("transport", ["transport"]),
+    ("resolved model id", ["resolved_model_id"]), ("tool version", ["tool_version"]), ("effort flag", ["effort_flag"]),
 ]
 # keys that may legitimately be None on a SCORED row (rendered "n/a"): judge-derived, and usage the transport does not report
 MAY_BE_NA = {"threads_judge_preserved", "threads_judge_partial", "threads_judge_lost", "invention_judge", "prompt_tokens", "completion_tokens", "reasoning_tokens", "latency_s"}
@@ -62,8 +63,11 @@ def row_of(score: dict, meta: dict) -> dict:
     r = {"model": meta.get("model"), "effort": meta.get("effort"), "corpus": meta.get("corpus"),
          "transport": meta.get("transport", "openai"), "latency_s": meta.get("latency_s"), "prompt_tokens": u.get("prompt_tokens"), "completion_tokens": u.get("completion_tokens"),
          "reasoning_tokens": det.get("reasoning_tokens"), "cost_usd": meta.get("cost_usd"), "finish_reason": meta.get("finish_reason")}
+    v = score.get("versions") or meta.get("versions") or {}
+    r.update(resolved_model_id=v.get("resolved_model_id"), tool_version=v.get("tool_version") or "n/a (HTTP)", effort_flag=v.get("effort_flag"), resolved_on=v.get("resolved_on"))
     st = score["status"]
     j = score.get("judge") or {}
+    r["judge_resolved_id"] = (j.get("versions") or {}).get("resolved_model_id")
     r["judge_model"] = j.get("model") or "none"
     r["judge_ok"] = (j.get("failed_calls", 0) == 0) if j.get("model") else None
     if j.get("model") is None and j.get("note"):
@@ -122,6 +126,49 @@ def corpus_hashes(rows, corpora_dir):
     return {c: man[c]["sha256"]["session.jsonl"] for c in sorted({r["corpus"] for r in rows}) if c in man}
 
 
+def version_line(rows):
+    """One line naming every distinct model id actually run, so a reader never has to guess. An alias is not a version."""
+    seen = {}
+    for r in rows:
+        key = (r["model"], r.get("resolved_model_id"), r.get("tool_version"), r.get("resolved_on"), r.get("transport"))
+        seen[key] = 1
+    parts = []
+    for (m, rid, tv, on, tp) in seen:
+        parts.append("`%s`%s via %s%s, resolved %s" % (m, "" if m == rid else " = `%s`" % rid, "%s CLI %s" % (tp, tv) if tv and not tv.startswith("n/a") else "HTTP", "", on))
+    return "**Model versions** (an alias is not a version: re-resolve on every run): " + "; ".join(parts)
+
+
+def _jline(d):
+    t = (d.get("threads") or {})
+    jt = t.get("judge") or {}
+    ji = (d.get("invention") or {}).get("judge")
+    pla = _pla(jt["verdicts"]) if jt.get("verdicts") and jt.get("parsed") else None
+    return {"judge": (d.get("judge") or {}).get("model") or "none", "inv": ji["count"] if ji else None, "threads": "/".join(map(str, pla)) if pla else "n/a",
+            "tscore": t.get("score"), "composite": d.get("composite")}
+
+
+def judge_comparison(results_dir):
+    """Markdown table: the per-arm (multi-)judge results kept as score_multijudge.json next to the single-judge re-grade in score.json."""
+    out = []
+    for sp in sorted(glob.glob(os.path.join(results_dir, "*", "score_multijudge.json"))):
+        d = os.path.dirname(sp)
+        old, new = json.load(open(sp)), json.load(open(os.path.join(d, "score.json")))
+        if old.get("status") != "SCORED" or new.get("status") != "SCORED":
+            continue
+        a, b = _jline(old), _jline(new)
+        out.append((new["composite"], os.path.basename(d), a, b, new["invention"]["mechanical"]["count"]))
+    if not out:
+        return []
+    out.sort(key=lambda x: -x[0])
+    L = ["", "## Judge comparison: one judge for every arm vs the original per-arm judges", "",
+         "Single judge: `%s` (a family that grades nothing else on this board). `multijudge` = the original rows, each graded by a different judge (kept as `score_multijudge.json`); "
+         "those judge counts are NOT comparable across rows, the single-judge column is. Mechanical invention needs no judge and is identical in both.\n" % out[0][3]["judge"],
+         "| model/effort | mech inv | multijudge (judge) | inv judge (multi) | threads P/PA/L (multi) | inv judge (single) | threads P/PA/L (single) | composite multi | composite single |", "|---|---|---|---|---|---|---|---|---|"]
+    for comp, name, a, b, mech in out:
+        L.append("| %s | %s | %s | %s | %s | %s | %s | %.1f | %.1f |" % (name.replace("__128k", ""), mech, a["judge"], a["inv"], a["threads"], b["inv"], b["threads"], a["composite"], comp))
+    return L
+
+
 def write(results_dir, w=None, corpora_dir="corpora"):
     rows = collect(results_dir)
     drop = _strip()
@@ -137,6 +184,7 @@ def write(results_dir, w=None, corpora_dir="corpora"):
     lines = ["# threadkeeper leaderboard", "",
              "**composite** (v2): `%s`" % weights_mod.formula(w), "",
              "**composite_v1** (kept for old comparisons): `%s`" % weights_mod.FORMULA_V1, "",
+             version_line(rows), "",
              "Corpus session.jsonl sha256: " + ("; ".join("%s=`%s`" % kv for kv in hashes.items()) or "n/a"), "",
              "Never read a composite alone: every row carries its breakdown, the judge that graded it and the transport. "
              "FAILED = the output was not a summary (continuation / chat-reply / empty / tool-call); it is not ranked. "
@@ -148,5 +196,6 @@ def write(results_dir, w=None, corpora_dir="corpora"):
         if not r.get("judge_ok", True):
             cells[-2] = str(cells[-2]) + " (JUDGE CALL FAILED)"
         lines.append("| " + " | ".join(str(x) for x in cells) + " |")
+    lines += judge_comparison(results_dir)
     open(os.path.join(results_dir, "leaderboard.md"), "w").write("\n".join(lines) + "\n")
     return rows

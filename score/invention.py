@@ -11,6 +11,17 @@ QUOTES = [re.compile(r'"([^"\n]{4,160})"'), re.compile(r"`([^`\n]{4,160})`"), re
           re.compile(r"(?<![\w])'([^'\n]{4,160})'(?![\w])")]
 
 
+MIN_QUOTE = 12  # shorter spans are scare-quotes / single words ("fixes", "all good"); not checkable as verbatim, reported as skipped
+PLACEHOLDER = re.compile(r"<[^<>\n]{1,40}>|…|\.{3}")  # summarisers template identifiers (<name>) and elide ids (inv_…)
+EDGE = " \t.,;:!?-–—/\\|"
+
+
+def quote_fragments(q: str):
+    """A quoted span is checked as the verbatim fragments around placeholders/ellipses, with edge punctuation stripped
+    (the punctuation belongs to the summary's sentence, not the session's text). Fragments < 4 chars are uncheckable."""
+    return [f for f in (x.strip(EDGE) for x in PLACEHOLDER.split(q)) if len(f) >= 4]
+
+
 def corpus_index(corpus_text: str):
     c = norm(corpus_text)
     toks = set()
@@ -35,14 +46,19 @@ def with_rate(mech: dict) -> dict:
 def check(summary: str, index) -> dict:
     c, toks, hexes = index
     s = norm(summary)
-    bad_q, nq = [], 0
+    bad_q, nq, skipped, seen = [], 0, [], set()
     for rx in QUOTES:
         for m in rx.finditer(s):
             q = m.group(1).strip()
-            if len(q) < 4 or q in bad_q:
+            if len(q) < 4 or q in seen:
+                continue
+            seen.add(q)
+            frags = quote_fragments(q)
+            if len(q) < MIN_QUOTE or not frags:
+                skipped.append(q)
                 continue
             nq += 1
-            if q not in c:
+            if not all(f in c for f in frags):
                 bad_q.append(q)
     bad_n, nn = [], 0
     for t in NUM.findall(s):
@@ -53,5 +69,5 @@ def check(summary: str, index) -> dict:
             bad_n.append(t)
     bad_h = [h for h in set(HEX.findall(s)) if h not in hexes and h not in c]
     return with_rate({"unsupported_quotes": bad_q, "unsupported_numbers": bad_n, "unsupported_hashes": sorted(bad_h),
-            "checked": {"quotes": nq, "numbers": nn},
+            "checked": {"quotes": nq, "numbers": nn}, "skipped_short_quotes": skipped,
             "count": len(bad_q) + len(bad_n) + len(bad_h)})

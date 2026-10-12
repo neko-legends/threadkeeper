@@ -391,12 +391,18 @@
    "unsupported_numbers": [],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 9,
+    "quotes": 5,
     "numbers": 34
    },
+   "skipped_short_quotes": [
+    "data",
+    "next",
+    "3863",
+    "later"
+   ],
    "count": 1,
-   "checked_total": 43,
-   "per_100": 2.33
+   "checked_total": 39,
+   "per_100": 2.56
   },
   "judge": {
    "items": [
@@ -409,6 +415,20 @@
    "dropped_unverified": 0,
    "parsed": true,
    "raw": "[{\"summary_quote\": \"Node **22.5.2** everywhere (CI, Dockerfile, `.nvmrc`) — bumped from 20.11.2\", \"why\": \"The session only shows `.nvmrc` and the Dockerfile being changed (`echo 22.5.2 > .nvmrc && sed -i 's/node:20.11/node:22.5/' Dockerfile`; `git diff --stat` lists only those two files). CI was never touched in the session, and the agent's own report was 'Bumped to Node 22.5.2 in `.nvmrc` and the Dockerfile.' The claim that CI was bumped to 22.5.2 is a detail the session never contained.\"}]"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [
+    "expected n to be m"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 9,
+    "numbers": 34
+   },
+   "count": 1,
+   "checked_total": 43,
+   "per_100": 2.33
   }
  },
  "composite": 90.26,
@@ -461,7 +481,17 @@
     "latency_s": 28.165
    }
   ],
-  "failed_calls": 0
+  "failed_calls": 0,
+  "versions": {
+   "requested_model": "z-ai-glm-5-3-flash",
+   "resolved_model_id": "z-ai-glm-5-3-flash",
+   "resolution_source": "explicit id as requested (no echo recorded at run time)",
+   "resolved_on": "2026-10-11",
+   "transport": "openai",
+   "tool_version": null,
+   "effort_flag": "reasoning_effort=low",
+   "captured": "backfill"
+  }
  },
  "judge_model": "z-ai-glm-5-3-flash",
  "composite_v1": 94.73,
@@ -481,5 +511,15 @@
   "threads_score": 1.0,
   "invention_score": 0.75,
   "mechanical_inventions": 1
+ },
+ "versions": {
+  "requested_model": "deepseek-v4-1-flash",
+  "resolved_model_id": "deepseek-v4-1-flash",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "reasoning_effort=low",
+  "captured": "backfill-from-stored-run-output"
  }
 }

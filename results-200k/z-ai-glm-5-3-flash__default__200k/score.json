@@ -385,18 +385,24 @@
   "mechanical": {
    "unsupported_quotes": [
     "copy .env.example to .env.local. todo: list every variable here.",
-    "expected n to be m",
-    "<fn> dry run"
+    "expected n to be m"
    ],
    "unsupported_numbers": [],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 10,
+    "quotes": 5,
     "numbers": 60
    },
-   "count": 3,
-   "checked_total": 70,
-   "per_100": 4.29
+   "skipped_short_quotes": [
+    "sendharbour",
+    "data",
+    "next",
+    "later",
+    "3863"
+   ],
+   "count": 2,
+   "checked_total": 65,
+   "per_100": 3.08
   },
   "judge": {
    "items": [
@@ -413,9 +419,25 @@
    "dropped_unverified": 0,
    "parsed": true,
    "raw": "[{\"summary_quote\": \"`SELECT ... FOR UPDATE SKIP LOCKED`: locks returned rows, skips rows already locked by other transactions — the standard Postgres job-queue trick. (Asked 3 times.)\", \"why\": \"The user asked the `SELECT ... FOR UPDATE SKIP LOCKED` question 4 times in the session, not 3.\"}, {\"summary_quote\": \"Boolean column indexes: usually not worth it alone; partial index like `WHERE sent = false` pays off when unsent rows are a small fraction. At current row counts, no measurable gain. (Asked twice.)\", \"why\": \"The user asked the boolean-index question 3 times in the session, not twice.\"}]"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [
+    "copy .env.example to .env.local. todo: list every variable here.",
+    "expected n to be m",
+    "<fn> dry run"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 10,
+    "numbers": 60
+   },
+   "count": 3,
+   "checked_total": 70,
+   "per_100": 4.29
   }
  },
- "composite": 82.91,
+ "composite": 85.41,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "z-ai-glm-5-3-flash",
  "effort": "default",
@@ -466,10 +488,20 @@
     "latency_s": 45.892
    }
   ],
-  "failed_calls": 0
+  "failed_calls": 0,
+  "versions": {
+   "requested_model": "kimi-k3",
+   "resolved_model_id": "kimi-k3",
+   "resolution_source": "explicit id as requested (no echo recorded at run time)",
+   "resolved_on": "2026-10-11",
+   "transport": "openai",
+   "tool_version": null,
+   "effort_flag": "reasoning_effort=low",
+   "captured": "backfill"
+  }
  },
  "judge_model": "kimi-k3",
- "composite_v1": 91.5,
+ "composite_v1": 92.5,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -484,7 +516,17 @@
  "components": {
   "facts_score": 0.9397,
   "threads_score": 0.9375,
-  "invention_score": 0.5,
-  "mechanical_inventions": 3
+  "invention_score": 0.6,
+  "mechanical_inventions": 2
+ },
+ "versions": {
+  "requested_model": "z-ai-glm-5-3-flash",
+  "resolved_model_id": "z-ai-glm-5-3-flash",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "backfill-from-stored-run-output"
  }
 }

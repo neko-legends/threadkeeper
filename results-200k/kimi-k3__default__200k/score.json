@@ -382,18 +382,20 @@
  },
  "invention": {
   "mechanical": {
-   "unsupported_quotes": [
-    "<name> dry run"
-   ],
+   "unsupported_quotes": [],
    "unsupported_numbers": [],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 7,
+    "quotes": 5,
     "numbers": 38
    },
-   "count": 1,
-   "checked_total": 45,
-   "per_100": 2.22
+   "skipped_short_quotes": [
+    "later",
+    "3863"
+   ],
+   "count": 0,
+   "checked_total": 43,
+   "per_100": 0.0
   },
   "judge": {
    "items": [
@@ -406,9 +408,23 @@
    "dropped_unverified": 0,
    "parsed": true,
    "raw": "```json\n[\n  {\n    \"summary_quote\": \"updated in CI, Dockerfile, `.nvmrc`\",\n    \"why\": \"The session only shows `.nvmrc` and the Dockerfile being modified (the `git diff --stat` after the bump lists exactly those two files). CI was never touched; the user merely requested the bump 'everywhere (CI, Dockerfile, .nvmrc)', but the summary states the CI update as an accomplished fact, which the session does not support.\"\n  }\n]\n```"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [
+    "<name> dry run"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 7,
+    "numbers": 38
+   },
+   "count": 1,
+   "checked_total": 45,
+   "per_100": 2.22
   }
  },
- "composite": 89.94,
+ "composite": 96.19,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "kimi-k3",
  "effort": "default",
@@ -457,10 +473,20 @@
     "latency_s": 34.202
    }
   ],
-  "failed_calls": 0
+  "failed_calls": 0,
+  "versions": {
+   "requested_model": "z-ai-glm-5-3-flash",
+   "resolved_model_id": "z-ai-glm-5-3-flash",
+   "resolution_source": "explicit id as requested (no echo recorded at run time)",
+   "resolved_on": "2026-10-11",
+   "transport": "openai",
+   "tool_version": null,
+   "effort_flag": "reasoning_effort=low",
+   "captured": "backfill"
+  }
  },
  "judge_model": "z-ai-glm-5-3-flash",
- "composite_v1": 94.44,
+ "composite_v1": 95.44,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -475,7 +501,17 @@
  "components": {
   "facts_score": 0.9569,
   "threads_score": 0.9375,
-  "invention_score": 0.75,
-  "mechanical_inventions": 1
+  "invention_score": 1.0,
+  "mechanical_inventions": 0
+ },
+ "versions": {
+  "requested_model": "kimi-k3",
+  "resolved_model_id": "kimi-k3",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "backfill-from-stored-run-output"
  }
 }

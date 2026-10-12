@@ -342,7 +342,7 @@
   "mechanical_score": 1.0,
   "judge": {
    "verdicts": {
-    "T1": "PRESERVED",
+    "T1": "PARTIAL",
     "T2": "PRESERVED",
     "T3": "PRESERVED",
     "T4": "PRESERVED",
@@ -354,10 +354,10 @@
    "notes": {},
    "judge_fabricated_quotes": 0,
    "parsed": true,
-   "raw": "{\"T1\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Known flaky test:** `reminders > sends at the user's local 9am` (passes on retry, depends on real clock). User said leave it, look later.\"}, \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"2. **Migration: nullable `snoozed_until` column on `reminders`.** Migrations live in `db/migrations/NNNN_name.sql`, applied with `pnpm db:migrate`.\"}, \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"Annual plan: decision deferred until after first 10 paying signups; don't spend time now.\"}, \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Dedicated IP question still open** with their infra team; Ravi to reply (SLA 2 business days).\"}, \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Tomasz Wrobel** (part-time dev): felt excluded from the Solo price change. User will **call her Friday morning** to acknowledge and offer a seat in the next pricing review — agent promised to remind user in-session.\"}, \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"1. **README env var table** (user said start here). `README.md` has `## Environment` (line 12) with \\\"Copy `.env.example` to `.env.local`.\\\" and a TODO.\"}, \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"Invoice footer wording stays **generic** until accountant answers VAT question.\"}, \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"Logo: **user owes an SVG** (landing page + email header) later this week; text placeholder (app name) in use until then.\"}}"
+   "raw": "```json\n{\n  \"T1\": {\n    \"verdict\": \"PARTIAL\",\n    \"quote\": \"**Known flaky test:** `reminders > sends at the user's local 9am` (passes on retry, depends on real clock). User said leave it, look later.\"\n  },\n  \"T2\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"**Migration: nullable `snoozed_until` column on `reminders`.**\"\n  },\n  \"T3\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Annual plan: decision deferred until after first 10 paying signups; don't spend time now.\"\n  },\n  \"T4\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"**Dedicated IP question still open** with their infra team; Ravi to reply (SLA 2 business days).\"\n  },\n  \"T5\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"**Tomasz Wrobel** (part-time dev): felt excluded from the Solo price change. User will **call her Friday morning** to acknowledge and offer a seat in the next pricing review — agent promised to remind user in-session.\"\n  },\n  \"T6\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"1. **README env var table** (user said start here). `README.md` has `## Environment` (line 12) with \\\"Copy `.env.example` to `.env.local`.\\\" and a TODO.\"\n  },\n  \"T7\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Invoice footer wording stays **generic** until accountant answers VAT question.\"\n  },\n  \"T8\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Logo: **user owes an SVG** (landing page + email header) later this week; text placeholder (app name) in use until then.\"\n  }\n}\n```\n"
   },
   "final": {
-   "T1": "PRESERVED",
+   "T1": "PARTIAL",
    "T2": "PRESERVED",
    "T3": "PRESERVED",
    "T4": "PRESERVED",
@@ -367,10 +367,10 @@
    "T8": "PRESERVED"
   },
   "final_source": "judge",
-  "score": 1.0,
+  "score": 0.9375,
   "counts": {
-   "PRESERVED": 8,
-   "PARTIAL": 0,
+   "PRESERVED": 7,
+   "PARTIAL": 1,
    "LOST": 0
   }
  },
@@ -380,11 +380,15 @@
    "unsupported_numbers": [],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 4,
+    "quotes": 2,
     "numbers": 49
    },
+   "skipped_short_quotes": [
+    "later",
+    "4177"
+   ],
    "count": 0,
-   "checked_total": 53,
+   "checked_total": 51,
    "per_100": 0.0
   },
   "judge": {
@@ -392,63 +396,28 @@
    "count": 0,
    "dropped_unverified": 0,
    "parsed": true,
-   "raw": "[]"
+   "raw": "[]\n"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 2,
+    "numbers": 49
+   },
+   "skipped_short_quotes": [
+    "later",
+    "4177"
+   ],
+   "count": 0,
+   "checked_total": 51,
+   "per_100": 0.0
   }
  },
- "composite": 99.23,
+ "composite": 97.35,
+ "composite_v1": 96.87,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
- "model": "kimi-k3",
- "effort": "default",
- "corpus": "128k",
- "judge": {
-  "model": "z-ai-glm-5-3-flash",
-  "transport": "openai",
-  "effort": "low",
-  "calls": [
-   {
-    "status": 200,
-    "error": null,
-    "usage": {
-     "prompt_tokens": 3997,
-     "completion_tokens": 918,
-     "total_tokens": 4915,
-     "prompt_tokens_details": {
-      "cached_tokens": 0
-     },
-     "completion_tokens_details": {
-      "accepted_prediction_tokens": 656,
-      "audio_tokens": 0,
-      "reasoning_tokens": 510,
-      "rejected_prediction_tokens": 130
-     }
-    },
-    "latency_s": 5.298
-   },
-   {
-    "status": 200,
-    "error": null,
-    "usage": {
-     "prompt_tokens": 133360,
-     "completion_tokens": 9334,
-     "total_tokens": 142694,
-     "prompt_tokens_details": {
-      "cached_tokens": 131328
-     },
-     "cache_read_input_tokens": 131328,
-     "completion_tokens_details": {
-      "accepted_prediction_tokens": 6664,
-      "audio_tokens": 0,
-      "reasoning_tokens": 9313,
-      "rejected_prediction_tokens": 1343
-     }
-    },
-    "latency_s": 63.436
-   }
-  ],
-  "failed_calls": 0
- },
- "judge_model": "z-ai-glm-5-3-flash",
- "composite_v1": 99.05,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -462,8 +431,74 @@
  },
  "components": {
   "facts_score": 0.9828,
-  "threads_score": 1.0,
+  "threads_score": 0.9375,
   "invention_score": 1.0,
   "mechanical_inventions": 0
- }
+ },
+ "model": "kimi-k3",
+ "effort": "default",
+ "corpus": "128k",
+ "versions": {
+  "requested_model": "kimi-k3",
+  "resolved_model_id": "kimi-k3",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "backfill-from-stored-run-output"
+ },
+ "judge": {
+  "model": "venice/gemini-3-8-flash",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 66.015,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 54.521,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   }
+  ],
+  "versions": {
+   "requested_model": "venice/gemini-3-8-flash",
+   "resolved_model_id": "venice/gemini-3-8-flash",
+   "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "at-run"
+  },
+  "failed_calls": 0
+ },
+ "judge_model": "venice/gemini-3-8-flash"
 }

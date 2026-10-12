@@ -1,0 +1,513 @@
+{
+ "gate": {
+  "label": "summary",
+  "reasons": [
+   "structure=45 coverage=9/10"
+  ],
+  "signals": {
+   "chars": 5117,
+   "structure_lines": 45,
+   "roleplay_paragraphs": 0,
+   "chat_opener": false,
+   "coverage_parts": 9,
+   "ends_with_question": false,
+   "summary_words": 8
+  }
+ },
+ "status": "SCORED",
+ "facts": {
+  "recall": 0.9655,
+  "net": 0.9655,
+  "found": 48,
+  "total": 50,
+  "stale_fact_count": 0,
+  "decoy_hits": [],
+  "missed": [
+   "F25",
+   "F37"
+  ],
+  "rows": [
+   {
+    "id": "F01",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F02",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F03",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F04",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F05",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F06",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F07",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F08",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F09",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F10",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F11",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F12",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F13",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F14",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F15",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F16",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F17",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F18",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F19",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F20",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F21",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F22",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F23",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F24",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F25",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F26",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F27",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F28",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F29",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F30",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F31",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F32",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F33",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F34",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F35",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F36",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 2
+   },
+   {
+    "id": "F37",
+    "hit": false,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F38",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F39",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F40",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F41",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F42",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F43",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F44",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F45",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F46",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F47",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F48",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F49",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   },
+   {
+    "id": "F50",
+    "hit": true,
+    "stale_hits": [],
+    "weight": 1
+   }
+  ]
+ },
+ "threads": {
+  "mechanical": {
+   "T1": "PRESERVED",
+   "T2": "PRESERVED",
+   "T3": "PRESERVED",
+   "T4": "PARTIAL",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "mechanical_score": 0.9375,
+  "judge": {
+   "verdicts": {
+    "T1": "PRESERVED",
+    "T2": "PARTIAL",
+    "T3": "PRESERVED",
+    "T4": "PRESERVED",
+    "T5": "PRESERVED",
+    "T6": "PRESERVED",
+    "T7": "PRESERVED",
+    "T8": "PRESERVED"
+   },
+   "notes": {
+    "T2": "judge quote not found in summary; verdict capped"
+   },
+   "judge_fabricated_quotes": 1,
+   "parsed": true,
+   "raw": "{\"T1\": {\"verdict\": \"PRESERVED\", \"quote\": \"Flaky test `reminders > sends at the user's local 9am` (depends on real clock, passed on retry) — user said leave for now, look later. Agent committed to investigating separately.\"}, \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"then (2) add nullable `snoozed_until` column to reminders via migration. ... Migration not yet written.\"}, \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"Annual plan decision deferred until after first 10 paying signups.\"}, \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"Sendharbor owes: dedicated IP pricing answer (ticket #7830).\"}, \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"User owes: call Tomasz Wrobel (part-time dev, \\\"Tomasz\\\", referred to as she/her in latest message) Friday morning — she felt excluded from Solo price change decision; user will acknowledge and offer seat in next pricing review.\"}, \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"IMMEDIATE task in progress: user asked (before leaving for evening) to (1) add env var table to README FIRST\"}, \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"Invoice footer wording stays generic until accountant Odile Fenwick answers VAT question (user to ask this week).\"}, \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"User owes: SVG logo (landing page + email header) later this week; text placeholder in use until then.\"}}"
+  },
+  "final": {
+   "T1": "PRESERVED",
+   "T2": "PARTIAL",
+   "T3": "PRESERVED",
+   "T4": "PRESERVED",
+   "T5": "PRESERVED",
+   "T6": "PRESERVED",
+   "T7": "PRESERVED",
+   "T8": "PRESERVED"
+  },
+  "final_source": "judge",
+  "score": 0.9375,
+  "counts": {
+   "PRESERVED": 7,
+   "PARTIAL": 1,
+   "LOST": 0
+  }
+ },
+ "invention": {
+  "mechanical": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 2,
+    "numbers": 33
+   },
+   "skipped_short_quotes": [
+    "tomasz",
+    "later"
+   ],
+   "count": 0,
+   "checked_total": 35,
+   "per_100": 0.0
+  },
+  "judge": {
+   "items": [
+    {
+     "summary_quote": "`docs/dns.md` holds the DKIM record",
+     "why": "The session only contains the assistant's stated intention (\"I'll write the DNS record into `docs/dns.md` so it isn't lost\"); no write to `docs/dns.md` ever occurs in the session, so the claim that the file holds the DKIM record is unsupported."
+    }
+   ],
+   "count": 1,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "[{\"summary_quote\": \"`docs/dns.md` holds the DKIM record\", \"why\": \"The session only contains the assistant's stated intention (\\\"I'll write the DNS record into `docs/dns.md` so it isn't lost\\\"); no write to `docs/dns.md` ever occurs in the session, so the claim that the file holds the DKIM record is unsupported.\"}]"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 4,
+    "numbers": 33
+   },
+   "count": 0,
+   "checked_total": 37,
+   "per_100": 0.0
+  }
+ },
+ "composite": 96.57,
+ "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
+ "model": "kimi-k3",
+ "effort": "low",
+ "corpus": "128k",
+ "judge": {
+  "model": "z-ai-glm-5-3-flash",
+  "transport": "openai",
+  "effort": "low",
+  "calls": [
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 3474,
+     "completion_tokens": 854,
+     "total_tokens": 4328,
+     "prompt_tokens_details": {
+      "cached_tokens": 0
+     },
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 610,
+      "audio_tokens": 0,
+      "reasoning_tokens": 489,
+      "rejected_prediction_tokens": 122
+     }
+    },
+    "latency_s": 5.572
+   },
+   {
+    "status": 200,
+    "error": null,
+    "usage": {
+     "prompt_tokens": 132837,
+     "completion_tokens": 12246,
+     "total_tokens": 145083,
+     "prompt_tokens_details": {
+      "cached_tokens": 131328
+     },
+     "cache_read_input_tokens": 131328,
+     "completion_tokens_details": {
+      "accepted_prediction_tokens": 8376,
+      "audio_tokens": 0,
+      "reasoning_tokens": 12152,
+      "rejected_prediction_tokens": 3234
+     }
+    },
+    "latency_s": 73.911
+   }
+  ],
+  "failed_calls": 0,
+  "versions": {
+   "requested_model": "z-ai-glm-5-3-flash",
+   "resolved_model_id": "z-ai-glm-5-3-flash",
+   "resolution_source": "explicit id as requested (no echo recorded at run time)",
+   "resolved_on": "2026-10-11",
+   "transport": "openai",
+   "tool_version": null,
+   "effort_flag": "reasoning_effort=low",
+   "captured": "backfill"
+  }
+ },
+ "judge_model": "z-ai-glm-5-3-flash",
+ "composite_v1": 95.92,
+ "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
+ "weights": {
+  "facts": 0.45,
+  "threads": 0.3,
+  "invention": 0.25
+ },
+ "weights_v1": {
+  "facts": 0.55,
+  "threads": 0.35,
+  "invention": 0.1
+ },
+ "components": {
+  "facts_score": 0.9655,
+  "threads_score": 0.9375,
+  "invention_score": 1.0,
+  "mechanical_inventions": 0
+ },
+ "versions": {
+  "requested_model": "kimi-k3",
+  "resolved_model_id": "kimi-k3",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-12",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "reasoning_effort=low",
+  "captured": "backfill-from-stored-run-output"
+ }
+}

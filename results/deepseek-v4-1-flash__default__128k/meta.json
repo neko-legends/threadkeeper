@@ -39,51 +39,67 @@
  "has_reasoning_content": true,
  "error": null,
  "started_at_unix": 1791781719,
- "judge_model": "z-ai-glm-5-3-flash",
+ "judge_model": "venice/gemini-3-8-flash",
  "judge": {
-  "model": "z-ai-glm-5-3-flash",
-  "transport": "openai",
-  "effort": "low",
+  "model": "venice/gemini-3-8-flash",
+  "transport": "pi",
+  "effort": null,
   "calls": [
    {
-    "status": 200,
+    "status": "ok",
     "error": null,
-    "usage": {
-     "prompt_tokens": 5497,
-     "completion_tokens": 1157,
-     "total_tokens": 6654,
-     "prompt_tokens_details": {
-      "cached_tokens": 0
-     },
-     "completion_tokens_details": {
-      "accepted_prediction_tokens": 823,
-      "audio_tokens": 0,
-      "reasoning_tokens": 847,
-      "rejected_prediction_tokens": 179
-     }
-    },
-    "latency_s": 11.959
+    "latency_s": 617.162,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
    },
    {
-    "status": 200,
+    "status": "ok",
     "error": null,
-    "usage": {
-     "prompt_tokens": 134860,
-     "completion_tokens": 5813,
-     "total_tokens": 140673,
-     "prompt_tokens_details": {
-      "cached_tokens": 0
-     },
-     "completion_tokens_details": {
-      "accepted_prediction_tokens": 0,
-      "audio_tokens": 0,
-      "reasoning_tokens": 5658,
-      "rejected_prediction_tokens": 0
-     }
-    },
-    "latency_s": 51.309
+    "latency_s": 120.004,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
    }
   ],
+  "versions": {
+   "requested_model": "venice/gemini-3-8-flash",
+   "resolved_model_id": "venice/gemini-3-8-flash",
+   "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "at-run"
+  },
   "failed_calls": 0
+ },
+ "versions": {
+  "requested_model": "deepseek-v4-1-flash",
+  "resolved_model_id": "deepseek-v4-1-flash",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "backfill-from-stored-run-output"
  }
 }

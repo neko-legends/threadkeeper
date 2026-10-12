@@ -12,6 +12,7 @@ import re
 import os
 
 from run.cli import call_cli
+from run import versions
 from run.client import post_chat, text_of
 from .textnorm import norm
 
@@ -89,7 +90,8 @@ class Judge:
 
     def _cli(self, prompt):
         r = call_cli(self.transport, self.model, prompt, self.effort or "default", timeout=3600)
-        self.calls.append({"status": r["status"], "error": r["error"], "latency_s": r["latency_s"], "cmd": r["cmd"], "stderr": r["stderr"][:300]})
+        self.calls.append({"status": r["status"], "error": r["error"], "latency_s": r["latency_s"], "cmd": r["cmd"], "stderr": r["stderr"][:300],
+                           "versions": versions.for_cli_result(self.transport, self.model, self.effort or "default", r["usage"])})
         return r["text"] if r["status"] == "ok" else ""
 
     def _http(self, prompt):
@@ -97,7 +99,8 @@ class Judge:
         if self.effort:
             body["reasoning_effort"] = self.effort
         r = post_chat(self.base_url, self.api_key, body)
-        self.calls.append({"status": r["status"], "error": None if r["status"] == 200 else str(r.get("error"))[:300], "usage": (r.get("body") or {}).get("usage"), "latency_s": r["latency_s"]})
+        self.calls.append({"status": r["status"], "error": None if r["status"] == 200 else str(r.get("error"))[:300], "usage": (r.get("body") or {}).get("usage"), "latency_s": r["latency_s"],
+                           "versions": versions.for_http_result(self.model, self.effort or "default", r.get("body"))})
         return text_of(r)
 
     def threads(self, summary: str, gt: dict) -> dict:

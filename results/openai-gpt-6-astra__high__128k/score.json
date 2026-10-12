@@ -365,7 +365,7 @@
    "notes": {},
    "judge_fabricated_quotes": 0,
    "parsed": true,
-   "raw": "```json\n{\"T1\": {\"verdict\": \"PRESERVED\", \"quote\": \"Assistant also promised to keep the flaky local-9am test on its list, but user explicitly deferred fixing that test.\"}, \"T2\": {\"verdict\": \"PRESERVED\", \"quote\": \"No `snoozed_until` migration yet.\"}, \"T3\": {\"verdict\": \"PRESERVED\", \"quote\": \"Annual plan: **do not work on it now**; revisit after **first 10 paying signups**.\"}, \"T4\": {\"verdict\": \"PRESERVED\", \"quote\": \"**Dedicated sending IP cost/timing remains open** with Sendharbor infra team; Ravi owes follow-up.\"}, \"T5\": {\"verdict\": \"PRESERVED\", \"quote\": \"user plans to **call Friday morning** to acknowledge exclusion and offer **a seat in the next pricing review**.\"}, \"T6\": {\"verdict\": \"PRESERVED\", \"quote\": \"**README must be done first**, then migration. Neither has been written yet in the visible history.\"}, \"T7\": {\"verdict\": \"PRESERVED\", \"quote\": \"user will ask **this week** whether VAT must appear on invoices sent through product. Await answer; generic footer meanwhile.\"}, \"T8\": {\"verdict\": \"PRESERVED\", \"quote\": \"Logo: user owes **SVG later this week**, for **landing page and email header**.\"}}\n```"
+   "raw": "```json\n{\n  \"T1\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Assistant also promised to keep the flaky local-9am test on its list, but user explicitly deferred fixing that test.\"\n  },\n  \"T2\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"User’s latest request:\\n> “Before I go for the evening: add a nullable `snoozed_until` column to reminders via a migration, and please add an environment variable table to the README. Start with the README.”\\n\\n**README must be done first**, then migration. Neither has been written yet in the visible history.\"\n  },\n  \"T3\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Annual plan: **do not work on it now**; revisit after **first 10 paying signups**.\"\n  },\n  \"T4\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"**Dedicated sending IP cost/timing remains open** with Sendharbor infra team; Ravi owes follow-up.\"\n  },\n  \"T5\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"She felt excluded after doing competitor research and discovering Solo price change through pricing-page diff.\\n  - User agreed they should have looped her in; user plans to **call Friday morning** to acknowledge exclusion and offer **a seat in the next pricing review**.\"\n  },\n  \"T6\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Last assistant statement:\\n  > “Found PORT, DATABASE_URL, MAIL_API_KEY and PAY_API_KEY. Writing the README table now; the migration comes right after.”\"\n  },\n  \"T7\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"**Odile Fenwick**, user’s accountant: user will ask **this week** whether VAT must appear on invoices sent through product. Await answer; generic footer meanwhile.\"\n  },\n  \"T8\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Logo: user owes **SVG later this week**, for **landing page and email header**. Use app-name text placeholder until then.\"\n  }\n}\n```\n"
   },
   "final": {
    "T1": "PRESERVED",
@@ -388,62 +388,77 @@
  "invention": {
   "mechanical": {
    "unsupported_quotes": [
-    "set up,",
-    "all good",
     "nothing depends on yet"
    ],
    "unsupported_numbers": [],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 30,
+    "quotes": 13,
     "numbers": 118
    },
-   "count": 3,
-   "checked_total": 148,
-   "per_100": 2.03
-  },
-  "judge": {
-   "items": [
-    {
-     "summary_quote": "Developer-provided current working directory is **`/home/jun/git/threadkeeper`**.",
-     "why": "This path never appears in the session. The session's paths are ~/code/ledgerling, /home/founder/code/ledgerling and /work. The threadkeeper path comes from outside the session."
-    }
+   "skipped_short_quotes": [
+    "tomasz",
+    "$tag",
+    "set up,",
+    "later",
+    "all good",
+    "fixed",
+    "never",
+    "4177",
+    "reminders",
+    "sent_at",
+    "cronwright",
+    "0 9 * * *",
+    "../lib/tz",
+    "2026-10-24",
+    "2026-10-26"
    ],
    "count": 1,
+   "checked_total": 131,
+   "per_100": 0.76
+  },
+  "judge": {
+   "items": [],
+   "count": 0,
    "dropped_unverified": 0,
    "parsed": true,
-   "raw": "```json\n[{\"summary_quote\": \"Developer-provided current working directory is **`/home/jun/git/threadkeeper`**.\", \"why\": \"This path never appears in the session. The session's paths are ~/code/ledgerling, /home/founder/code/ledgerling and /work. The threadkeeper path comes from outside the session.\"}]\n```"
+   "raw": "[]\n"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [
+    "nothing depends on yet"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 13,
+    "numbers": 118
+   },
+   "skipped_short_quotes": [
+    "tomasz",
+    "$tag",
+    "set up,",
+    "later",
+    "all good",
+    "fixed",
+    "never",
+    "4177",
+    "reminders",
+    "sent_at",
+    "cronwright",
+    "0 9 * * *",
+    "../lib/tz",
+    "2026-10-24",
+    "2026-10-26"
+   ],
+   "count": 1,
+   "checked_total": 131,
+   "per_100": 0.76
   }
  },
- "composite": 84.39,
+ "composite": 90.64,
+ "composite_v1": 95.21,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
- "model": "openai/gpt-6-astra",
- "effort": "high",
- "corpus": "128k",
- "judge": {
-  "model": "opus",
-  "transport": "claude",
-  "effort": null,
-  "calls": [
-   {
-    "status": "ok",
-    "error": null,
-    "latency_s": 11.199,
-    "cmd": "claude -p --model opus --tools '' --no-session-persistence --disable-slash-commands --system-prompt 'You are a helpful assistant.' --output-format json < <prompt-tempfile>",
-    "stderr": ""
-   },
-   {
-    "status": "ok",
-    "error": null,
-    "latency_s": 32.285,
-    "cmd": "claude -p --model opus --tools '' --no-session-persistence --disable-slash-commands --system-prompt 'You are a helpful assistant.' --output-format json < <prompt-tempfile>",
-    "stderr": ""
-   }
-  ],
-  "failed_calls": 0
- },
- "judge_model": "opus",
- "composite_v1": 93.2,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -458,7 +473,74 @@
  "components": {
   "facts_score": 0.931,
   "threads_score": 1.0,
-  "invention_score": 0.5,
-  "mechanical_inventions": 3
- }
+  "invention_score": 0.75,
+  "mechanical_inventions": 1
+ },
+ "model": "openai/gpt-6-astra",
+ "effort": "high",
+ "corpus": "128k",
+ "versions": {
+  "requested_model": "openai/gpt-6-astra",
+  "resolved_model_id": "openai/gpt-6-astra",
+  "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+  "resolved_on": "2026-10-11",
+  "transport": "pi",
+  "tool_version": "0.99.1",
+  "effort_flag": "--thinking high",
+  "captured": "backfill-from-stored-run-output",
+  "tool_version_note": "version installed at backfill 2026-10-11, not necessarily at run time"
+ },
+ "judge": {
+  "model": "venice/gemini-3-8-flash",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 44.536,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 228.698,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   }
+  ],
+  "versions": {
+   "requested_model": "venice/gemini-3-8-flash",
+   "resolved_model_id": "venice/gemini-3-8-flash",
+   "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "at-run"
+  },
+  "failed_calls": 0
+ },
+ "judge_model": "venice/gemini-3-8-flash"
 }

@@ -395,6 +395,46 @@
  },
  "invention": {
   "mechanical": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 12,
+    "numbers": 123
+   },
+   "skipped_short_quotes": [
+    "soren",
+    "$tag",
+    "later",
+    "fixed",
+    "inv_...",
+    "3863",
+    "reminders",
+    "sent_at",
+    "tickmaster",
+    "0 9 * * *",
+    "scheduled=",
+    "../lib/tz",
+    "2026-10-24",
+    "2026-10-26"
+   ],
+   "count": 0,
+   "checked_total": 135,
+   "per_100": 0.0
+  },
+  "judge": {
+   "items": [
+    {
+     "summary_quote": "Current developer-provided cwd is **`/home/jun/git/threadkeeper`**.",
+     "why": "The session never mentions /home/jun/git/threadkeeper. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work."
+    }
+   ],
+   "count": 1,
+   "dropped_unverified": 0,
+   "parsed": true,
+   "raw": "```json\n[{\"summary_quote\": \"Current developer-provided cwd is **`/home/jun/git/threadkeeper`**.\", \"why\": \"The session never mentions /home/jun/git/threadkeeper. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work.\"}]\n```"
+  },
+  "mechanical_prev": {
    "unsupported_quotes": [
     "inv_...",
     "<unrelated helper> dry run"
@@ -408,21 +448,9 @@
    "count": 2,
    "checked_total": 151,
    "per_100": 1.32
-  },
-  "judge": {
-   "items": [
-    {
-     "summary_quote": "Current developer-provided cwd is **`/home/jun/git/threadkeeper`**.",
-     "why": "The session never mentions /home/jun/git/threadkeeper. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work."
-    }
-   ],
-   "count": 1,
-   "dropped_unverified": 0,
-   "parsed": true,
-   "raw": "```json\n[{\"summary_quote\": \"Current developer-provided cwd is **`/home/jun/git/threadkeeper`**.\", \"why\": \"The session never mentions /home/jun/git/threadkeeper. The only paths it shows are ~/code/ledgerling, /home/founder/code/ledgerling and /work.\"}]\n```"
   }
  },
- "composite": 83.02,
+ "composite": 93.02,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "openai/gpt-6-astra",
  "effort": "default",
@@ -447,10 +475,20 @@
     "stderr": ""
    }
   ],
-  "failed_calls": 0
+  "failed_calls": 0,
+  "versions": {
+   "requested_model": "opus",
+   "resolved_model_id": "unknown",
+   "resolution_source": "alias `opus` re-resolved at backfill from ~/.claude.json (NOT at run time)",
+   "resolved_on": "2026-10-11",
+   "transport": "claude",
+   "tool_version": "2.1.289 (Claude Code)",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "backfill"
+  }
  },
  "judge_model": "opus",
- "composite_v1": 89.46,
+ "composite_v1": 91.46,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -465,7 +503,18 @@
  "components": {
   "facts_score": 0.8448,
   "threads_score": 1.0,
-  "invention_score": 0.6,
-  "mechanical_inventions": 2
+  "invention_score": 1.0,
+  "mechanical_inventions": 0
+ },
+ "versions": {
+  "requested_model": "openai/gpt-6-astra",
+  "resolved_model_id": "openai/gpt-6-astra",
+  "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+  "resolved_on": "2026-10-11",
+  "transport": "pi",
+  "tool_version": "0.99.1",
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "backfill-from-stored-run-output",
+  "tool_version_note": "version installed at backfill 2026-10-11, not necessarily at run time"
  }
 }

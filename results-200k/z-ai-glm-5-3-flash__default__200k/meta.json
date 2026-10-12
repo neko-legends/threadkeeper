@@ -86,6 +86,26 @@
     "latency_s": 45.892
    }
   ],
-  "failed_calls": 0
+  "failed_calls": 0,
+  "versions": {
+   "requested_model": "kimi-k3",
+   "resolved_model_id": "kimi-k3",
+   "resolution_source": "explicit id as requested (no echo recorded at run time)",
+   "resolved_on": "2026-10-11",
+   "transport": "openai",
+   "tool_version": null,
+   "effort_flag": "reasoning_effort=low",
+   "captured": "backfill"
+  }
+ },
+ "versions": {
+  "requested_model": "z-ai-glm-5-3-flash",
+  "resolved_model_id": "z-ai-glm-5-3-flash",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "backfill-from-stored-run-output"
  }
 }

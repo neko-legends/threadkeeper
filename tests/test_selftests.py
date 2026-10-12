@@ -116,3 +116,35 @@ class CorpusIntegrity(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class QuoteMatcher(unittest.TestCase):
+    """Mechanical quote check: flag real misquotes, not punctuation / placeholders / scare-quote words (v4 audit)."""
+
+    @classmethod
+    def setUpClass(cls):
+        from score import invention
+        cls.inv = invention
+        cls.idx = invention.corpus_index("[assistant] set up: nightly pg_dump at 02:40 utc. migration 0020 applied. nothing depends on it yet. "
+                                         "log.debug('formatExportForQueue dry run') and inv_c0dad2 in the list")
+
+    def unsupported(self, summary):
+        return self.inv.check(summary, self.idx)["unsupported_quotes"]
+
+    def test_edge_punctuation_is_not_part_of_the_quote(self):
+        self.assertEqual(self.unsupported('the agent claimed "set up: nightly pg_dump," earlier'), [])
+        self.assertEqual(self.unsupported('claimed "nightly pg_dump at 02:40 utc," and left'), [])
+
+    def test_placeholder_and_ellipsis_fragments_are_checked_around_the_gap(self):
+        self.assertEqual(self.unsupported("log.debug('<name> dry run')"), [])
+        self.assertEqual(self.unsupported('ids like "inv_…" were returned'), [])
+        self.assertEqual(self.unsupported('wrote "<fn> missing words here"'), ['<fn> missing words here'])
+
+    def test_short_scare_quotes_are_skipped_not_flagged(self):
+        r = self.inv.check('it said "all good" and "fixes" a lot', self.idx)
+        self.assertEqual(r["unsupported_quotes"], [])
+        self.assertEqual(r["checked"]["quotes"], 0)
+        self.assertEqual(sorted(r["skipped_short_quotes"]), ["all good", "fixes"])
+
+    def test_a_real_misquote_is_still_flagged(self):
+        self.assertEqual(self.unsupported('"nothing depends on yet" it said'), ["nothing depends on yet"])

@@ -357,13 +357,13 @@
     "T4": "PRESERVED",
     "T5": "PRESERVED",
     "T6": "PRESERVED",
-    "T7": "PARTIAL",
+    "T7": "PRESERVED",
     "T8": "PRESERVED"
    },
    "notes": {},
    "judge_fabricated_quotes": 0,
    "parsed": true,
-   "raw": "{\n  \"T1\": {\n    \"verdict\": \"PARTIAL\",\n    \"quote\": \"- **Flaky test:** `reminders > sends at the user's local 9am` passes only on retry because it uses the real clock. The user said to leave it for later.\"\n  },\n  \"T2\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"2. **Then the migration.** Add a nullable `snoozed_until` column to `reminders` (the user didn't specify a type). Apply it with `pnpm db:migrate`, then run `pnpm vitest run`. The highest existing migration number is `0080`; numbering is messy (see Review section).\"\n  },\n  \"T3\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"- **Annual plan:** decide after the first 10 paying signups. Don't spend time on it now.\"\n  },\n  \"T4\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"- Ravi at Sendharbor will reply on dedicated sending IP pricing; their infra team has to answer (ticket #7830).\"\n  },\n  \"T5\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"- **Remind the user to call Tomasz Wrobel on Friday morning** (date not stated). Tomasz is the part-time dev; the user refers to her as \\\"she\\\".\\n  - Purpose: acknowledge she was left out of the Solo price change, and offer her a seat in the next pricing review.\\n  - Context: she did the competitor research and learned the new number from the pricing page diff (\\\"not mad, just feels bad\\\").\\n  - The agent can't place the call itself; it must nudge the user.\"\n  },\n  \"T6\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"1. **README env table: not written yet.**\\n   - `README.md` lines 12–14 currently read: `## Environment` / ``Copy `.env.example` to `.env.local`.`` / `TODO: list every variable here.` Replace the TODO line with a table.\"\n  },\n  \"T7\": {\n    \"verdict\": \"PARTIAL\",\n    \"quote\": \"- The user will ask Odile Fenwick (accountant) \\\"this week\\\" whether VAT must be shown on invoices sent through the product. The footer stays generic until then.\"\n  },\n  \"T8\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"- **Logo:** use a text placeholder (the app name in the header) for the landing page and email header until the user sends an SVG.\"\n  }\n}\n"
+   "raw": "{\n  \"T1\": {\n    \"verdict\": \"PARTIAL\",\n    \"quote\": \"`reminders > sends at the user's local 9am` passes only on retry because it uses the real clock. The user said to leave it for later.\"\n  },\n  \"T2\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Finish the README table, then the `snoozed_until` migration.\"\n  },\n  \"T3\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"decide after the first 10 paying signups. Don't spend time on it now.\"\n  },\n  \"T4\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"Ravi at Sendharbor will reply on dedicated sending IP pricing; their infra team has to answer (ticket #7830).\"\n  },\n  \"T5\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"acknowledge she was left out of the Solo price change, and offer her a seat in the next pricing review.\"\n  },\n  \"T6\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"README env table: not written yet.\"\n  },\n  \"T7\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"The user will ask Odile Fenwick (accountant) \\\"this week\\\" whether VAT must be shown on invoices sent through the product. The footer stays generic until then.\"\n  },\n  \"T8\": {\n    \"verdict\": \"PRESERVED\",\n    \"quote\": \"The user will send the logo SVG \\\"later this week\\\".\"\n  }\n}\n"
   },
   "final": {
    "T1": "PARTIAL",
@@ -372,102 +372,89 @@
    "T4": "PRESERVED",
    "T5": "PRESERVED",
    "T6": "PRESERVED",
-   "T7": "PARTIAL",
+   "T7": "PRESERVED",
    "T8": "PRESERVED"
   },
   "final_source": "judge",
-  "score": 0.875,
+  "score": 0.9375,
   "counts": {
-   "PRESERVED": 6,
-   "PARTIAL": 2,
+   "PRESERVED": 7,
+   "PARTIAL": 1,
    "LOST": 0
   }
  },
  "invention": {
   "mechanical": {
-   "unsupported_quotes": [
-    "inv_…",
-    "<label> dry run"
-   ],
+   "unsupported_quotes": [],
    "unsupported_numbers": [
     "01:00",
     "22.6.3"
    ],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 31,
+    "quotes": 17,
     "numbers": 140
    },
-   "count": 4,
-   "checked_total": 171,
-   "per_100": 2.34
+   "skipped_short_quotes": [
+    "pnpm only.",
+    "sendharbour",
+    "$tag",
+    "this week",
+    "later",
+    "fixed",
+    "data",
+    "inv_…",
+    "next",
+    "4177",
+    "0 9 * * *",
+    "2026-10-24",
+    "scheduled="
+   ],
+   "count": 2,
+   "checked_total": 157,
+   "per_100": 1.27
   },
   "judge": {
-   "items": [
-    {
-     "summary_quote": "The highest existing migration number is `0080`",
-     "why": "0080 is the highest migration number shown in the session, but no complete migration-directory listing was obtained. The session does not establish that it is the highest existing number."
-    },
-    {
-     "summary_quote": "Lisbon is UTC+1 until 2026-10-25 01:00 UTC, so 9am local on Oct 24 is 08:00Z.",
-     "why": "The session never supplies this exact transition time or the Oct 24 UTC conversion. The cron probe only returns the next occurrence on Oct 25. This adds external timezone information rather than summarizing information established in the session."
-    },
-    {
-     "summary_quote": "`docs/dns.md` with the DKIM record.",
-     "why": "This appears under 'Reported to the user as done,' but the assistant only said it would write the DNS record into this file. It did not report completing that write."
-    },
-    {
-     "summary_quote": "`config/defaults.ts` holding the cadence (4/9/18) and the rate limit (40/min/token).",
-     "why": "This appears under 'Reported to the user as done,' but the assistant said the settings would go into config/defaults.ts; it did not explicitly report having written that file."
-    },
-    {
-     "summary_quote": "Magic-link token table and verify route.",
-     "why": "This appears under 'Reported to the user as done,' but the assistant only promised, 'I'll write the token table and the verify route.' No completion was reported."
-    },
-    {
-     "summary_quote": "Every route probed returned the same invoice list",
-     "why": "The probes returned different invoice IDs, amounts, currencies, statuses, and list lengths. They generally shared an invoice-list response shape, not the same invoice list; the initial health probe also returned only {\"ok\":true}."
-    },
-    {
-     "summary_quote": "with the total kept below the database's max connections plus headroom.",
-     "why": "The session advised keeping the total below max connections with headroom reserved for migrations and psql sessions, not below max connections plus additional headroom."
-    }
-   ],
-   "count": 7,
+   "items": [],
+   "count": 0,
    "dropped_unverified": 0,
    "parsed": true,
-   "raw": "[\n  {\n    \"summary_quote\": \"The highest existing migration number is `0080`\",\n    \"why\": \"0080 is the highest migration number shown in the session, but no complete migration-directory listing was obtained. The session does not establish that it is the highest existing number.\"\n  },\n  {\n    \"summary_quote\": \"Lisbon is UTC+1 until 2026-10-25 01:00 UTC, so 9am local on Oct 24 is 08:00Z.\",\n    \"why\": \"The session never supplies this exact transition time or the Oct 24 UTC conversion. The cron probe only returns the next occurrence on Oct 25. This adds external timezone information rather than summarizing information established in the session.\"\n  },\n  {\n    \"summary_quote\": \"`docs/dns.md` with the DKIM record.\",\n    \"why\": \"This appears under 'Reported to the user as done,' but the assistant only said it would write the DNS record into this file. It did not report completing that write.\"\n  },\n  {\n    \"summary_quote\": \"`config/defaults.ts` holding the cadence (4/9/18) and the rate limit (40/min/token).\",\n    \"why\": \"This appears under 'Reported to the user as done,' but the assistant said the settings would go into config/defaults.ts; it did not explicitly report having written that file.\"\n  },\n  {\n    \"summary_quote\": \"Magic-link token table and verify route.\",\n    \"why\": \"This appears under 'Reported to the user as done,' but the assistant only promised, 'I'll write the token table and the verify route.' No completion was reported.\"\n  },\n  {\n    \"summary_quote\": \"Every route probed returned the same invoice list\",\n    \"why\": \"The probes returned different invoice IDs, amounts, currencies, statuses, and list lengths. They generally shared an invoice-list response shape, not the same invoice list; the initial health probe also returned only {\\\"ok\\\":true}.\"\n  },\n  {\n    \"summary_quote\": \"with the total kept below the database's max connections plus headroom.\",\n    \"why\": \"The session advised keeping the total below max connections with headroom reserved for migrations and psql sessions, not below max connections plus additional headroom.\"\n  }\n]\n"
+   "raw": "[]\n"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [],
+   "unsupported_numbers": [
+    "01:00",
+    "22.6.3"
+   ],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 17,
+    "numbers": 140
+   },
+   "skipped_short_quotes": [
+    "pnpm only.",
+    "sendharbour",
+    "$tag",
+    "this week",
+    "later",
+    "fixed",
+    "data",
+    "inv_…",
+    "next",
+    "4177",
+    "0 9 * * *",
+    "2026-10-24",
+    "scheduled="
+   ],
+   "count": 2,
+   "checked_total": 157,
+   "per_100": 1.27
   }
  },
- "composite": 79.64,
+ "composite": 85.8,
+ "composite_v1": 92.97,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
- "model": "opus",
- "effort": "max",
- "corpus": "128k",
- "judge": {
-  "model": "openai/gpt-6-astra",
-  "transport": "pi",
-  "effort": null,
-  "calls": [
-   {
-    "status": "ok",
-    "error": null,
-    "latency_s": 18.725,
-    "cmd": "pi -p --model openai/gpt-6-astra --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
-    "stderr": ""
-   },
-   {
-    "status": "ok",
-    "error": null,
-    "latency_s": 70.7,
-    "cmd": "pi -p --model openai/gpt-6-astra --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
-    "stderr": ""
-   }
-  ],
-  "failed_calls": 0
- },
- "judge_model": "openai/gpt-6-astra",
- "composite_v1": 88.78,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -481,8 +468,75 @@
  },
  "components": {
   "facts_score": 0.9483,
-  "threads_score": 0.875,
-  "invention_score": 0.4286,
-  "mechanical_inventions": 4
- }
+  "threads_score": 0.9375,
+  "invention_score": 0.6,
+  "mechanical_inventions": 2
+ },
+ "model": "opus",
+ "effort": "max",
+ "corpus": "128k",
+ "versions": {
+  "requested_model": "opus",
+  "resolved_model_id": "claude-opus-5-5",
+  "resolution_source": "claude -p json modelUsage (canonicalModel)",
+  "resolved_on": "2026-10-11",
+  "transport": "claude",
+  "tool_version": "2.1.289 (Claude Code)",
+  "effort_flag": "--effort max",
+  "captured": "backfill-from-stored-run-output",
+  "tool_version_note": "version installed at backfill 2026-10-11, not necessarily at run time"
+ },
+ "judge": {
+  "model": "venice/gemini-3-8-flash",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 232.187,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 298.615,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   }
+  ],
+  "versions": {
+   "requested_model": "venice/gemini-3-8-flash",
+   "resolved_model_id": "venice/gemini-3-8-flash",
+   "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "at-run"
+  },
+  "failed_calls": 0
+ },
+ "judge_model": "venice/gemini-3-8-flash"
 }

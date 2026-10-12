@@ -376,18 +376,32 @@
  },
  "invention": {
   "mechanical": {
-   "unsupported_quotes": [
-    "<name> dry run"
-   ],
+   "unsupported_quotes": [],
    "unsupported_numbers": [],
    "unsupported_hashes": [],
    "checked": {
-    "quotes": 33,
+    "quotes": 19,
     "numbers": 106
    },
-   "count": 1,
-   "checked_total": 139,
-   "per_100": 0.72
+   "skipped_short_quotes": [
+    "day 2",
+    "day 3",
+    "$tag",
+    "this week",
+    "health: ok",
+    "data",
+    "next",
+    "3863",
+    "fastify",
+    "/healthz",
+    "later",
+    "tickmaster",
+    "0 9 * * *",
+    "string"
+   ],
+   "count": 0,
+   "checked_total": 125,
+   "per_100": 0.0
   },
   "judge": {
    "items": [
@@ -408,9 +422,23 @@
    "dropped_unverified": 0,
    "parsed": true,
    "raw": "```json\n[\n  {\n    \"summary_quote\": \"Node: **22.5.2** everywhere (`.nvmrc`, Dockerfile `node:22.5`, CI).\",\n    \"why\": \"The session only shows the agent editing `.nvmrc` (echo 22.5.2) and the Dockerfile (sed node:20.11 → node:22.5). The user requested CI be bumped too, but no CI file was ever touched or mentioned as updated; the agent's own report lists only `.nvmrc` and the Dockerfile. The claim that CI was bumped to 22.5.2 is unsupported.\"\n  },\n  {\n    \"summary_quote\": \"logging email addresses (2×)\",\n    \"why\": \"Wrong count. The user asked \\\"Is it ok to log email addresses?\\\" three times in the session: (1) after the Juno at Vesper Type note, (2) after the src/api/audit.ts dry-run edit, and (3) after the lint pass that preceded the 0073_add_mail_events_external_ref migration. The summary says 2×.\"\n  },\n  {\n    \"summary_quote\": \"boolean column index (2×)\",\n    \"why\": \"Wrong count. The user asked \\\"Is it worth adding an index on a boolean column?\\\" three times in the session: (1) after the ~23:41 dev-log tail, (2) after the lint pass following the idempotency-keys discussion, and (3) after the formatContact rename type-check. The summary says 2×.\"\n  }\n]\n```"
+  },
+  "mechanical_prev": {
+   "unsupported_quotes": [
+    "<name> dry run"
+   ],
+   "unsupported_numbers": [],
+   "unsupported_hashes": [],
+   "checked": {
+    "quotes": 33,
+    "numbers": 106
+   },
+   "count": 1,
+   "checked_total": 139,
+   "per_100": 0.72
   }
  },
- "composite": 92.98,
+ "composite": 99.23,
  "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "deepseek-v4-1-flash",
  "effort": "default",
@@ -460,10 +488,20 @@
     "latency_s": 46.911
    }
   ],
-  "failed_calls": 0
+  "failed_calls": 0,
+  "versions": {
+   "requested_model": "z-ai-glm-5-3-flash",
+   "resolved_model_id": "z-ai-glm-5-3-flash",
+   "resolution_source": "explicit id as requested (no echo recorded at run time)",
+   "resolved_on": "2026-10-11",
+   "transport": "openai",
+   "tool_version": null,
+   "effort_flag": "reasoning_effort=low",
+   "captured": "backfill"
+  }
  },
  "judge_model": "z-ai-glm-5-3-flash",
- "composite_v1": 98.05,
+ "composite_v1": 99.05,
  "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
  "weights": {
   "facts": 0.45,
@@ -478,7 +516,17 @@
  "components": {
   "facts_score": 0.9828,
   "threads_score": 1.0,
-  "invention_score": 0.75,
-  "mechanical_inventions": 1
+  "invention_score": 1.0,
+  "mechanical_inventions": 0
+ },
+ "versions": {
+  "requested_model": "deepseek-v4-1-flash",
+  "resolved_model_id": "deepseek-v4-1-flash",
+  "resolution_source": "explicit id as requested (endpoint echo not recorded at run time)",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "backfill-from-stored-run-output"
  }
 }
