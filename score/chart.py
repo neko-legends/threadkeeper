@@ -46,14 +46,14 @@ def main():
     vmax_lat = max([_f(r["latency_s"]) or 0 for r in rows] + [1])
     pimax = max([_f(r.get("invention_mech_per100")) or 0 for r in rows] + [1])
     ac.set_xlim(0, 150)
-    af.set_xlim(0, 195)
+    af.set_xlim(0, 225)
     at.set_xlim(0, 15)
     ai.set_xlim(0, pimax * 2.6)
     al.set_xlim(0, vmax_lat * 1.45)
     for a in axs:
         a.set_ylim(-0.6, n - 0.4)
 
-    best = max(range(n), key=lambda i: _f(rows[i]["composite"]) or -1)
+    best = max(range(n), key=lambda i: (_f(rows[i]["composite"]) or -1, i))
     # leader highlight band across all panels
     for a in axs:
         a.add_patch(FancyBboxPatch((a.get_xlim()[0], best - 0.46), a.get_xlim()[1] - a.get_xlim()[0], 0.92, boxstyle="round,pad=0,rounding_size=0.25", fc=BLUSH, ec="none", alpha=0.45, zorder=0, mutation_aspect=1 / 60 * (a.get_xlim()[1] - a.get_xlim()[0]) / 1))
@@ -71,11 +71,11 @@ def main():
         if r.get("composite_v1"):
             v1 = float(r["composite_v1"])
             ac.plot(v1, i, marker="D", color=GOLD, markersize=6, mec="white", mew=0.8, linestyle="none", zorder=6)
-            ac.text(104, i - 0.2, "◆ v1 %s" % r["composite_v1"], va="center", fontsize=8.5, color=GOLD)
+            ac.text(104, i - 0.2, "◆ v1 %s" % r["composite_v1"], va="center", fontsize=9.5, color=GOLD)
         fn = _f(r["facts_net_pct"])
         rbar(af, i, 0, fn, DEEP if lead else PINK)
         af.text(104, i, "%s%%" % r["facts_net_pct"], va="center", fontsize=10.5, fontweight="bold" if lead else "normal")
-        af.text(104, i - 0.2, "%s/%s found · stale %s · decoy %s" % (r["facts_found"], r["facts_total"], r["stale_facts"], r["decoy_hits"]), va="center", fontsize=8, color=SOFT)
+        af.text(104, i - 0.2, "%s/%s found · stale %s · decoy %s" % (r["facts_found"], r["facts_total"], r["stale_facts"], r["decoy_hits"]), va="center", fontsize=9.5, color=SOFT)
         if r["threads_judge_preserved"] != "":
             p, pa, l = (int(r["threads_judge_%s" % k]) for k in ("preserved", "partial", "lost"))
             src_t = "judge"
@@ -87,14 +87,14 @@ def main():
             rbar(at, i, lf, lf + v, TH[k], lw=11)
             lf += v
         at.text(8.4, i + 0.1, "%d/%d/%d" % (p, pa, l), va="center", fontsize=10.5)
-        at.text(8.4, i - 0.2, "score %.2f (%s)" % ((p + 0.5 * pa) / 8, src_t), va="center", fontsize=8, color=SOFT)
+        at.text(8.4, i - 0.2, "score %.2f (%s)" % ((p + 0.5 * pa) / 8, src_t), va="center", fontsize=9.5, color=SOFT)
         pi_ = _f(r.get("invention_mech_per100")) or 0
         if pi_ > 0:
             rbar(ai, i, 0, pi_, "#D9607F")
         else:
             ai.plot(0.02, i, marker="o", color=SAGE, markersize=7, zorder=4)
         ai.text(pimax * 1.08 + 0.1, i + 0.1, "%.2f per 100" % pi_, va="center", fontsize=10.5)
-        ai.text(pimax * 1.08 + 0.1, i - 0.2, "mech %s/%s checked · judge %s" % (r["invention_mech"], r["invention_checked"], r["invention_judge"] or "n/a"), va="center", fontsize=8, color=SOFT)
+        ai.text(pimax * 1.08 + 0.1, i - 0.2, "mech %s/%s checked · judge %s" % (r["invention_mech"], r["invention_checked"], r["invention_judge"] or "n/a"), va="center", fontsize=9.5, color=SOFT)
         lat = _f(r["latency_s"])
         if lat is not None:
             rbar(al, i, 0, lat, GREY, alpha=0.8)
@@ -107,7 +107,7 @@ def main():
     for i, r in enumerate(rows):
         m = r["model"] + (" ★" if i == best else "")
         ac.text(-0.03, i + 0.12, "%s · %s" % (m, r["effort"]), transform=ac.get_yaxis_transform(), ha="right", va="center", fontsize=11.5, fontweight="bold" if i == best else "normal")
-        ac.text(-0.03, i - 0.2, "ran via %s · graded by %s" % (r.get("transport") or "openai", r.get("judge_model") or "?"), transform=ac.get_yaxis_transform(), ha="right", va="center", fontsize=8, color=SOFT)
+        ac.text(-0.03, i - 0.2, "ran via %s · graded by %s" % (r.get("transport") or "openai", r.get("judge_model") or "?"), transform=ac.get_yaxis_transform(), ha="right", va="center", fontsize=9.5, color=SOFT)
     titles = ["composite v2", "facts net %", "threads of 8", "made-up claims per 100 checked", "latency"]
     subs = ["◆ = old v1", "latest-value credit", "preserved / partial / lost", "lower is better", "seconds"]
     for a, t, s in zip(axs, titles, subs):
