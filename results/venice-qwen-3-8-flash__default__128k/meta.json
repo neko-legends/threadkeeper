@@ -1,0 +1,87 @@
+{
+ "status": "ok",
+ "failed_as": null,
+ "transport": "pi",
+ "command": "pi -p --model venice/qwen-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+ "exit_code": 0,
+ "stderr": "",
+ "model": "venice/qwen-3-8-flash",
+ "effort": "default",
+ "corpus": "128k",
+ "mode": "text",
+ "message_count": 2,
+ "prompt_sha256": "04c18afa33751862eeba58c3d5c8c475665974f7f5dc17b11e7d1db9fef35398",
+ "prompt_chars": 417385,
+ "compact_prompt_sha256": "401a3760133af0756e8e0bba19bb2e62635e3ba9432fe8fdd8ca41ccd54d8b20",
+ "latency_s": 323.356,
+ "finish_reason": null,
+ "usage": null,
+ "cost_usd": null,
+ "list_price_equiv_usd": null,
+ "error": null,
+ "started_at_unix": 1791787047,
+ "finished_at_unix": 1791787370,
+ "judge_model": "venice/gemini-3-8-flash",
+ "versions": {
+  "requested_model": "venice/qwen-3-8-flash",
+  "resolved_model_id": "venice/qwen-3-8-flash",
+  "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+  "resolved_on": "2026-10-11",
+  "transport": "pi",
+  "tool_version": "0.99.1",
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "at-run"
+ },
+ "judge": {
+  "model": "venice/gemini-3-8-flash",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 201.601,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 142.333,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   }
+  ],
+  "versions": {
+   "requested_model": "venice/gemini-3-8-flash",
+   "resolved_model_id": "venice/gemini-3-8-flash",
+   "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "at-run"
+  },
+  "failed_calls": 0
+ }
+}

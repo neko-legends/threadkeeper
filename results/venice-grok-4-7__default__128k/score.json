@@ -1,0 +1,38 @@
+{
+ "gate": {
+  "label": "continuation",
+  "reasons": [
+   "touches only 0/10 parts of the session (a summary spans it)"
+  ],
+  "signals": {
+   "chars": 1143,
+   "structure_lines": 9,
+   "roleplay_paragraphs": 0,
+   "chat_opener": false,
+   "coverage_parts": 0,
+   "ends_with_question": false,
+   "summary_words": 6
+  }
+ },
+ "status": "FAILED",
+ "failed_as": "continuation",
+ "composite": null,
+ "composite_v1": null,
+ "model": "venice/grok-4-7",
+ "effort": "default",
+ "corpus": "128k",
+ "versions": {
+  "requested_model": "venice/grok-4-7",
+  "resolved_model_id": "venice/grok-4-7",
+  "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+  "resolved_on": "2026-10-11",
+  "transport": "pi",
+  "tool_version": "0.99.1",
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "at-run"
+ },
+ "judge": {
+  "model": null,
+  "note": "judge not invoked (arm status FAILED)"
+ }
+}

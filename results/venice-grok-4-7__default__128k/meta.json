@@ -1,0 +1,39 @@
+{
+ "status": "ok",
+ "failed_as": null,
+ "transport": "pi",
+ "command": "pi -p --model venice/grok-4-7 --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+ "exit_code": 0,
+ "stderr": "",
+ "model": "venice/grok-4-7",
+ "effort": "default",
+ "corpus": "128k",
+ "mode": "text",
+ "message_count": 2,
+ "prompt_sha256": "04c18afa33751862eeba58c3d5c8c475665974f7f5dc17b11e7d1db9fef35398",
+ "prompt_chars": 417385,
+ "compact_prompt_sha256": "401a3760133af0756e8e0bba19bb2e62635e3ba9432fe8fdd8ca41ccd54d8b20",
+ "latency_s": 35.467,
+ "finish_reason": null,
+ "usage": null,
+ "cost_usd": null,
+ "list_price_equiv_usd": null,
+ "error": null,
+ "started_at_unix": 1791787047,
+ "finished_at_unix": 1791787083,
+ "judge_model": null,
+ "versions": {
+  "requested_model": "venice/grok-4-7",
+  "resolved_model_id": "venice/grok-4-7",
+  "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+  "resolved_on": "2026-10-11",
+  "transport": "pi",
+  "tool_version": "0.99.1",
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "at-run"
+ },
+ "judge": {
+  "model": null,
+  "note": "judge not invoked (arm status FAILED)"
+ }
+}

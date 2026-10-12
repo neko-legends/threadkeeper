@@ -1,0 +1,128 @@
+{
+ "status": "ok",
+ "failed_as": null,
+ "transport": "claude",
+ "command": "claude -p --model sonnet --tools '' --no-session-persistence --disable-slash-commands --system-prompt 'You are a helpful assistant.' --output-format json < <prompt-tempfile>",
+ "exit_code": 0,
+ "stderr": "",
+ "model": "sonnet",
+ "effort": "default",
+ "corpus": "128k",
+ "mode": "text",
+ "message_count": 2,
+ "prompt_sha256": "04c18afa33751862eeba58c3d5c8c475665974f7f5dc17b11e7d1db9fef35398",
+ "prompt_chars": 417385,
+ "compact_prompt_sha256": "401a3760133af0756e8e0bba19bb2e62635e3ba9432fe8fdd8ca41ccd54d8b20",
+ "latency_s": 35.34,
+ "finish_reason": "end_turn",
+ "usage": {
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 199584,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 2867,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 199584,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "modelUsage": {
+   "claude-sonnet-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 2867,
+    "cacheReadInputTokens": 0,
+    "cacheCreationInputTokens": 199584,
+    "webSearchRequests": 0,
+    "costUSD": 0.82701,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "is_error": false,
+  "terminal_reason": "completed"
+ },
+ "cost_usd": null,
+ "list_price_equiv_usd": 0.82701,
+ "error": null,
+ "started_at_unix": 1791787047,
+ "finished_at_unix": 1791787082,
+ "judge_model": "venice/gemini-3-8-flash",
+ "versions": {
+  "requested_model": "sonnet",
+  "resolved_model_id": "claude-sonnet-5-5",
+  "resolution_source": "claude -p json modelUsage (canonicalModel)",
+  "resolved_on": "2026-10-11",
+  "transport": "claude",
+  "tool_version": "2.1.289 (Claude Code)",
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "at-run"
+ },
+ "judge": {
+  "model": "venice/gemini-3-8-flash",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 350.899,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-12",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 107.056,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-12",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   }
+  ],
+  "versions": {
+   "requested_model": "venice/gemini-3-8-flash",
+   "resolved_model_id": "venice/gemini-3-8-flash",
+   "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+   "resolved_on": "2026-10-12",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "at-run"
+  },
+  "failed_calls": 0
+ }
+}

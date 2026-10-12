@@ -42,8 +42,9 @@ def call_cli(transport: str, model: str, prompt: str, effort: str = "default", t
         tf.write(prompt)
         path = tf.name
     try:
-        with open(path, "rb") as fh:
-            p = subprocess.run(cmd, stdin=fh, capture_output=True, timeout=timeout)
+        # run from an empty scratch dir: the CLIs put their cwd into the system prompt, which leaked the repo path
+        with open(path, "rb") as fh, tempfile.TemporaryDirectory(prefix="tk-cwd-") as cwd:
+            p = subprocess.run(cmd, stdin=fh, capture_output=True, timeout=timeout, cwd=cwd)
         out["exit_code"] = p.returncode
         out["stderr"] = p.stderr.decode("utf-8", "replace")[:4000]
         raw = p.stdout.decode("utf-8", "replace")
