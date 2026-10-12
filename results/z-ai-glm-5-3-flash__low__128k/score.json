@@ -416,8 +416,8 @@
    "raw": "[{\"summary_quote\": \"user-approved plan is to clean them in a separate small commit\", \"why\": \"The session never shows the user approving this plan. The assistant unilaterally stated 'I'll clean those up in a separate small commit so this diff stays readable' after each lint run; the user never responded to or endorsed it.\"}]"
   }
  },
- "composite": 90.42,
- "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "composite": 83.79,
+ "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "z-ai-glm-5-3-flash",
  "effort": "low",
  "corpus": "128k",
@@ -469,5 +469,23 @@
   ],
   "failed_calls": 0
  },
- "judge_model": "kimi-k3"
+ "judge_model": "kimi-k3",
+ "composite_v1": 90.42,
+ "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
+ "weights": {
+  "facts": 0.45,
+  "threads": 0.3,
+  "invention": 0.25
+ },
+ "weights_v1": {
+  "facts": 0.55,
+  "threads": 0.35,
+  "invention": 0.1
+ },
+ "components": {
+  "facts_score": 0.8621,
+  "threads_score": 1.0,
+  "invention_score": 0.6,
+  "mechanical_inventions": 2
+ }
 }

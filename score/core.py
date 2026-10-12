@@ -5,9 +5,7 @@ import json
 import os
 
 from gen.render import corpus_text, load_session, render_transcript
-from . import facts as facts_mod, gate, invention, threads as threads_mod
-
-W_FACTS, W_THREADS, W_INVENT = 0.55, 0.35, 0.10
+from . import facts as facts_mod, gate, invention, threads as threads_mod, weights as weights_mod
 
 
 class Corpus:
@@ -25,11 +23,11 @@ class Corpus:
         return self._index
 
 
-def score_output(text: str, corpus: Corpus, meta: dict | None = None, judge=None) -> dict:
+def score_output(text: str, corpus: Corpus, meta: dict | None = None, judge=None, weights: dict | None = None) -> dict:
     g = gate.classify(text, corpus.messages, meta)
     res = {"gate": g}
     if g["label"] != "summary":
-        res.update(status="FAILED", failed_as=g["label"], composite=None)
+        res.update(status="FAILED", failed_as=g["label"], composite=None, composite_v1=None)
         return res
     f = facts_mod.score_facts(text, corpus.gt)
     mech_threads = threads_mod.mechanical(text, corpus.gt)
@@ -49,8 +47,6 @@ def score_output(text: str, corpus: Corpus, meta: dict | None = None, judge=None
     tscore = threads_mod.points(final_threads)
     thr.update(final=final_threads, final_source=thr_source, score=tscore,
                counts={k: list(final_threads.values()).count(k) for k in ("PRESERVED", "PARTIAL", "LOST")})
-    inv_pen = min(1.0, inv_mech["count"] / 10.0)
-    composite = 100 * (W_FACTS * f["net"] + W_THREADS * tscore + W_INVENT * (1 - inv_pen))
-    res.update(status="SCORED", facts=f, threads=thr, invention=inv, composite=round(composite, 2),
-               composite_formula="100*(%.2f*facts_net + %.2f*threads + %.2f*(1-min(1,mech_invention/10)))" % (W_FACTS, W_THREADS, W_INVENT))
+    comp = weights_mod.composites(f["net"], tscore, inv_mech["count"], weights)
+    res.update(status="SCORED", facts=f, threads=thr, invention=inv, **comp)
     return res

@@ -409,8 +409,8 @@
    "raw": "[{\"summary_quote\": \"Node **22.5.2** everywhere (CI, Dockerfile, `.nvmrc`) — bumped from 20.11.2\", \"why\": \"The session only shows `.nvmrc` and the Dockerfile being changed (`echo 22.5.2 > .nvmrc && sed -i 's/node:20.11/node:22.5/' Dockerfile`; `git diff --stat` lists only those two files). CI was never touched in the session, and the agent's own report was 'Bumped to Node 22.5.2 in `.nvmrc` and the Dockerfile.' The claim that CI was bumped to 22.5.2 is a detail the session never contained.\"}]"
   }
  },
- "composite": 94.73,
- "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "composite": 90.26,
+ "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "deepseek-v4-1-flash",
  "effort": "low",
  "corpus": "200k",
@@ -461,5 +461,23 @@
   ],
   "failed_calls": 0
  },
- "judge_model": "z-ai-glm-5-3-flash"
+ "judge_model": "z-ai-glm-5-3-flash",
+ "composite_v1": 94.73,
+ "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
+ "weights": {
+  "facts": 0.45,
+  "threads": 0.3,
+  "invention": 0.25
+ },
+ "weights_v1": {
+  "facts": 0.55,
+  "threads": 0.35,
+  "invention": 0.1
+ },
+ "components": {
+  "facts_score": 0.9224,
+  "threads_score": 1.0,
+  "invention_score": 0.75,
+  "mechanical_inventions": 1
+ }
 }

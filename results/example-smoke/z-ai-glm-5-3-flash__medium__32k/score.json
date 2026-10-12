@@ -405,10 +405,28 @@
    "raw": "[{\"summary_quote\": \"**bumped to 22.7.1 everywhere** (CI, Dockerfile, `.nvmrc`)\", \"why\": \"The session only shows `.nvmrc` and the Dockerfile being changed (echo 22.7.1 > .nvmrc; sed on Dockerfile), and the assistant explicitly stated \\\"Bumped to Node 22.7.1 in `.nvmrc` and the Dockerfile.\\\" No CI configuration was ever edited or mentioned as updated, so the claim that CI was bumped to 22.7.1 is not supported by the session.\"}]"
   }
  },
- "composite": 97.58,
- "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "composite": 92.58,
+ "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "z-ai-glm-5-3-flash",
  "effort": "medium",
  "corpus": "32k",
- "judge_model": "z-ai-glm-5-3-flash"
+ "judge_model": "z-ai-glm-5-3-flash",
+ "composite_v1": 97.58,
+ "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
+ "weights": {
+  "facts": 0.45,
+  "threads": 0.3,
+  "invention": 0.25
+ },
+ "weights_v1": {
+  "facts": 0.55,
+  "threads": 0.35,
+  "invention": 0.1
+ },
+ "components": {
+  "facts_score": 0.9741,
+  "threads_score": 1.0,
+  "invention_score": 0.75,
+  "mechanical_inventions": 1
+ }
 }

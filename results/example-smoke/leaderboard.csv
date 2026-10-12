@@ -1,2 +1,2 @@
-model,effort,corpus,status,composite,facts_found,facts_total,facts_net_pct,stale_facts,decoy_hits,threads_preserved,threads_partial,threads_lost,threads_source,invention_mech,invention_judge,latency_s,prompt_tokens,completion_tokens,reasoning_tokens,cost_usd,finish_reason
-z-ai-glm-5-3-flash,medium,32k,SCORED,97.58,49,50,97.4,0,1,8,0,0,judge,1,1,32.468,31957,4059,2177,,stop
+model,effort,corpus,transport,judge_model,judge_ok,status,composite,composite_v1,facts_found,facts_total,facts_net_pct,stale_facts,decoy_hits,threads_judge_preserved,threads_judge_partial,threads_judge_lost,threads_mech_preserved,threads_mech_partial,threads_mech_lost,threads_source,invention_mech,invention_judge,latency_s,prompt_tokens,completion_tokens,reasoning_tokens,cost_usd,finish_reason
+z-ai-glm-5-3-flash,medium,32k,openai,none,,SCORED,92.58,97.58,49,50,97.4,0,1,8,0,0,8,0,0,judge,1,1,32.468,31957,4059,2177,,stop

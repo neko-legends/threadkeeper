@@ -22,6 +22,13 @@ class Mutant(unittest.TestCase):
         self.assertIn("test_b_continuations_fail_gate", r.stderr)
         self.assertIn("test_c_empty_fails", r.stderr)
 
+    def test_stripped_breakdown_column_is_caught(self):
+        for col in ("invention judge", "threads mech P/PA/L", "transport"):
+            env = dict(os.environ, TK_STRIP_COLUMN=col)
+            r = subprocess.run([sys.executable, "-m", "unittest", "tests.test_breakdown.Breakdown", "-q"], cwd=ROOT, env=env, capture_output=True, text=True)
+            self.assertNotEqual(r.returncode, 0, "breakdown test still passes with %r stripped" % col)
+            self.assertIn("test_header_has_every_required_column", r.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -405,8 +405,8 @@
    "raw": "```json\n[\n  {\n    \"summary_quote\": \"**bumped to 22.6.1 everywhere** (CI, Dockerfile, `.nvmrc`)\",\n    \"why\": \"The session only shows `.nvmrc` and the Dockerfile being edited (the `git diff --stat` after the bump lists exactly those two files). No CI configuration was ever opened or modified, so the claim that the Node bump was applied to CI is not supported by the session.\"\n  },\n  {\n    \"summary_quote\": \"`ioredis` was added then removed.\",\n    \"why\": \"The session never contains any step that adds `ioredis`; it only shows `pnpm remove ioredis` (output `- ioredis 5.4.1`). The claim that it was added during the session describes an event the session never recorded.\"\n  }\n]\n```"
   }
  },
- "composite": 97.1,
- "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "composite": 92.2,
+ "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "deepseek-v4-1-flash",
  "effort": "low",
  "corpus": "128k",
@@ -457,5 +457,23 @@
   ],
   "failed_calls": 0
  },
- "judge_model": "z-ai-glm-5-3-flash"
+ "judge_model": "z-ai-glm-5-3-flash",
+ "composite_v1": 97.1,
+ "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
+ "weights": {
+  "facts": 0.45,
+  "threads": 0.3,
+  "invention": 0.25
+ },
+ "weights_v1": {
+  "facts": 0.55,
+  "threads": 0.35,
+  "invention": 0.1
+ },
+ "components": {
+  "facts_score": 0.9655,
+  "threads_score": 1.0,
+  "invention_score": 0.75,
+  "mechanical_inventions": 1
+ }
 }

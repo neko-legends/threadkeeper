@@ -393,8 +393,8 @@
    "raw": "[]"
   }
  },
- "composite": 99.05,
- "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "composite": 99.23,
+ "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "kimi-k3",
  "effort": "default",
  "corpus": "128k",
@@ -445,5 +445,23 @@
   ],
   "failed_calls": 0
  },
- "judge_model": "z-ai-glm-5-3-flash"
+ "judge_model": "z-ai-glm-5-3-flash",
+ "composite_v1": 99.05,
+ "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
+ "weights": {
+  "facts": 0.45,
+  "threads": 0.3,
+  "invention": 0.25
+ },
+ "weights_v1": {
+  "facts": 0.55,
+  "threads": 0.35,
+  "invention": 0.1
+ },
+ "components": {
+  "facts_score": 0.9828,
+  "threads_score": 1.0,
+  "invention_score": 1.0,
+  "mechanical_inventions": 0
+ }
 }

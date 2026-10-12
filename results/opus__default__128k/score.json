@@ -409,8 +409,8 @@
    "raw": "[\n  {\n    \"summary_quote\": \"Index on a boolean column: only as a partial index\",\n    \"why\": \"The session said a standalone boolean index is usually not useful and that a partial index can pay off. It did not say boolean columns should only be indexed using partial indexes.\"\n  }\n]\n"
   }
  },
- "composite": 92.5,
- "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "composite": 85.41,
+ "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "opus",
  "effort": "default",
  "corpus": "128k",
@@ -436,5 +436,23 @@
   ],
   "failed_calls": 0
  },
- "judge_model": "openai/gpt-6-astra"
+ "judge_model": "openai/gpt-6-astra",
+ "composite_v1": 92.5,
+ "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
+ "weights": {
+  "facts": 0.45,
+  "threads": 0.3,
+  "invention": 0.25
+ },
+ "weights_v1": {
+  "facts": 0.55,
+  "threads": 0.35,
+  "invention": 0.1
+ },
+ "components": {
+  "facts_score": 0.9397,
+  "threads_score": 0.9375,
+  "invention_score": 0.6,
+  "mechanical_inventions": 2
+ }
 }

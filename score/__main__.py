@@ -9,7 +9,7 @@ import sys
 
 from .core import Corpus, score_output
 from .judge import Judge
-from . import report
+from . import report, weights as weights_mod
 
 
 FAMILIES = [("kimi", "moonshot"), ("glm", "zai"), ("deepseek", "deepseek"), ("gpt", "openai"), ("astra", "openai"),
@@ -30,6 +30,20 @@ def same_model_or_family(graded, judge):
     return None
 
 
+def rescore(results_dir, w=None):
+    """Recompute the composites from what score.json already stores (facts.net, threads.score, mechanical invention count)."""
+    for sp in sorted(glob.glob(os.path.join(results_dir, "*", "score.json"))):
+        res = json.load(open(sp))
+        if res.get("status") != "SCORED":
+            continue
+        old = res.get("composite_v1_stored", res.get("composite") if "composite_v1" not in res else res["composite_v1"])
+        res.update(weights_mod.composites(res["facts"]["net"], res["threads"]["score"], res["invention"]["mechanical"]["count"], w))
+        json.dump(res, open(sp, "w"), indent=1, ensure_ascii=False)
+        print("%s: v1 %s -> v1 %s, v2 %s" % (os.path.basename(os.path.dirname(sp)), old, res["composite_v1"], res["composite"]))
+    rows = report.write(results_dir, w)
+    print("leaderboard: %d arms -> %s" % (len(rows), os.path.join(results_dir, "leaderboard.md")))
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="python -m score")
     ap.add_argument("--results", default="results")
@@ -42,8 +56,13 @@ def main(argv=None):
     ap.add_argument("--judge-map", help="JSON file: {\"rules\": [{\"match\": substring of arm dir name, \"judge\": {transport, model, base_url, api_key_env, effort}}]}; "
                     "first matching rule grades that arm. The judge must not be the graded model or in its family.")
     ap.add_argument("--allow-same-family", action="store_true", help="NOT recommended: allow a judge from the graded model's family")
+    ap.add_argument("--weights", help="override composite weights, e.g. facts=0.45,threads=0.30,invention=0.25 (default: score/weights.py)")
+    ap.add_argument("--rescore", action="store_true", help="recompute composite/composite_v1 from the STORED score.json fields (no model calls, no judge), then rebuild the board")
     ap.add_argument("--only", help="substring filter on arm directory names")
     a = ap.parse_args(argv)
+    w = weights_mod.parse_weights(a.weights) if a.weights else None
+    if a.rescore:
+        return rescore(a.results, w)
     judge = None
     if not a.no_judge:
         key = os.environ.get(a.judge_api_key_env)
@@ -97,7 +116,7 @@ def main(argv=None):
             if bad:
                 arm_judge, jspec, jnote = None, None, "judge refused: " + bad
         n_calls = len(arm_judge.calls) if arm_judge else 0
-        res = score_output(text, corpora[c], meta, arm_judge)
+        res = score_output(text, corpora[c], meta, arm_judge, w)
         res.update(model=meta["model"], effort=meta["effort"], corpus=c)
         if arm_judge:
             jc = arm_judge.calls[n_calls:]
@@ -111,7 +130,7 @@ def main(argv=None):
         json.dump(meta, open(d, "w"), indent=1, ensure_ascii=False)
         json.dump(res, open(os.path.join(arm, "score.json"), "w"), indent=1, ensure_ascii=False)
         print("%s -> %s %s" % (os.path.basename(arm), res["status"], res.get("composite") if res["status"] == "SCORED" else res["failed_as"]))
-    rows = report.write(a.results)
+    rows = report.write(a.results, w)
     print("leaderboard: %d arms -> %s" % (len(rows), os.path.join(a.results, "leaderboard.md")))
 
 

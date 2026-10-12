@@ -437,8 +437,8 @@
    "raw": "[\n  {\n    \"summary_quote\": \"The highest existing migration number is `0080`\",\n    \"why\": \"0080 is the highest migration number shown in the session, but no complete migration-directory listing was obtained. The session does not establish that it is the highest existing number.\"\n  },\n  {\n    \"summary_quote\": \"Lisbon is UTC+1 until 2026-10-25 01:00 UTC, so 9am local on Oct 24 is 08:00Z.\",\n    \"why\": \"The session never supplies this exact transition time or the Oct 24 UTC conversion. The cron probe only returns the next occurrence on Oct 25. This adds external timezone information rather than summarizing information established in the session.\"\n  },\n  {\n    \"summary_quote\": \"`docs/dns.md` with the DKIM record.\",\n    \"why\": \"This appears under 'Reported to the user as done,' but the assistant only said it would write the DNS record into this file. It did not report completing that write.\"\n  },\n  {\n    \"summary_quote\": \"`config/defaults.ts` holding the cadence (4/9/18) and the rate limit (40/min/token).\",\n    \"why\": \"This appears under 'Reported to the user as done,' but the assistant said the settings would go into config/defaults.ts; it did not explicitly report having written that file.\"\n  },\n  {\n    \"summary_quote\": \"Magic-link token table and verify route.\",\n    \"why\": \"This appears under 'Reported to the user as done,' but the assistant only promised, 'I'll write the token table and the verify route.' No completion was reported.\"\n  },\n  {\n    \"summary_quote\": \"Every route probed returned the same invoice list\",\n    \"why\": \"The probes returned different invoice IDs, amounts, currencies, statuses, and list lengths. They generally shared an invoice-list response shape, not the same invoice list; the initial health probe also returned only {\\\"ok\\\":true}.\"\n  },\n  {\n    \"summary_quote\": \"with the total kept below the database's max connections plus headroom.\",\n    \"why\": \"The session advised keeping the total below max connections with headroom reserved for migrations and psql sessions, not below max connections plus additional headroom.\"\n  }\n]\n"
   }
  },
- "composite": 88.78,
- "composite_formula": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mech_invention/10)))",
+ "composite": 79.64,
+ "composite_formula": "composite = 100*(0.45*facts_score + 0.30*threads_score + 0.25*invention_score); facts_score=facts.net; threads_score=threads.score (judge, else mechanical); invention_score=1/(1+mechanical_inventions/3)",
  "model": "opus",
  "effort": "max",
  "corpus": "128k",
@@ -464,5 +464,23 @@
   ],
   "failed_calls": 0
  },
- "judge_model": "openai/gpt-6-astra"
+ "judge_model": "openai/gpt-6-astra",
+ "composite_v1": 88.78,
+ "composite_formula_v1": "100*(0.55*facts_net + 0.35*threads + 0.10*(1-min(1,mechanical_inventions/10)))",
+ "weights": {
+  "facts": 0.45,
+  "threads": 0.3,
+  "invention": 0.25
+ },
+ "weights_v1": {
+  "facts": 0.55,
+  "threads": 0.35,
+  "invention": 0.1
+ },
+ "components": {
+  "facts_score": 0.9483,
+  "threads_score": 0.875,
+  "invention_score": 0.4286,
+  "mechanical_inventions": 4
+ }
 }
