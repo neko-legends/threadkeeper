@@ -1,5 +1,10 @@
 # 🌸 threadkeeper
 
+> [!WARNING]
+> **Correction 1: Opus was not the worst inventor. A biased judge made it look that way.**
+> Earlier versions of this benchmark reported 7 invented facts for `claude-opus-5-5` (max effort). Those flags came from `openai/gpt-6-astra`, a competitor on the same board that was also grading it. Re-graded by a neutral judge (`venice/gemini-3-8-flash`, a family nowhere else on the board), Opus at max has **0** flagged inventions and sits mid-table. Do not use pre-v4 judge counts. Full write-up and screenshot proof: [docs/CORRECTIONS.md](docs/CORRECTIONS.md).
+
+
 *Does your AI remember what mattered when it summarizes a long chat?*
 
 Long agent sessions get "squeezed": the whole chat is replaced by a summary, and the agent keeps working from that summary alone (people call this *compaction*). If the summary drops or changes something, the agent never knows.
