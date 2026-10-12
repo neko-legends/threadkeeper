@@ -8,18 +8,13 @@ That one command runs the model on the chat, grades its summary, rebuilds the le
 
 > [!WARNING]
 > **Correction 1: Opus was not the worst inventor. A biased judge made it look that way.**
-> Earlier versions of this benchmark reported 7 invented facts for `claude-opus-5-5` (max effort). Those flags came from `openai/gpt-6-astra`, a competitor on the same board that was also grading it. Re-graded by a neutral judge (`venice/gemini-3-8-flash`, a family nowhere else on the board), Opus at max has **0** flagged inventions and is no longer last. Do not use pre-v4 judge counts. Full write-up and screenshot proof: [docs/CORRECTIONS.md](docs/CORRECTIONS.md).
-
-<details>
-<summary>🔎 See the correction: before and after</summary>
+> Earlier versions of this benchmark reported 7 invented facts for `claude-opus-5-5` (max effort). Those flags came from `openai/gpt-6-astra`, a competitor on the same board that was also grading it. Re-graded by a neutral judge (`venice/gemini-3-8-flash`, a family nowhere else on the board), Opus at max has **0** flagged inventions and is no longer last. Do not use pre-v4 judge counts.
 
 ![Superseded: original multi-judge board, Opus max annotated](docs/chart-judges-before.png)
 
 ![After: one neutral judge for every arm](docs/chart-judges-after.png)
 
-*Same model outputs on both charts. Only the judge changed. The first chart is superseded and kept for the record.*
-
-</details>
+*Same model outputs on both charts. Only the judge changed. The first chart is superseded and kept for the record. Full write-up and screenshot proof: [`docs/CORRECTIONS.md`](docs/CORRECTIONS.md).*
 
 *Does your AI remember what mattered when it summarizes a long chat?*
 
@@ -27,10 +22,10 @@ Long agent sessions get "squeezed": the whole chat is replaced by a summary, and
 
 threadkeeper gives a model a long fake chat, asks for the summary, and grades it: what survived, what got corrupted, what got made up. The chat is invented (a founder and a coding agent shipping a small web app) and generated from a seed. Pure Python 3 standard library; `matplotlib` is only needed for charts.
 
-Repo: <https://github.com/neko-legends/threadkeeper>
+## 🚀 Run it on any model
 
 <details>
-<summary>🚀 Run it on any model</summary>
+<summary>Commands, providers and options</summary>
 
 The published results were produced through [Venice AI](https://venice.ai). **Any OpenAI-compatible provider works**: you only need a base URL and the name of the environment variable that holds your key.
 
@@ -62,10 +57,12 @@ You can also run the steps by hand: `python -m run ...` runs a model, `python -m
 
 </details>
 
-<details>
-<summary>🏆 Overall score</summary>
+## 🏆 Overall score
 
 ![Overall score](docs/chart-overall.png)
+
+<details>
+<summary>How the score is built</summary>
 
 *128k corpus (seed 12801, `session.jsonl` sha256 `115686d9…5728e`), composite v2. The pink bars are the score, ◆ is the old v1 formula, ★ is rank 1. A grey line instead of a bar means the model failed the summary check. Full numbers for every row: [`results/leaderboard.md`](results/leaderboard.md) (CSV next to it). The board also holds the 200k and 32k rows; the 200k rows were graded by the earlier per-arm judges and are not comparable with the 128k rows.*
 
@@ -82,28 +79,34 @@ Caveat: the `claude` and `pi` CLI arms got the chat pasted into one message with
 
 </details>
 
-<details>
-<summary>📋 Facts kept</summary>
+## 📋 Facts kept
 
 ![Facts kept](docs/chart-facts.png)
+
+<details>
+<summary>How facts are matched</summary>
 
 50 planted facts (names, ports, paths, prices, hashes) are matched automatically. Seven of them change mid-chat; only the newest value earns credit and a stale one costs points. Look-alike decoys (a similar vendor, ticket number, commit hash) cost points too.
 
 </details>
 
-<details>
-<summary>🧵 Open threads kept</summary>
+## 🧵 Open threads kept
 
 ![Open threads kept](docs/chart-threads.png)
+
+<details>
+<summary>How threads are judged</summary>
 
 The chat leaves 8 tasks unfinished. A judge model marks each one `PRESERVED`, `PARTIAL` or `LOST`, and must quote the summary to back it up; a quote that is not really in the summary is dropped.
 
 </details>
 
-<details>
-<summary>🕵️ Made-up claims</summary>
+## 🕵️ Made-up claims
 
 ![Made-up claims](docs/chart-madeup.png)
+
+<details>
+<summary>How invention is measured</summary>
 
 Lower is better. Counted two ways, because neither is reliable alone:
 
@@ -124,17 +127,21 @@ That last one, intent turned into done, is the worst failure: the next session b
 
 </details>
 
-<details>
-<summary>⚡ Speed</summary>
+## ⚡ Speed
 
 ![Speed](docs/chart-speed.png)
+
+<details>
+<summary>How to read it</summary>
 
 Seconds to produce the summary. HTTP and CLI transports, and local versus hosted serving, differ a lot, so read speed next to the transport on the board. The on-prem `DeepSeek-V4.1-Flash-TF` row (served locally on tensorfold) is the same model family as the hosted `deepseek-v4-1-flash` rows but a different serving stack; it is kept separate on purpose.
 
 </details>
 
+## 🚨 Failed arms: not a low score, a different failure
+
 <details>
-<summary>🚨 Failed arms: not a low score, a different failure</summary>
+<summary>Gate labels and what they mean</summary>
 
 At some settings a model stops summarizing. It replies in character, fakes tool calls, sends a stub, or just repeats the question back. The text can look fluent, so a plain fact-counter would score it as "mediocre" when it is really "broken". So the output is first checked to be a summary. If it isn't, the run is `FAILED`, gets no score, is never sent to a judge, and the board shows the reason in the status cell:
 
@@ -145,8 +152,10 @@ At some settings a model stops summarizing. It replies in character, fakes tool 
 
 </details>
 
+## 🏷️ Model versions
+
 <details>
-<summary>🏷️ Model versions</summary>
+<summary>Requested names versus resolved ids</summary>
 
 An alias is not a version. Names on the board are what was requested; the exact id each arm resolved to is recorded in `results/*/meta.json` and in the board's "Model versions" line.
 
@@ -162,8 +171,10 @@ Judge for the 128k board: `venice/gemini-3-8-flash`.
 
 </details>
 
+## 📚 Corpora, and making your own
+
 <details>
-<summary>📚 Corpora, and making your own</summary>
+<summary>Corpus sizes, hashes and why you should regenerate</summary>
 
 | corpus | tokens (o200k) | messages | seed |
 |---|---|---|---|
@@ -181,8 +192,10 @@ Public tests get trained on. Publish a benchmark and, a version or two later, mo
 
 </details>
 
+## 📝 Reporting rules and honest limits
+
 <details>
-<summary>📝 Reporting rules and honest limits</summary>
+<summary>The rules this project holds itself to</summary>
 
 - Never publish a bare score. Show the breakdown (facts, stale and decoy hits, threads, both made-up-claim counts, latency, tokens). `score/report.py` refuses otherwise.
 - Name the judge model and transport on every row; a FAILED row says no judge was used.
@@ -195,8 +208,10 @@ Public tests get trained on. Publish a benchmark and, a version or two later, mo
 
 </details>
 
+## ✅ Tests
+
 <details>
-<summary>✅ Tests</summary>
+<summary>What the test suite guards</summary>
 
 ```
 python3 -W ignore -m unittest discover -s tests -t .
