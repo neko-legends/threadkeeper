@@ -1,0 +1,117 @@
+{
+ "status": "ok",
+ "failed_as": null,
+ "transport": "openai",
+ "command": "POST http://forge:8000/v1/chat/completions model=DeepSeek-V4.1-Flash-TF reasoning_effort=default",
+ "model": "DeepSeek-V4.1-Flash-TF",
+ "effort": "default",
+ "corpus": "128k",
+ "mode": "messages",
+ "base_url": "http://forge:8000/v1",
+ "request_params": {
+  "model": "DeepSeek-V4.1-Flash-TF",
+  "temperature": 0,
+  "max_tokens": 32768
+ },
+ "message_count": 887,
+ "prompt_sha256": "fc24cbdfe7ea939f4e6b360f088dfc24cb917e81a541e24861131167f4450fd3",
+ "compact_prompt_sha256": "401a3760133af0756e8e0bba19bb2e62635e3ba9432fe8fdd8ca41ccd54d8b20",
+ "http_status": 200,
+ "attempts": 1,
+ "latency_s": 59.922,
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 140568,
+  "completion_tokens": 3288,
+  "total_tokens": 143856,
+  "prompt_tokens_details": {
+   "cached_tokens": 0
+  }
+ },
+ "cost_usd": null,
+ "tool_calls": null,
+ "has_reasoning_content": true,
+ "error": null,
+ "started_at_unix": 1791787275,
+ "finished_at_unix": 1791787335,
+ "versions": {
+  "requested_model": "DeepSeek-V4.1-Flash-TF",
+  "resolved_model_id": "DeepSeek-V4.1-Flash-TF",
+  "resolution_source": "endpoint-echoed `model` field",
+  "resolved_on": "2026-10-11",
+  "transport": "openai",
+  "tool_version": null,
+  "effort_flag": "(none: flag omitted, provider default)",
+  "captured": "at-run"
+ },
+ "serving_stack": {
+  "deployment": "on-prem tensorfold serving of a DeepSeek-family model (local spark fabric)",
+  "endpoint": "http://forge:8000/v1",
+  "backend": "tensorfold",
+  "served_model_id": "DeepSeek-V4.1-Flash-TF",
+  "owned_by": "tensorfold",
+  "advertised_ids": [
+   "DeepSeek-V4.1-Flash-TF",
+   "deepseek-v4.1-flash"
+  ],
+  "context_length": 420096,
+  "world": "docker container `dsv41-tf4-r0` (image dsv41-tensorfold:zigtp4-70204bae) on forge",
+  "not_to_be_confused_with": "results/deepseek-v4-1-flash__* — the Venice-hosted `deepseek-v4-1-flash` arms. Same model family, DIFFERENT serving stack/hardware; that is the comparison this arm exists for.",
+  "endpoint_ignores_requested_model_id": true,
+  "id_ignore_probe": "POST /v1/chat/completions with model='qwen3.8-flash-next' echoed model='DeepSeek-V4.1-Flash-TF' (2026-10-11 ~23:42)",
+  "probed_at_unix": 1791787370
+ },
+ "judge_model": "venice/gemini-3-8-flash",
+ "judge": {
+  "model": "venice/gemini-3-8-flash",
+  "transport": "pi",
+  "effort": null,
+  "calls": [
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 61.496,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   },
+   {
+    "status": "ok",
+    "error": null,
+    "latency_s": 210.766,
+    "cmd": "pi -p --model venice/gemini-3-8-flash --no-tools --no-session --no-extensions --no-skills --no-prompt-templates --system-prompt 'You are a helpful assistant.' < <prompt-tempfile>",
+    "stderr": "",
+    "versions": {
+     "requested_model": "venice/gemini-3-8-flash",
+     "resolved_model_id": "venice/gemini-3-8-flash",
+     "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+     "resolved_on": "2026-10-11",
+     "transport": "pi",
+     "tool_version": "0.99.1",
+     "effort_flag": "(none: flag omitted, provider default)",
+     "captured": "at-run"
+    }
+   }
+  ],
+  "versions": {
+   "requested_model": "venice/gemini-3-8-flash",
+   "resolved_model_id": "venice/gemini-3-8-flash",
+   "resolution_source": "pi model ref as requested (pi does not echo a resolved id; the provider/id is the pin)",
+   "resolved_on": "2026-10-11",
+   "transport": "pi",
+   "tool_version": "0.99.1",
+   "effort_flag": "(none: flag omitted, provider default)",
+   "captured": "at-run"
+  },
+  "failed_calls": 0
+ }
+}
